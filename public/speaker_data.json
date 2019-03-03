@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Richard Feldman",
+    "talk_title": "Keynote",
+    "talk_abstract": "",
+    "bio": "",
+    "headshot": "images/speakers/richard.jpg",
+    "social": [
+      {
+        "network": "twitter",
+        "src": "https://twitter.com/rtfeldman"
+      },
+      {
+        "network": "github",
+        "src": "https://github.com/rtfeldman"
+      }
+    ]
+  },
+  {
+    "name": "Andrew MacMurray",
+    "talk_title": "Building Seeds",
+    "talk_subtitle": "A Smartphone Game for the Browser",
+    "talk_abstract": "Three years ago, I got inspired to build a game for the browser. Since then, it’s lived and died as a React app and re-emerged as an Elm app. My talk is an experience report on this journey - pain points, surprises, the joys of using Elm and a whole lot of learning!",
+    "bio": "Andrew is software crafter working at 8th Light. He's developed a deep love for functional programming and types: it's like writing music and playing Tetris at the same time! His other loves include video games, Rupaul's Drag Race, and minimalism.",
+    "headshot": "images/speakers/andrew.jpg",
+    "social": [
+      {
+        "network":"twitter",
+        "src":"https://twitter.com/a_macmurray"
+      },
+      {
+        "network": "github",
+        "src":"https://github.com/andrewMacmurray"
+      }
+    ]
+  },
+  {
+    "name": "Brian Hicks",
+    "talk_title": "Robot Buttons From Mars",
+    "talk_abstract": "Working with HTML in Elm is a joy: creating little reusable functions like 'button' is so fun! But what happens when options invade? Icons? Sizes? Loading states? In this talk, we introduce options for dealing with the inevitable complexity in your style guide and get back to the joy of creation.",
+    "bio": "Brian Hicks is the lead organizer of elm-conf and the author of Mastering Elm: JSON Decoders and elm-particle. He lives in St. Louis with his wife, son, and cat.",
+    "headshot": "images/speakers/brian.jpg",
+    "social": [
+      {
+        "network": "website",
+        "src": "https://www.brianthicks.com/"
+      },
+      {
+        "network": "twitter",
+        "src": "https://twitter.com/brianhicks"
+      },
+      {
+        "network":"github",
+        "src": "https://github.com/BrianHicks"
+      }
+    ]
+  },
+  {
+    "name": "Dan Abrams",
+    "talk_title": "Screenplay by Elm",
+    "talk_subtitle": "Writing a Specialized WYSIWYG Editor Using Elm-UI and elm/parser",
+    "talk_abstract": "I was unhappy with the existing tools for writing screenplays…but I know how to build my own. Building a web text editor isn’t easy to do: but formats that work with monospaced fonts, like code editors– or screenplays– can work without the nonsense.",
+    "bio": "Dan is an Elm developer who started his career as a screenwriter. He has written for film, tv, and video games. Dan lives in northern NJ with his fiancé and their dog, and just finished a batch at Recurse Center.",
+    "headshot": "images/speakers/dan.jpg",
+    "social": [
+      {
+        "network": "twitter",
+        "src": "https://twitter.com/TheDanAbrams"
+      },
+      {
+        "network": "github",
+        "src": "https://github.com/danabrams"
+      },
+      {
+        "network":"website",
+        "src":"http://thedanabrams.com/"
+      }
+    ]
+  },
+  {
+    "name": "Emma Cunningham",
+    "talk_title": "Customizing Browsers with Elm",
+    "talk_abstract": "As a language that compiles to JavaScript, Elm has the potential to be used for building more than front-end applications. In this talk, we’ll explore using Elm to build browser extensions and bookmarklets by reviewing a couple of projects and considering the advantages of using Elm for these kinds of uses. Let's bring the delight of programming Elm to browser-adjacent functionality!",
+    "bio": "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and query optimization. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. When they’re not cranking out code, Emma practices sleight-of-hand magic and ferments all kinds of things in their hometown of Los Angeles.",
+    "headshot": "images/speakers/emma.jpg",
+    "social": [
+      {
+        "network": "twitter",
+        "src": "https://twitter.com/emmatcu"
+      },
+      {
+        "network":"website",
+        "src":"http://emmacunningham.github.io/"
+      },
+      {
+        "network":"github",
+        "src":"https://github.com/emmacunningham"
+      }
+    ]
+  },
+  {
+    "name": "Joël Quenneville",
+    "talk_title": "A Number by Any Other Name",
+    "talk_abstract": "In 1999, NASA’s Mars probe infamously crashed due to a unit of measure error. Twenty years later, we still write the same bug. Join me as we leverage Elm’s type system to catch these, get better errors, and improve readability. Along the way we’ll challenge some common assumptions we have around numbers.",
+    "bio": "Joël is a software developer at thoughtbot. He's fallen in love with Elm's data modeling tools. Over the past year he's discovered the fun of game jams and built three games in Elm. Outside of programming you can find him buried in a history book or exploring the many neighborhoods of Boston. You can spot him at the conference as that guy with the cool hat. Come say hi!",
+    "headshot": "images/speakers/joel.jpg",
+    "social": [
+      {
+        "network": "website",
+        "src": "https://robots.thoughtbot.com/authors/joel-quenneville"
+      },
+      {
+        "network": "twitter",
+        "src": "https://twitter.com/joelquen"
+      },
+      {
+        "network": "github",
+        "src":"https://github.com/JoelQ"
+      }
+    ]
+  },
+  {
+    "name": "Katie Hughes",
+    "talk_title": "Reacting to Elm",
+    "talk_subtitle": "",
+    "talk_abstract": "Having written React for 2 years and done 1.5 side projects using Elm, I have suddenly found myself waist deep in a productionalized Elm code base. Wade through these waters with me as I get used to a big elm app and adapt my functional-enough JavaScript mindset to fully embrace that Functional Programming Lifestyle™.",
+    "bio": "Katie recently joined NoRedInk and loves helping teachers while writing Elm. She lives in San Francisco with her cat, Erwin Schrodinger.",
+    "headshot": "images/speakers/katie.jpg",
+    "social": [
+      {
+        "network":"twitter",
+        "src":"https://twitter.com/glitteringkatie"
+      },
+      {
+        "network": "website",
+        "src":"http://glitteringkatie.com/"
+      },
+      {
+        "network":"github",
+        "src": "https://github.com/glitteringkatie"
+      }
+    ]
+  },
+  {
+    "name": "Kofi Gumbs",
+    "talk_title": "Guaranteed Refactors",
+    "talk_subtitle": "Generating Tests from Types",
+    "talk_abstract": "Many of us are familiar with the situation: you want to refactor some code, but it has no tests! Elm gives us confidence that the types fit, but how can I be sure I haven’t changed or broken behavior? In this talk you’ll learn about a testing workflow that uses types to guarantee refactors.",
+    "bio": "Kofi lives in Chicago and writes software, both professionally and for fun. By day, he works at HubTran, using test-driven development wherever he can. By night, he theorizes how to make those tests unnecessary— using declarative systems with strong guarantees.",
+    "headshot": "images/speakers/kofi.jpg",
+    "social": [
+      {
+        "network": "website",
+        "src": "https://kofi.sexy"
+      },
+      {
+        "network": "twitter",
+        "src": "https://twitter.com/hkgumbs"
+      },
+      {
+        "network":"github",
+        "src":"https://github.com/hkgumbs"
+      }
+    ]
+  },
+  {
+    "name": "Nikhil Sharma",
+    "talk_title": "Exploring Elm's Compiler Error Messages",
+    "talk_subtitle": "",
+    "talk_abstract": "Everyone knows that Elm has great error messages, but do you know all of the kinds of error messages you can get?\nIn this talk, we will: 1. Categorize all of Elm’s error messages. 2. Learn how to produce some of the more obscure errors. 3. Learn how to get the most out of your error messages.",
+    "bio": "Nikhil is a software engineer with 5 years of experience and a recently-discovered burning passion for statically-typed functional programming! One of Nikhil's favorite hobbies is discussing anime and manga - he's a team member of Meetup.com group AnimeChicago. At AnimeChicago, he has been writing front-end apps in Elm to integrate with the website. Feel free to ask him about any of these projects or if you just want to talk about JoJo’s Bizarre Adventure Part 5.",
+    "headshot": "images/speakers/nik.jpg",
+    "social": [
+      {
+        "network":"github",
+        "src": "https://github.com/sharma7n"
+      }
+    ]
+  },
+  {
+    "name": "Noah Zachary Gordon",
+    "talk_title": "Conventions for Message Naming",
+    "talk_abstract": "Messages are a fundamental piece of the Elm Architecture, defining exactly how the world can interact with your program. But often we choose message names without precision. In this talk, I will outline a set of message naming conventions that can make your code more flexible and resilient to change.",
+    "bio": "Noah is a technologist from Brooklyn, NY, who likes his Elm with a soft-boiled egg and black coffee. He organizes the Elm NYC meetup group and is a Recurse Center alumnus. Prolonged exposure to Noah is not recommended. Consult your primary care physician before seeking Noah.",
+    "headshot": "images/speakers/noah.jpg",
+    "social": [
+      {
+        "network": "website",
+        "src":"http://noahzgordon.com/"
+      },
+      {
+        "network":"github",
+        "src":"https://github.com/noahzgordon"
+      },
+      {
+        "network":"twitter",
+        "src":"https://twitter.com/noahzgordon"
+      }
+    ]
+  }
+]
