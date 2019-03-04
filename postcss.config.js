@@ -4,7 +4,9 @@ module.exports = {
     require('postcss-mixins'),
     require('postcss-simple-vars'),
     require('postcss-custom-media'),
-    require('postcss-grid-kiss'),
+    require('postcss-grid-kiss')({
+      fallback: false
+    }),
     require('postcss-flexbugs-fixes'),
     require('postcss-import'),
     require('postcss-nested'),

@@ -2,16 +2,18 @@ module View.Header exposing (render)
 
 import Dom
 import Html.Attributes exposing (..)
+import Model exposing (Model)
+import Update exposing (Msg)
 
 
-render : Dom.Element msg
-render =
+render : Model -> Dom.Element Msg
+render _ =
     Dom.element "header"
         |> Dom.addClass "header"
         |> Dom.appendChild links
 
 
-links : Dom.Element msg
+links : Dom.Element Msg
 links =
     let
         link location =

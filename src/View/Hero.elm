@@ -1,14 +1,65 @@
 module View.Hero exposing (render)
 
 import Dom
+import Html.Attributes exposing (..)
+import Model exposing (Model)
+import Update exposing (Msg)
 
 
-render : Dom.Element msg
-render =
+render : Model -> Dom.Element Msg
+render _ =
     Dom.element "div"
         |> Dom.addClass "section-hero"
         |> Dom.appendChildList
             [ Dom.element "div"
             , Dom.element "div"
-                |> Dom.appendText "HERO section placeholder"
+                |> Dom.addClass "hero-content"
+                |> Dom.appendChildList
+                    [ logoImage
+                    , logoText
+                    , textContent
+                    , ctaButton
+                    ]
             ]
+
+
+logoImage =
+    Dom.element "div"
+        |> Dom.addClass "hero-logo"
+        |> Dom.appendChild
+            (Dom.element "img"
+                |> Dom.addAttribute (src "/images/flower.svg")
+            )
+
+
+logoText =
+    Dom.element "div"
+        |> Dom.addClass "hero-logo-text"
+        |> Dom.appendChild
+            (Dom.element "img"
+                |> Dom.addAttribute (src "/images/text.svg")
+            )
+
+
+textContent =
+    Dom.element "div"
+        |> Dom.addClass "hero-text"
+        |> Dom.appendChild
+            (Dom.element "div"
+                |> Dom.addClass "text-blue text-2xl text-center"
+                |> Dom.appendText "A day to learn, teach, and share about Elm!"
+            )
+
+
+ctaButton =
+    Dom.element "div"
+        |> Dom.addClass "hero-attend-cta"
+        |> Dom.appendChild
+            (Dom.element "div"
+                |> Dom.appendChild
+                    (Dom.element "a"
+                        |> Dom.addClass "btn-offset"
+                        |> Dom.addAttribute (href "#details")
+                        |> Dom.appendText "Attend"
+                    )
+            )
