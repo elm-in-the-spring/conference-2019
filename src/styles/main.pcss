@@ -126,3 +126,56 @@ $clip-2-a: polygon(100% 100%, 0 100%, 0 75%);
 	}
 }
 
+
+/* ****************************************************** */
+/* cursors */
+
+body {
+  cursor: url(/images/cursor-auto.png), auto;
+}
+
+
+dd,
+li,
+ol,
+ul,
+p,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: url(/images/cursor-text.png), text;
+}
+
+
+a,
+button,
+input[type="submit"],
+.open-modal,
+.close-modal {
+  cursor: url(/images/cursor-pointer.png), pointer;
+
+  &:active {
+  	cursor: url(/images/cursor-pointer-clicked.png), pointer;
+  }
+}
+
+.preload-cursors {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  overflow: hidden;
+  margin: -.1rem;
+  padding: 0;
+  width: .1rem;
+  height: .1rem;
+  border: 0;
+  u {
+  	cursor: url(/images/cursor-pointer-clicked.png), pointer;
+  }
+}
+
+
+
