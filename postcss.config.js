@@ -1,6 +1,8 @@
 module.exports = {
 	ident: 'postcss',
   plugins: [
+    require('postcss-custom-media'),
+    require('postcss-grid-kiss'),
     require('postcss-flexbugs-fixes'),
     require('postcss-import'),
     require('postcss-nested'),

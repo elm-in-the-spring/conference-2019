@@ -954,10 +954,65 @@ module.exports = {
   */
 
   plugins: [
-    require('tailwindcss/plugins/container')({
-      // center: true,
-      // padding: '1rem',
-    }),
+    require('tailwindcss/plugins/container')(),
+    function({ addComponents }) {
+      const offsetButton = {
+        '.btn-offset': {
+          border: '5px solid #d6fd8c',
+          color: '#d6fd8c',
+          display: 'inline-block',
+          fontSize: '1.5rem',
+          fontWeight: '400',
+          textAlign: 'center',
+          padding: '1rem',
+          letterSpacing: '0.1rem',
+          lineHeight: '1',
+          textDecoration: 'none',
+          textTransformation: 'uppercase',
+          backgroundColor: 'transparent',
+          zIndex: '10',
+          '&::before': {
+            content: '""',
+            backgroundColor: '#E57C79',
+            boxShadow: "-5px 5px 0 #eebbd1, -10px 10px 0 #eebbd1",
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            bottom: '0',
+            width: '102%',
+            transform: 'translate(-12px, 7px)',
+            transition: 'transform 200ms, box-shadow 200ms',
+            willChange: 'transform, box-shadow',
+            zIndex: '-1',
+          },
+          '&::after': {
+            content: '""',
+            top: '-5px',
+            left: '-5px',
+            height: '100%',
+            width: '100%',
+            border: '5px solid #d6fd8c',
+            position: 'absolute',
+            zIndex: '0'
+          },
+          '&:hover': {
+            '&::before': {
+              boxShadow: 'none',
+              transform: 'translate(0, 0)'
+            },
+          },
+          '&:active': {
+            transform: 'translateY(3px)',
+            '&::before': {
+              width: '100%',
+              height: '100%'
+            },
+          },
+        },
+      };
+
+      addComponents(offsetButton)
+    },
   ],
 
 

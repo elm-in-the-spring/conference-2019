@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 124 152" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4" fill-rule="nonzero">
+            <polygon id="small-triangle-middle" fill="#D4B4C2" transform="translate(26.000000, 46.500000) rotate(-270.000000) translate(-26.000000, -46.500000) " points="26.000136 56 45 37 7 37"></polygon>
+            <polygon id="parallelogram" fill="#1F306E" points="41 27 60 46.2204651 60 88 41 68.7792618"></polygon>
+            <polygon id="square" fill="#AF6284" points="63.0477708 0 84 20.9522292 62.9522292 42 42 21.0477708"></polygon>
+            <polygon id="medium-triangle-top-right" fill="#1F306E" transform="translate(84.500000, 68.500000) rotate(-90.000000) translate(-84.500000, -68.500000) " points="104 88 104 49 65 49"></polygon>
+            <polygon id="large-triangle-left" fill="#1F306E" transform="translate(45.000000, 107.000000) rotate(-45.000000) translate(-45.000000, -107.000000) " points="66 106.999725 24 65 24 149"></polygon>
+            <polygon id="small-triangle-right" fill="#BB8A9F" transform="translate(86.500000, 34.500000) rotate(-270.000000) translate(-86.500000, -34.500000) " points="77 34.4998635 96 53 96 16"></polygon>
+            <polygon id="large-triangle-bottom" fill="#1F306E" transform="translate(79.500000, 107.000000) rotate(-45.000000) translate(-79.500000, -107.000000) " points="79.4998642 86 38 128 121 128"></polygon>
+        </g>
+    </g>
+</svg>
