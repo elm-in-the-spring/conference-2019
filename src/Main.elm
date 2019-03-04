@@ -15,10 +15,12 @@ import Speaker exposing (Speaker)
 import Task
 import Url
 import View.Footer as FooterView
+import View.Header as HeaderView
 import View.Hero as HeroView
 import View.Section.Details as DetailsView
 import View.Section.Speakers as SpeakersView
-import View.Section.Sponsors as SponsorsView
+import View.Section.SponsorsLogos as SponsorsLogosView
+import View.Section.SponsorsText as SponsorsTextView
 
 
 
@@ -118,12 +120,14 @@ view : Model -> Browser.Document Msg
 view model =
     let
         pageContent =
-            Dom.element "div"
+            Dom.element "main"
                 |> Dom.appendChildList
-                    [ HeroView.render
+                    [ HeaderView.render
+                    , HeroView.render
                     , DetailsView.render
                     , SpeakersView.render
-                    , SponsorsView.render
+                    , SponsorsLogosView.render
+                    , SponsorsTextView.render
                     , FooterView.render
                     ]
                 >> Dom.render

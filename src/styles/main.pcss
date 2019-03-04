@@ -8,32 +8,121 @@
 @import "tailwindcss/preflight";
 @import "components.pcss";
 @import "utilities.pcss";
+@import url('https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,500,600,700');
 
-body {
-	grid-kiss:
-		"+-----------------------------------+        "
-		"|                 ↓                 |        "
-		"|            → .header ←           |  100px "
-		"|                 ↑                 |        "
-		"+-----------------------------------+        "
-		"+-----------------------------------+        "
-		"|         → .section-hero ←        |        "
-		"+-----------------------------------+        "
-		"+-----------------------------------+        "
-		"|        .section-details           |        "
-		"+-----------------------------------+        "
-		"+-----------------------------------+        "
-		"|        .section-speakers          |        "
-		"+-----------------------------------+        "
-		"+-----------------------------------+        "
-		"|        .section-sponsors-a        |        "
-		"+-----------------------------------+        "
-		"+-----------------------------------+        "
-		"|        .section-sponsors-b        |        "
-		"+-----------------------------------+        "
-		"+-----------------------------------+        "
-		"|                 ↓                 |        "
-		"|            → .footer ←           |  100px "
-		"|                 ↑                 |        "
-		"+-----------------------------------+        "
+@font-face {
+  font-family: Biko;
+  src: url(/fonts/Biko_Regular.otf);
 }
+
+@font-face {
+  font-family: Biko;
+  font-weight: bold;
+  src: url(/fonts/Biko_Bold.otf);
+}
+
+@font-face {
+  font-family: Biko;
+  font-weight: 900;
+  src: url(/fonts/Biko_Black.otf);
+}
+
+
+body > main {
+	background-color: config('colors.teal');
+	font-family: Hind Madurai, system-ui;
+	grid-kiss:
+		"+-----------------------------------+      "
+		"|                 ↓                 |      "
+		"|            → header ←            | 100px"
+		"|                 ↑                 |      "
+		"+-----------------------------------+      "
+		"+-----------------------------------+      "
+		"|         → .section-hero ←        |      "
+		"+-----------------------------------+      "
+		"+-----------------------------------+      "
+		"|        .section-details           |      "
+		"+-----------------------------------+      "
+		"+-----------------------------------+      "
+		"|        .section-speakers          |      "
+		"+-----------------------------------+      "
+		"+-----------------------------------+      "
+		"|        .section-sponsors-a        |      "
+		"+-----------------------------------+      "
+		"+-----------------------------------+      "
+		"|        .section-sponsors-b        |      "
+		"+-----------------------------------+      "
+		"+-----------------------------------+      "
+		"|                 ↓                 |      "
+		"|            → .footer ←           | 100px"
+		"|                 ↑                 |      "
+		"+-----------------------------------+      ";
+}
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:--heading {
+	font-family: Biko;
+}
+
+
+$clip-1-b: polygon(100% 68%, 100% 100%, 0% 100%);
+$clip-1-a: polygon(0 0, 44% 100%, 0% 100%);
+
+$clip-2-b: polygon(80% 0, 100% 40%, 0 84%, 0% 0%);
+$clip-2-a: polygon(100% 100%, 0 100%, 0 75%);
+
+.section-hero {
+	@apply angled-section-wrapper;
+	background-color: config('colors.teal');
+
+	> div {
+		&:first-child {
+			@apply angled-section-bg;
+
+			&::before {
+				@apply fill-pattern-green-leaf;
+				clip-path: $clip-1-b;
+				content: '';
+			}
+
+			&::after {
+				@apply fill-pattern-teal-flower;
+				clip-path: $clip-1-a;
+				content: '';
+			}
+		}
+
+		&:last-child {
+			@apply angled-section-content;
+		}
+	}
+}
+
+.section-details {
+	@apply angled-section-wrapper;
+	@apply fill-pattern-green-leaf;
+
+	> div {
+		&:first-child {
+			@apply angled-section-bg;
+
+			&::before {
+				@apply fill-pattern-green-leaf;
+				clip-path: $clip-2-b;
+				content: '';
+			}
+
+			&::after {
+				background-color: config('colors.teal');
+				clip-path: $clip-2-a;
+				content: '';
+			}
+		}
+
+		&:last-child {
+			@apply angled-section-content;
+		}
+	}
+}
+

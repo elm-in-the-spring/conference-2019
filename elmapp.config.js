@@ -3,7 +3,7 @@ const path = require("path");
 const merge = require ('webpack-merge');
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const glob = require('glob')
 
 // Custom PurgeCSS extractor for Tailwind that allows special characters in class names.
 // https://github.com/FullHuman/purgecss#extractor
@@ -41,7 +41,7 @@ module.exports = {
 		      chunkFilename: devMode ?  'static/css/[name].chunk.css' : 'static/css/[name].[contenthash:8].chunk.css'
 		    }),
 		    !devMode && new PurgecssPlugin({
-		      paths: path.resolve(__dirname, "build"),
+		      paths: glob.sync(`${__dirname}/src/**/*`,  { nodir: true }),
 		      extractors: [
 		        {
 		          extractor: TailwindExtractor,
@@ -55,7 +55,7 @@ module.exports = {
 		const excludeStylesToo = (configuration) => {
 			const rules = configuration.module.rules;
 			rules.forEach(r => {
-				if (r.exclude) {
+				if (r.exclude && r.exclude.length) {
 					r.exclude.push(STYLESHEET_REGEX)
 				}
 			})
