@@ -40,7 +40,7 @@ sectionContent model =
 listing : Speaker -> Dom.Element Msg
 listing speaker =
     Dom.element "div"
-        |> Dom.addClass "md:flex mb-10"
+        |> Dom.addClass "md:flex mb-10 pt-8 border-dotted border-t-6 border-blue-light"
         |> Dom.appendChildList
             [ photo speaker True
             , Dom.element "div"
@@ -67,8 +67,8 @@ photo { headshotSrc, name } hasOffset =
             [ src headshotSrc
             , alt name
             ]
-        |> Dom.addClass "border border-teal-light border-t-8 border-r-8 border-b-8 border-l-8 w-48 h-48"
         -- why does border-8 not work!?
+        |> Dom.addClass "border border-teal-light border-t-8 border-r-8 border-b-8 border-l-8 w-48 h-48"
         |> Dom.addClassConditional "shadow-offset-bottom-left-green-light" hasOffset
 
 
