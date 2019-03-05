@@ -9,7 +9,7 @@ import Update exposing (Msg)
 render : Model -> Dom.Element Msg
 render _ =
     Dom.element "header"
-        |> Dom.addClass "header"
+        |> Dom.addClass "header biko uppercase"
         |> Dom.appendChild links
 
 
