@@ -77,7 +77,10 @@ socialLinks { social } =
     Dom.element "div"
         |> Dom.addClass "flex justify-start"
         |> Dom.appendChildList
-            (List.map socialLink social)
+            (social
+                |> List.sortBy (\s -> Speaker.socialNetworkToString s.network)
+                |> List.map socialLink
+            )
 
 
 socialLink : Speaker.Social -> Dom.Element Msg
