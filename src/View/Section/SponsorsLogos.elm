@@ -8,5 +8,6 @@ import Update exposing (Msg)
 render : Model -> Dom.Element Msg
 render _ =
     Dom.element "section"
+        |> Dom.setId "sponsors"
         |> Dom.addClass "section-sponsors-a"
         |> Dom.appendText "SPONSORS LOGOS section placeholder"

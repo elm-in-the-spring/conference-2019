@@ -22,7 +22,7 @@ links =
                 |> Dom.appendChild
                     (Dom.element "a"
                         |> Dom.addClass "text-blue no-underline hover:text-blue-darker"
-                        |> Dom.addAttribute (href ("#section-" ++ String.toLower location))
+                        |> Dom.addAttribute (href ("#" ++ String.toLower location))
                         |> Dom.appendText location
                     )
     in

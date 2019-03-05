@@ -11,6 +11,7 @@ import Update exposing (Msg)
 render : Model -> Dom.Element Msg
 render model =
     Dom.element "section"
+        |> Dom.setId "speakers"
         |> Dom.addClass "page-section section-speakers biko"
         |> Dom.appendChildList
             [ Dom.element "div"
