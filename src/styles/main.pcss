@@ -51,7 +51,7 @@ body > main {
 		"+-----------------------------------+      "
 		"+-----------------------------------+      "
 		"|                 ↓                 |      "
-		"|            → .footer ←           | 100px"
+		"|              .footer              | 100px"
 		"|                 ↑                 |      "
 		"+-----------------------------------+      ";
 }
@@ -66,12 +66,16 @@ p {
 	@apply mb-8;
 }
 
-.section-content a:not(.btn-offset) {
-	@apply text-green-light;
-	&:hover {
-		@apply text-green;
+
+a:not(.btn-offset) {
+	.section-content & {
+		@apply text-green-light;
+		&:hover {
+			@apply text-green;
+		}
 	}
 }
+
 
 /* ******************************************************************* */
 
