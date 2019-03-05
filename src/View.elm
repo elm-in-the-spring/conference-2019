@@ -9,8 +9,7 @@ import View.Header as HeaderView
 import View.Hero as HeroView
 import View.Section.Details as DetailsView
 import View.Section.Speakers as SpeakersView
-import View.Section.SponsorsLogos as SponsorsLogosView
-import View.Section.SponsorsText as SponsorsTextView
+import View.Section.Sponsors as SponsorsView
 
 
 view : Model -> Browser.Document Msg
@@ -23,8 +22,7 @@ view model =
                     , HeroView.render model
                     , DetailsView.render model
                     , SpeakersView.render model
-                    , SponsorsLogosView.render model
-                    , SponsorsTextView.render model
+                    , SponsorsView.render model
                     , FooterView.render model
                     ]
                 >> Dom.render
