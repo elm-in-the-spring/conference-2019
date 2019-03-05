@@ -18,6 +18,7 @@ render _ =
                     [ logoImage
                     , logoText
                     , textContent
+                    , logoAsText
                     , ctaButton
                     ]
             ]
@@ -63,3 +64,9 @@ ctaButton =
                         |> Dom.appendText "Attend"
                     )
             )
+
+
+logoAsText =
+    Dom.element "h1"
+        |> Dom.appendText "Elm in the Spring Conference on April 26, 2019 in Chicago"
+        |> Dom.addClass "hidden"
