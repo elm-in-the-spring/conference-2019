@@ -18,7 +18,7 @@ links =
     let
         link location =
             Dom.element "li"
-                |> Dom.addClass "mr-6"
+                |> Dom.addClass "m-3"
                 |> Dom.appendChild
                     (Dom.element "a"
                         |> Dom.addClass "text-blue no-underline hover:text-blue-darker"
@@ -27,7 +27,7 @@ links =
                     )
     in
     Dom.element "ul"
-        |> Dom.addClass "list-reset flex text-2xl justify-center content-center"
+        |> Dom.addClass "list-reset flex text-lg md:text-2xl justify-center content-center"
         |> Dom.appendChildList
             [ link "Details"
             , link "Speakers"
