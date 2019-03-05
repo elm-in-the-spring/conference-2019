@@ -33,18 +33,18 @@ sectionTitle =
 sectionContent : Model -> Dom.Element Msg
 sectionContent model =
     Dom.element "div"
-        |> Dom.addClass "section-content leading-normal text-teal-light text-xl md:text-2xl bg-blue-dark p-12 mt-10"
+        |> Dom.addClass "section-content leading-normal text-teal-light bg-blue-dark p-12 mt-10"
         |> Dom.appendChildList (List.map listing model.speakers)
 
 
 listing : Speaker -> Dom.Element Msg
 listing speaker =
     Dom.element "div"
-        |> Dom.addClass "flex mb-10"
+        |> Dom.addClass "md:flex mb-10"
         |> Dom.appendChildList
             [ photo speaker True
             , Dom.element "div"
-                |> Dom.addClass "ml-5"
+                |> Dom.addClass "md:ml-5 mt-5 md:mt-0"
                 |> Dom.appendChildList
                     [ speakerName speaker
                     , socialLinks speaker
