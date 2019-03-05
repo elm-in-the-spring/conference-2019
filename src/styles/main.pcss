@@ -217,10 +217,7 @@ body {
   cursor: url(/images/cursor-auto.png), auto;
 }
 
-
-dd,
 li,
-ol,
 ul,
 p,
 input,
@@ -231,9 +228,7 @@ input,
 
 a,
 button,
-input[type="submit"],
-.open-modal,
-.close-modal {
+input[type="submit"] {
   cursor: url(/images/cursor-pointer.png), pointer;
 
   &:active {
@@ -255,41 +250,51 @@ input[type="submit"],
   }
 }
 
-
+/* These must all be separate rules */
 ::-webkit-selection {
-  background-color: config('colors.teal-light') !important;
+	 background-color: config('colors.blue');
+	.section-content & {
+	  background-color: config('colors.teal-light');
+	}
   color: white;
 }
 
 ::selection {
-  background-color: config('colors.teal-light') !important;
+	background-color: config('colors.blue');
+	.section-content & {
+	  background-color: config('colors.teal-light');
+	}
   color: white;
 }
 
 ::-moz-selection {
-  background-color: config('colors.teal-light') !important;
+	background-color: config('colors.blue');
+	.section-content & {
+	  background-color: config('colors.teal-light');
+	}
   color: white;
 }
 
 
+/* These must all be separate rules */
 input::-webkit-input-placeholder {
-  color: config('colors.pink-darker') !important;
+  color: config('colors.pink-darker');
 }
 
 input:-moz-placeholder {
-  color: config('colors.pink-darker') !important;
+  color: config('colors.pink-darker');
 }
 
 input::-moz-placeholder {
-  color: config('colors.pink-darker') !important;
+  color: config('colors.pink-darker');
 }
 
 input:-ms-input-placeholder {
-  color: config('colors.pink-darker') !important;
+  color: config('colors.pink-darker');
 }
 
 input {
-  color: #20326a;
+  color: config('colors.blue');
 }
 
 
