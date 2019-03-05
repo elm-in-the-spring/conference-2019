@@ -68,6 +68,7 @@ photo { headshotSrc, name } hasOffset =
             , alt name
             ]
         |> Dom.addClass "border border-teal-light border-t-8 border-r-8 border-b-8 border-l-8 w-48 h-48"
+        -- why does border-8 not work!?
         |> Dom.addClassConditional "shadow-offset-bottom-left-green-light" hasOffset
 
 
