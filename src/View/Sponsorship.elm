@@ -1,11 +1,11 @@
-module View.Sponsorship exposing (render)
+module View.Sponsorship exposing (view)
 
 import Dom
 import Model exposing (Model)
 import Update exposing (Msg)
 
 
-render : Model -> Dom.Element Msg
-render _ =
+view : Model -> Dom.Element Msg
+view _ =
     Dom.element "div"
         |> Dom.appendText "SPONSORSHIP PAGE view placeholder"

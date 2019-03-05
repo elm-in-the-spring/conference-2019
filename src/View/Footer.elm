@@ -30,5 +30,8 @@ copyright =
 github =
     Dom.element "a"
         |> Dom.addClass "text-blue"
-        |> Dom.addAttribute (href "https://github.com/elm-in-the-spring/conference-2019")
+        |> Dom.addAttributeList
+            [ href "https://github.com/elm-in-the-spring/conference-2019"
+            , target "_blank"
+            ]
         |> Dom.appendText "This site is open-source and written with Elm!"
