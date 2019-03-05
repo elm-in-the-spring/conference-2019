@@ -245,6 +245,7 @@ module.exports = {
     'xl': '1.25rem',    // 20px
     '2xl': '1.5rem',    // 24px
     '3xl': '1.875rem',  // 30px
+    '3.5xl': '2rem',    // TODO: actually calculate the key here
     '4xl': '2.25rem',   // 36px
     '5xl': '3rem',      // 48px
   },
@@ -760,6 +761,7 @@ module.exports = {
     'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
     'outline': '0 0 0 3px rgba(52,144,220,0.5)',
     'none': 'none',
+    'offset-bottom-left-green-light': '-12px 12px #d6fd8c'
   },
 
 
