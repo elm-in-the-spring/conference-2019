@@ -87,8 +87,9 @@ p3 =
         |> Dom.appendChild
             (Dom.element "a"
                 |> Dom.addAttributeList [ href "http://confcodeofconduct.com/", target "_blank" ]
-                |> Dom.appendText "Code of Conduct."
+                |> Dom.appendText "Code of Conduct"
             )
+        |> Dom.appendChild (Dom.element "span" |> Dom.appendText ".")
 
 
 contentTitle2 =
