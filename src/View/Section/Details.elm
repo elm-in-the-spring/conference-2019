@@ -25,7 +25,7 @@ render model =
 
 sectionTitle =
     Dom.element "h3"
-        |> Dom.addClass "section-title text-style-special-v1 text-center uppercase pt-10"
+        |> Dom.addClass "section-title text-style-special-v1 text-center uppercase pt-20"
         |> Dom.appendText "Details"
 
 
