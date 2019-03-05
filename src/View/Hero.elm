@@ -29,7 +29,10 @@ logoImage =
         |> Dom.addClass "hero-logo"
         |> Dom.appendChild
             (Dom.element "img"
-                |> Dom.addAttribute (src "/images/flower.svg")
+                |> Dom.addAttributeList
+                    [ src "/images/flower.svg"
+                    , alt "logo flower"
+                    ]
             )
 
 
@@ -38,7 +41,10 @@ logoText =
         |> Dom.addClass "hero-logo-text"
         |> Dom.appendChild
             (Dom.element "img"
-                |> Dom.addAttribute (src "/images/text.svg")
+                |> Dom.addAttributeList
+                    [ src "/images/text.svg"
+                    , alt "Elm in the Spring Conference on April 26, 2019 in Chicago"
+                    ]
             )
 
 
