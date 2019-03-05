@@ -96,6 +96,7 @@ socialLink social =
                 |> Dom.addClass "text-xl md:text-2xl no-underline"
                 |> Dom.addAttributeList
                     [ title linkTitle
+                    , attribute "aria-label" linkTitle
                     , href social.src
                     , target "_blank"
                     ]
