@@ -10,24 +10,26 @@ render : Model -> Dom.Element Msg
 render _ =
     Dom.element "section"
         |> Dom.setId "sponsors"
-        |> Dom.addClass "section-sponsors"
+        |> Dom.addClass "Section Section--sponsors"
         |> Dom.appendChildList
-            [ sectionTitle
+            [ heading
             , logos
-            , sectionContent
+            , content
             ]
 
 
-sectionTitle : Dom.Element Msg
-sectionTitle =
+heading : Dom.Element Msg
+heading =
     Dom.element "h3"
-        |> Dom.addClass "section-title text-style-special-v3 text-center uppercase pt-20"
+        --|> Dom.addClass "section__heading text-style-special-v3 text-center uppercase pt-20"
+        |> Dom.addClass "Section__heading"
         |> Dom.appendText "Sponsors"
 
 
 logos =
     Dom.element "div"
-        |> Dom.addClass "flex flex-wrap items-center justify-center pt-10"
+        --|> Dom.addClass "flex flex-wrap items-center justify-center pt-10"
+        |> Dom.addClass "Section__logos"
         |> Dom.appendChildList
             [ logo "eSpark Learning" "/images/sponsors/espark-logo.svg"
             , logo "Hubtran" "/images/sponsors/hubtran-logo.svg"
@@ -38,37 +40,41 @@ logos =
 
 logo sponsorName imgSrc =
     Dom.element "img"
-        |> Dom.addClass "px-2 mx-2 object-scale-down h-20"
+        --|> Dom.addClass "px-2 mx-2 object-scale-down h-20"
         |> Dom.addAttributeList
             [ alt ("Sponsor " ++ sponsorName)
             , src imgSrc
             ]
 
 
-sectionContent : Dom.Element Msg
-sectionContent =
+content : Dom.Element Msg
+content =
     Dom.element "div"
-        |> Dom.addClass "section-content leading-normal font-light text-teal-light text-xl md:text-2xl bg-blue-dark p-12 mt-10"
+        --|> Dom.addClass "section-content leading-normal font-light text-teal-light text-xl md:text-2xl bg-blue-dark p-12 mt-10"
+        |> Dom.addClass "Section__content"
         |> Dom.appendChildList
-            [ contentTitle
+            [ subheading
             , p1
             , p2
             ]
 
 
-contentTitle =
+subheading =
     Dom.element "h4"
-        |> Dom.addClass "mb-5 text-3xl md:text-4xl"
+        --|> Dom.addClass "mb-5 text-3xl md:text-4xl"
+        |> Dom.addClass "Section__subheading"
         |> Dom.appendText "Support the community"
 
 
 p1 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendText "You or your company can become a sponsor for Elm in the Spring 2019."
 
 
 p2 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText "For more info, check out ")
         |> Dom.appendChild
             (Dom.element "a"

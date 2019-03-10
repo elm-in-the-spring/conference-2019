@@ -10,28 +10,28 @@ import Update exposing (Msg)
 
 render : Model -> Dom.Element Msg
 render model =
-    Dom.element "section"
+    Dom.element "Section"
         |> Dom.setId "speakers"
-        |> Dom.addClass "page-section section-speakers biko"
+        |> Dom.addClass "block-section section-speakers biko"
         |> Dom.appendChildList
             [ Dom.element "div"
             , Dom.element "div"
                 |> Dom.appendChildList
-                    [ sectionTitle
-                    , sectionContent model
+                    [ heading
+                    , content model
                     ]
             ]
 
 
-sectionTitle : Dom.Element Msg
-sectionTitle =
+heading : Dom.Element Msg
+heading =
     Dom.element "h3"
-        |> Dom.addClass "section-title text-style-special-v2 text-center uppercase pt-20"
+        |> Dom.addClass "section-heading text-style-special-v2 text-center uppercase pt-20"
         |> Dom.appendText "Speakers"
 
 
-sectionContent : Model -> Dom.Element Msg
-sectionContent model =
+content : Model -> Dom.Element Msg
+content model =
     Dom.element "div"
         |> Dom.addClass "section-content leading-normal text-teal-light bg-blue-dark p-12 mt-10"
         |> Dom.appendChildList (List.map listing model.speakers)

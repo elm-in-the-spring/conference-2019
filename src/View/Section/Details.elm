@@ -12,40 +12,40 @@ render : Model -> Dom.Element Msg
 render model =
     Dom.element "section"
         |> Dom.setId "details"
-        |> Dom.addClass "page-section section-details"
+        |> Dom.addClass "block-section section-details"
         |> Dom.appendChildList
             [ Dom.element "div"
             , Dom.element "div"
                 |> Dom.appendChildList
-                    [ sectionTitle
-                    , sectionContent model
+                    [ heading
+                    , content model
                     ]
             ]
 
 
-sectionTitle =
+heading =
     Dom.element "h3"
-        |> Dom.addClass "section-title text-style-special-v1 text-center uppercase pt-20"
+        |> Dom.addClass "section-heading text-style-special-v1 text-center uppercase pt-20"
         |> Dom.appendText "Details"
 
 
-sectionContent model =
+content model =
     Dom.element "div"
         |> Dom.addClass "section-content leading-normal font-light text-teal-light text-xl md:text-2xl bg-blue-dark p-12 mt-10"
         |> Dom.appendChildList
-            [ contentTitle1
+            [ subheading1
             , p1
             , p2
             , ticketsButton
             , p3
-            , contentTitle2
+            , subheading2
             , p4
             , contactForm model.contactForm
             , p5
             ]
 
 
-contentTitle1 =
+subheading1 =
     Dom.element "h4"
         |> Dom.addClass "mb-5 text-3xl md:text-4xl"
         |> Dom.appendText "All Elm, all day!"
@@ -92,7 +92,7 @@ p3 =
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText ".")
 
 
-contentTitle2 =
+subheading2 =
     Dom.element "h4"
         |> Dom.addClass "mb-5 text-3xl md:text-4xl"
         |> Dom.appendText "Stay In Touch"
