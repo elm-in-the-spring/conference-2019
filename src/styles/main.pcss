@@ -5,8 +5,8 @@
  * You can see the styles here:
  * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
  */
-@import "tailwindcss/preflight";
-@import 'config.pcss';
+/* @import "tailwindcss/preflight"; */
+@import 'config';
 @import "components.pcss";
 @import "utilities.pcss";
 @import 'webcolors/mrmrs';
@@ -88,14 +88,14 @@ a:not(.btn-offset) {
 				@insert .pattern-fill-leaf-green;
 				@insert .absolute-fill-layer-depth-1;
 				content: '';
-				clip-path: $clip-1-b;
+				/* clip-path: $clip-1-b; */
 			}
 
 			&::after {
 				@insert .pattern-fill-flower-teal;
 				@insert .absolute-fill-layer-depth-2;
 				content: '';
-				clip-path: $clip-1-a;
+				/* clip-path: $clip-1-a; */
 			}
 		}
 
@@ -116,13 +116,13 @@ a:not(.btn-offset) {
 				@insert .pattern-fill-leaf-green;
 				@insert .absolute-fill-layer-depth-1;
 				content: '';
-				clip-path: $clip-2-b;
+				/* clip-path: $clip-2-b; */
 			}
 
 			&::after {
 				@insert .absolute-fill-layer-depth-2;
 				background-color: teal;
-				clip-path: $clip-2-a;
+				/* clip-path: $clip-2-a; */
 				content: '';
 			}
 		}

@@ -28,7 +28,7 @@ module.exports = {
 			        devMode ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
 			      	{
 			        	loader: require.resolve('css-loader'),
-			        	options: { importLoaders: 2 }
+			        	options: { importLoaders: 1 }
 			        },
 			         require.resolve('postcss-loader')
 			      ]
