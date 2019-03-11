@@ -1,17 +1,22 @@
-const tailwindcss = require("tailwindcss");
+// const tailwindcss = require("tailwindcss");
 const path = require("path");
 const merge = require ('webpack-merge');
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const glob = require('glob')
+const glob = require('glob');
+
+// require('react-dev-utils/clearConsole');
+// const clearConsole = ()=>{}
+// require.cache[require.resolve('react-dev-utils/clearConsole')].exports = clearConsole
+// const WebpackDevServer = require('webpack-dev-server');
 
 // Custom PurgeCSS extractor for Tailwind that allows special characters in class names.
 // https://github.com/FullHuman/purgecss#extractor
-class TailwindExtractor {
-  static extract(content) {
-    return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
-  }
-}
+// class TailwindExtractor {
+//   static extract(content) {
+//     return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
+//   }
+// }
 
 module.exports = {
   configureWebpack: (config, env) => {
@@ -28,9 +33,11 @@ module.exports = {
 			        devMode ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
 			      	{
 			        	loader: require.resolve('css-loader'),
-			        	options: { importLoaders: 1 }
+			        	options: { importLoaders: 2 }
 			        },
-			         require.resolve('postcss-loader')
+			         { loader: require.resolve('postcss-loader'),
+			         ident: 'postcss'
+			       	}
 			      ]
 			    }
 		    ]
@@ -40,11 +47,11 @@ module.exports = {
 		      filename: devMode ? 'static/css/[name].css' : 'static/css/[name].[contenthash:8].css',
 		      chunkFilename: devMode ?  'static/css/[name].chunk.css' : 'static/css/[name].[contenthash:8].chunk.css'
 		    }),
-		    !devMode && new PurgecssPlugin({
+		    devMode && new PurgecssPlugin({
 		      paths: glob.sync(`${__dirname}/src/**/*`,  { nodir: true }),
 		      extractors: [
 		        {
-		          extractor: TailwindExtractor,
+		          // extractor: TailwindExtractor,
 		          extensions: ["html", "js", "elm"]
 		        }
 		      ]

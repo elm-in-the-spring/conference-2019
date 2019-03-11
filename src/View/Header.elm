@@ -9,7 +9,7 @@ import Update exposing (Msg)
 render : Model -> Dom.Element Msg
 render _ =
     Dom.element "header"
-        |> Dom.addClass "header biko uppercase"
+        |> Dom.addClass "Header u-fontBiko"
         |> Dom.appendChild links
 
 
@@ -18,7 +18,7 @@ links =
     let
         link location =
             Dom.element "li"
-                |> Dom.addClass "m-3"
+                |> Dom.addClass "Header__link"
                 |> Dom.appendChild
                     (Dom.element "a"
                         |> Dom.addClass "text-blue no-underline hover:text-blue-darker"
@@ -27,9 +27,10 @@ links =
                     )
     in
     Dom.element "ul"
-        |> Dom.addClass "list-reset flex text-lg md:text-2xl justify-center content-center"
+        |> Dom.addClass "Header__links"
         |> Dom.appendChildList
             [ link "Details"
             , link "Speakers"
             , link "Sponsors"
             ]
+

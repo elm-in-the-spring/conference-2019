@@ -10,9 +10,9 @@ import Update exposing (Msg)
 
 render : Model -> Dom.Element Msg
 render model =
-    Dom.element "Section"
+    Dom.element "section"
         |> Dom.setId "speakers"
-        |> Dom.addClass "block-section section-speakers biko"
+        |> Dom.addClass "Section Section--speakers u-fontBiko"
         |> Dom.appendChildList
             [ Dom.element "div"
             , Dom.element "div"
@@ -25,57 +25,58 @@ render model =
 
 heading : Dom.Element Msg
 heading =
-    Dom.element "h3"
-        |> Dom.addClass "section-heading text-style-special-v2 text-center uppercase pt-20"
+    Dom.element "h2"
+        |> Dom.addClass "Section__heading"
         |> Dom.appendText "Speakers"
 
 
 content : Model -> Dom.Element Msg
 content model =
     Dom.element "div"
-        |> Dom.addClass "section-content leading-normal text-teal-light bg-blue-dark p-12 mt-10"
+        |> Dom.addClass "Section__content"
         |> Dom.appendChildList (List.map listing model.speakers)
 
 
 listing : Speaker -> Dom.Element Msg
 listing speaker =
     Dom.element "div"
-        |> Dom.addClass "md:flex mb-10 pt-8 border-dotted border-t-6 border-blue-light"
+        |> Dom.addClass "Section__speaker-listing"
         |> Dom.appendChildList
-            [ photo speaker True
-            , Dom.element "div"
-                |> Dom.addClass "md:ml-5 mt-5 md:mt-0"
-                |> Dom.appendChildList
-                    [ speakerName speaker
-                    , socialLinks speaker
-                    , talkTitles speaker
-                    ]
+            [ listingPhoto speaker True
+            , listingText speaker
             ]
 
-
-speakerName : Speaker -> Dom.Element Msg
-speakerName speaker =
-    Dom.element "div"
-        |> Dom.appendText speaker.name
-        |> Dom.addClass "text-3xl md:text-3.5xl text-green-light"
-
-
-photo : Speaker -> Bool -> Dom.Element Msg
-photo { headshotSrc, name } hasOffset =
+listingPhoto : Speaker -> Bool -> Dom.Element Msg
+listingPhoto { headshotSrc, name } hasOffset =
     Dom.element "img"
+        |> Dom.addClass "Section__speaker-headshot"
         |> Dom.addAttributeList
             [ src headshotSrc
             , alt name
             ]
-        -- why does border-8 not work!?
-        |> Dom.addClass "border border-teal-light border-t-8 border-r-8 border-b-8 border-l-8 w-48 h-48"
-        |> Dom.addClassConditional "shadow-offset-bottom-left-green-light" hasOffset
+        |> Dom.addClassConditional "Section__speaker-headshot--shadow" hasOffset
+
+listingText : Speaker -> Dom.Element Msg
+listingText speaker =
+    Dom.element "div"
+        |> Dom.addClass "Section__speaker-text"
+        |> Dom.appendChildList
+            [ speakerName speaker
+            , socialLinks speaker
+            , talkTitles speaker
+            ]
+
+speakerName : Speaker -> Dom.Element Msg
+speakerName speaker =
+    Dom.element "h3"
+        |> Dom.addClass "Section__speaker-name"
+        |> Dom.appendText speaker.name
 
 
 socialLinks : Speaker -> Dom.Element Msg
 socialLinks { social } =
     Dom.element "div"
-        |> Dom.addClass "flex justify-start"
+        |> Dom.addClass "Section__social-links"
         |> Dom.appendChildList
             (social
                 |> List.sortBy (\s -> Speaker.socialNetworkToString s.network)
@@ -93,7 +94,7 @@ socialLink social =
         |> Dom.addClass "m-2"
         |> Dom.appendChild
             (Dom.element "a"
-                |> Dom.addClass "text-xl md:text-2xl no-underline"
+                |> Dom.addClass "Section__social-link"
                 |> Dom.addAttributeList
                     [ title linkTitle
                     , attribute "aria-label" linkTitle
@@ -101,7 +102,7 @@ socialLink social =
                     , target "_blank"
                     ]
                 |> Dom.appendChild
-                    (Dom.element "i" |> Dom.addClass ("text-green-light hover:text-green " ++ iconClass))
+                    (Dom.element "i" |> Dom.addClass iconClass)
             )
 
 
@@ -127,17 +128,17 @@ talkTitles { talkTitle, talkSubtitle } =
                     Html.text ""
 
                 Just string ->
-                    Dom.element "div"
-                        |> Dom.addClass "font-light text-md md:text-lg"
+                    Dom.element "h4"
+                        |> Dom.addClass "Section__talk-subtitle u-fontNormal"
                         |> Dom.appendText string
                         |> Dom.render
 
         titleEl =
-            Dom.element "div"
-                |> Dom.addClass "font-bold text-xl md:text-2xl"
+            Dom.element "h3"
+                |> Dom.addClass "Section__talk-title u-fontNormal"
                 |> Dom.appendText talkTitle
     in
     Dom.element "div"
-        |> Dom.addClass "text-teal-light"
+        |> Dom.addClass "Section__talk-titles"
         |> Dom.appendChild titleEl
         |> Dom.appendNode subtitleNode

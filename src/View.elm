@@ -6,7 +6,7 @@ import Model exposing (Model)
 import Route exposing (Route(..))
 import Update exposing (Msg)
 import View.Footer as FooterView
-import View.Header as HeaderView
+--import View.Header as HeaderView
 import View.Hero as HeroView
 import View.Section.Details as DetailsView
 import View.Section.Speakers as SpeakersView
@@ -33,8 +33,7 @@ view model =
             { title = "Elm in the Spring 2019 - Conference"
             , body =
                 pageContent
-                    [ HeaderView.render model
-                    , HeroView.render model
+                    [ HeroView.render model
                     , DetailsView.render model
                     , SpeakersView.render model
                     , SponsorsView.render model

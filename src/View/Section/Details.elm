@@ -12,7 +12,7 @@ render : Model -> Dom.Element Msg
 render model =
     Dom.element "section"
         |> Dom.setId "details"
-        |> Dom.addClass "block-section section-details"
+        |> Dom.addClass "Section Section--details"
         |> Dom.appendChildList
             [ Dom.element "div"
             , Dom.element "div"
@@ -24,14 +24,14 @@ render model =
 
 
 heading =
-    Dom.element "h3"
-        |> Dom.addClass "section-heading text-style-special-v1 text-center uppercase pt-20"
+    Dom.element "h2"
+        |> Dom.addClass "Section__heading"
         |> Dom.appendText "Details"
 
 
 content model =
     Dom.element "div"
-        |> Dom.addClass "section-content leading-normal font-light text-teal-light text-xl md:text-2xl bg-blue-dark p-12 mt-10"
+        |> Dom.addClass "Section__content"
         |> Dom.appendChildList
             [ subheading1
             , p1
@@ -47,18 +47,20 @@ content model =
 
 subheading1 =
     Dom.element "h4"
-        |> Dom.addClass "mb-5 text-3xl md:text-4xl"
+        |> Dom.addClass "Section__subheading"
         |> Dom.appendText "All Elm, all day!"
 
 
 p1 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendChild (Dom.element "span" |> Dom.addClass "font-bold" |> Dom.appendText "Elm in the Spring")
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText " is a single-track, single-day conference for developers who love Elm. Whether you’re an Elm expert scaling up your production app or you're just starting out with your first Elm project, join us for a great day of learning, teaching, and community!")
 
 
 p2 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText "Elm in the Spring 2019 will take place on ")
         |> Dom.appendChild (Dom.element "span" |> Dom.addClass "font-bold" |> Dom.appendText "Friday, April 26th")
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText " at the ")
@@ -72,7 +74,7 @@ p2 =
 
 ticketsButton =
     Dom.element "div"
-        |> Dom.addClass "text-center mb-10"
+        |> Dom.addClass "Button Button--offset Section__button u-textCenter u-m-2"
         |> Dom.appendChild
             (Dom.element "a"
                 |> Dom.addClass "btn-offset"
@@ -83,6 +85,7 @@ ticketsButton =
 
 p3 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText "All attendees are expected to observe the conference ")
         |> Dom.appendChild
             (Dom.element "a"
@@ -94,12 +97,13 @@ p3 =
 
 subheading2 =
     Dom.element "h4"
-        |> Dom.addClass "mb-5 text-3xl md:text-4xl"
+        |> Dom.addClass "Section__subheading"
         |> Dom.appendText "Stay In Touch"
 
 
 p4 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendText "For conference updates, join our mailing list. No spam. Ever."
 
 
@@ -116,6 +120,7 @@ contactForm contactFormModel =
 
 p5 =
     Dom.element "p"
+        |> Dom.addClass "Section__paragraph"
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText "Or, follow ")
         |> Dom.appendChild
             (Dom.element "a"

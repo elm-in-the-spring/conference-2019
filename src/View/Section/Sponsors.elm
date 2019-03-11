@@ -20,7 +20,7 @@ render _ =
 
 heading : Dom.Element Msg
 heading =
-    Dom.element "h3"
+    Dom.element "h2"
         --|> Dom.addClass "section__heading text-style-special-v3 text-center uppercase pt-20"
         |> Dom.addClass "Section__heading"
         |> Dom.appendText "Sponsors"
@@ -29,7 +29,7 @@ heading =
 logos =
     Dom.element "div"
         --|> Dom.addClass "flex flex-wrap items-center justify-center pt-10"
-        |> Dom.addClass "Section__logos"
+        |> Dom.addClass "Section__logos Section__block"
         |> Dom.appendChildList
             [ logo "eSpark Learning" "/images/sponsors/espark-logo.svg"
             , logo "Hubtran" "/images/sponsors/hubtran-logo.svg"
@@ -50,7 +50,6 @@ logo sponsorName imgSrc =
 content : Dom.Element Msg
 content =
     Dom.element "div"
-        --|> Dom.addClass "section-content leading-normal font-light text-teal-light text-xl md:text-2xl bg-blue-dark p-12 mt-10"
         |> Dom.addClass "Section__content"
         |> Dom.appendChildList
             [ subheading
