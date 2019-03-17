@@ -1,56 +1,63 @@
 @import "webcolors/material";
 @import "webcolors/mrmrs";
-
-/* @import "webcolors/mrmrs/index.scss"; */
-
-@import url('https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,500,600,700');
-/* @import "normalize.css";
-@import 'reset-css'; */
+@import url("https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,500,600,700");
 
 :root {
-	--color-fuchsia: #A10062;
-	--color-orange: #FEB804;
+	--color-fuchsia: #a10062;
+	--color-orange: #feb804;
 	/* --color-fuchsia: #A33F90; */
 }
 
 html {
-  box-sizing: border-box;
-  font-size: 16px;
+	box-sizing: border-box;
+	font-size: 16px;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-  margin: 0;
-  padding: 0;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+	margin: 0;
+	padding: 0;
 }
 
-ol, ul {
-  list-style: none;
+ol,
+ul {
+	list-style: none;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 @font-face {
-  font-family: Biko;
-  src: url(/fonts/Biko_Regular.otf);
+	font-family: Biko;
+	src: url(/fonts/Biko_Regular.otf);
 }
 
 @font-face {
-  font-family: Biko;
-  font-weight: bold;
-  src: url(/fonts/Biko_Bold.otf);
+	font-family: Biko;
+	font-weight: bold;
+	src: url(/fonts/Biko_Bold.otf);
 }
 
 @font-face {
-  font-family: Biko;
-  font-weight: 900;
-  src: url(/fonts/Biko_Black.otf);
+	font-family: Biko;
+	font-weight: 900;
+	src: url(/fonts/Biko_Black.otf);
 }
 
 /* CLASS UTILS */
@@ -111,7 +118,6 @@ img {
 	width: 0;
 }
 
-
 /* CONFIG */
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -129,39 +135,52 @@ $clip-1-a: polygon(0 0, 44% 100%, 0% 100%);
 $clip-2-b: polygon(80% 0, 100% 40%, 0 84%, 0% 0%);
 $clip-2-a: polygon(100% 100%, 0 100%, 0 75%);
 
- $md: (min-width: 600px);
- $lg: (min-width: 770px);
- $short: (max-height: 500);
+$md: (
+	min-width: 600px
+);
+$lg: (
+	min-width: 770px
+);
+$short: (
+	max-height: 500
+);
 
 /* MIXINS */
 
 @define-mixin fill-pattern-green-leaf {
-	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' width='80' height='40'%3E%3Cpath fill='%2399D653' fill-opacity='0.42' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.2A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.76zM.07 0h20.1l-.08.07A20.02 20.02 0 0 1 .75 5.25 20.08 20.08 0 0 1 .07 0zm1.94 40h2.53l4.26-4.24v-9.78A17.96 17.96 0 0 0 2 40zm5.38 0h9.8a17.98 17.98 0 0 0 6.67-16.42L7.4 40zm3.43-15.42v9.17l11.62-11.59c-3.97-.5-8.08.3-11.62 2.42zm32.86-.78A18 18 0 0 0 63.85 3.63L43.68 23.8zm7.2-19.17v9.15L62.43 2.22c-3.96-.5-8.05.3-11.57 2.4zm-3.49 2.72c-4.1 4.1-5.81 9.69-5.13 15.03l6.61-6.6V6.02c-.51.41-1 .85-1.48 1.33zM17.18 0H7.42L3.64 3.78A18 18 0 0 0 17.18 0zM2.08 0c-.01.8.04 1.58.14 2.37L4.59 0H2.07z'%3E%3C/path%3E%3C/svg%3E") right bottom fixed;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' width='80' height='40'%3E%3Cpath fill='%2399D653' fill-opacity='0.42' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.2A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.76zM.07 0h20.1l-.08.07A20.02 20.02 0 0 1 .75 5.25 20.08 20.08 0 0 1 .07 0zm1.94 40h2.53l4.26-4.24v-9.78A17.96 17.96 0 0 0 2 40zm5.38 0h9.8a17.98 17.98 0 0 0 6.67-16.42L7.4 40zm3.43-15.42v9.17l11.62-11.59c-3.97-.5-8.08.3-11.62 2.42zm32.86-.78A18 18 0 0 0 63.85 3.63L43.68 23.8zm7.2-19.17v9.15L62.43 2.22c-3.96-.5-8.05.3-11.57 2.4zm-3.49 2.72c-4.1 4.1-5.81 9.69-5.13 15.03l6.61-6.6V6.02c-.51.41-1 .85-1.48 1.33zM17.18 0H7.42L3.64 3.78A18 18 0 0 0 17.18 0zM2.08 0c-.01.8.04 1.58.14 2.37L4.59 0H2.07z'%3E%3C/path%3E%3C/svg%3E")
+		right bottom fixed;
 	background-blend-mode: screen;
 	background-color: var(--color-green);
 }
 
+@define-mixin offset-text $outline-color, $shadow-color, $color: transparent,
+	$shadow-width: 7px, $stroke-width: 3px {
+	text-stroke-width: $stroke-width;
+	text-stroke-color: $outline-color;
+	text-shadow: $shadow-width $shadow-width $shadow-oclor;
+	color: $color;
+}
 
 /* BASE */
 
-
-[class^="icon-"], [class*=" icon-"] {
-    height: 100px;
-    width: 100px;
-    display: inline-block;
-    fill: currentColor;
+[class^="icon-"],
+[class*=" icon-"] {
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+	fill: currentColor;
 }
-
 
 body {
 	overflow: hidden;
 	@mixin fill-pattern-green-leaf;
 	cursor: url(/images/cursor-auto.png), auto;
 	margin: 0;
-  font-size: responsive 17px 22px; /* min-size, max-size */
-  font-range: 600px 1280px; /* viewport widths between which font-size is fluid */
-  line-height: responsive 1.7rem 2.1rem;
-  line-height-range: 600px 1280px;
+	font-size: responsive 17px 22px; /* min-size, max-size */
+	font-range: 600px 1280px; /* viewport widths between which font-size is fluid */
+	line-height: responsive 1.7rem 2.1rem;
+	line-height-range: 600px 1280px;
 }
 
 body > main {
@@ -197,46 +216,45 @@ body > main {
 }
 
 :--text {
-  cursor: url(/images/cursor-text.png), text;
+	cursor: url(/images/cursor-text.png), text;
 }
 
 :--click {
-  cursor: url(/images/cursor-pointer.png), pointer;
+	cursor: url(/images/cursor-pointer.png), pointer;
 
-  &:active {
-  	cursor: url(/images/cursor-pointer-clicked.png), pointer;
-  }
+	&:active {
+		cursor: url(/images/cursor-pointer-clicked.png), pointer;
+	}
 }
 
 .preload-cursors {
-  clip: rect(0 0 0 0);
-  position: absolute;
-  overflow: hidden;
-  margin: -.1rem;
-  padding: 0;
-  width: .1rem;
-  height: .1rem;
-  border: 0;
-  u {
-  	cursor: url(/images/cursor-pointer-clicked.png), pointer;
-  }
+	clip: rect(0 0 0 0);
+	position: absolute;
+	overflow: hidden;
+	margin: -0.1rem;
+	padding: 0;
+	width: 0.1rem;
+	height: 0.1rem;
+	border: 0;
+	u {
+		cursor: url(/images/cursor-pointer-clicked.png), pointer;
+	}
 }
 
 ::selection {
-	 background-color: var(--color-navy);
+	background-color: var(--color-navy);
 	.Section__content & {
-	  background-color: var(--color-teal);
+		background-color: var(--color-teal);
 	}
-  color: white;
+	color: white;
 }
 
-
 input {
-  color: var(--color-navy);
+	color: var(--color-navy);
 
-  &::placeholder {
-  	color: pink;
-  }
+	&::placeholder {
+		color: pink;
+	}
 }
 
 /********************************************
@@ -246,8 +264,6 @@ input {
  *
  ********************************************
  ********************************************/
-
-
 
 @component Hero {
 	@mixin fill-pattern-green-leaf;
@@ -287,30 +303,26 @@ input {
 		"|                                                             |"
 		"+-------------------------------------------------------------+"
 		"|               40% view        |          100 free           |";
-		/* "|         30 view           |            70 view              "; */
 }
 
-
-	/********************************************
+/********************************************
 	 * Hero__flower
 	 ********************************************/
-
 
 @component HeroFlower {
 	grid-row: 2 / span 1 !important;
 	/* height: 100%; */
- color: black;
+	color: black;
 	background-color: white;
-  mix-blend-mode: screen;
-  font-family: elm-in-the-spring;
+	mix-blend-mode: screen;
+	font-family: elm-in-the-spring;
 	background: white;
-  width: 100%;
+	width: 100%;
 
-  @media (min-width: 770px)  {
+	@media (min-width: 770px) {
 		grid-row: 1 / span 5 !important;
 		padding-top: 80px;
 	}
-
 
 	@element Content {
 		font-size: responsive 150px 450px @(max-height: 500px) responsive 100px 300px;
@@ -330,7 +342,7 @@ input {
 	z-index: 20;
 }
 
-	/********************************************
+/********************************************
 	 * Hero__event
 	 ********************************************/
 
@@ -339,26 +351,19 @@ input {
 	background: white;
 	width: 100%;
 
-	@media (max-width: 770px) {
-/* 		padding: 40px 0;
-	  margin-top: -80px;
-	  margin-bottom: -80px; */
-	}
-
 	@modifier elm {
 		font-weight: 700;
 		text-transform: uppercase;
 		display: inline-block;
-	  letter-spacing: -0.2 @770 -0.75rem;
-	  font-size: responsive 5rem 15rem @(max-height: 500px) responsive 3.5rem 11rem;
-	  height: 2rem;
+		letter-spacing: -0.2 @770 -0.75rem;
+		font-size: responsive 5rem 15rem @(max-height: 500px) responsive 3.5rem 11rem;
+		height: 2rem;
 	}
 
 	@modifier in-the {
 		font-size: 4rem;
 		display: inline-block;
 		font-weight: 300;
-
 
 		font-size: responsive 1.7rem 3rem @(max-height: 500px) responsive 1rem 2rem;
 	}
@@ -375,19 +380,17 @@ input {
 		display: block;
 		text-transform: uppercase;
 	}
-
-
 }
 
 @component HeroDetails {
 	background: white;
 	z-index: 20;
 	width: 100%;
- 	text-transform: uppercase;
+	text-transform: uppercase;
 	padding: 1rem @(max-height: 500px) 0.5rem @600 1.5rem;
 	padding-left: 1rem @600 0;
 
-	@media (min-width: 770px)  {
+	@media (min-width: 770px) {
 		grid-column: 2 !important;
 		grid-row: 3 !important;
 		padding-left: 0;
@@ -400,7 +403,6 @@ input {
 		margin: 0 auto @1270 0;
 		display: flex;
 		justify-content: space-between;
-		/* margin: 0 20px; */
 
 		div {
 			padding: 0 0.5rem @770 0 0.8rem;
@@ -434,9 +436,7 @@ input {
 	padding: calc(1.5rem - 12px) 0 calc(1.5rem + 12px);
 }
 
-
 /* SECTIONS */
-
 
 @component Section {
 	> div:first-child {
@@ -502,7 +502,6 @@ input {
 		}
 	}
 
-
 	@element speaker-listing {
 		display: block @600 flex;
 		margin-bottom: 1rem @600 calc(2rem + 12px);
@@ -517,7 +516,7 @@ input {
 	@element speaker-headshot {
 		border: 8px solid var(--color-teal);
 		height: 8rem @600 12rem;
-		width:  8rem @600 12rem;
+		width: 8rem @600 12rem;
 
 		@modifier shadow {
 			box-shadow: -12px 12px var(--color-orange);
@@ -581,7 +580,6 @@ input {
 		/* @mixin fill-pattern-green-leaf; */
 
 		@element heading {
-
 		}
 
 		> div {
@@ -597,7 +595,7 @@ input {
 
 				&::after {
 					/* @mixin absolute-fill-layer -10; */
-				/* 	background-color: var(--color-teal);
+					/* 	background-color: var(--color-teal);
 					clip-path: $clip-2-a;
 					content: ''; */
 				}
@@ -611,109 +609,100 @@ input {
 
 	@modifier speakers {
 		@element heading {
-
 		}
 	}
 
 	@modifier sponsors {
 		@element heading {
-
 		}
 	}
+}
 
-
-
-	/* @modifier  */
+@component SectionHeader {
 }
 
 @component ButtonContainer {
 	display: flex;
-  flex-wrap: wrap;
+	flex-wrap: wrap;
 
-	@modifier offset {}
+	@modifier offset {
+	}
 
 	@modifier centered {
-
-	  justify-content: center;
-	  align-items: center;
+		justify-content: center;
+		align-items: center;
 	}
 }
 
-
 @component Button {
 	position: relative;
-  min-width: 0;
-  max-width: 100%;
-  text-align: center;
-  display: block;
-  flex: 0 0 auto;
-  touch-action: manipulation;
-  display: inline-block;
-  color: var(--color-yellow);
-  background-color: var(--color-blue);
+	min-width: 0;
+	max-width: 100%;
+	text-align: center;
+	display: block;
+	flex: 0 0 auto;
+	touch-action: manipulation;
+	display: inline-block;
+	color: var(--color-yellow);
+	background-color: var(--color-blue);
 
-  &::before {
-  	transform: translate3d(.8rem,.8rem,0);
-	  position: absolute;
-	  top: 0;
-	  right: 0;
-	  bottom: 0;
-	  left: 0;
-	  margin: auto;
-	  content: "";
-	  display: block;
-	  transition-property: opacity,transform,-webkit-transform;
-	  transition-duration: .24s;
-	  transition-timing-function: cubic-bezier(.64,0,.35,1);
-	  background-color: #0032c2;
+	&::before {
+		transform: translate3d(0.8rem, 0.8rem, 0);
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		content: "";
+		display: block;
+		transition-property: opacity, transform, -webkit-transform;
+		transition-duration: 0.24s;
+		transition-timing-function: cubic-bezier(0.64, 0, 0.35, 1);
+		background-color: #0032c2;
+	}
 
+	&:hover {
+		&::before {
+			transform: translateZ(0);
+		}
+	}
 
-  }
+	&:active {
+	}
 
-  &:hover {
-  	&::before {
-	  	transform: translateZ(0);
-  	}
-	 }
+	&:focus {
+	}
 
-	 &:active {
+	@element interior {
+		min-width: 0;
+		max-width: 100%;
+		position: relative;
+		z-index: 2;
+		display: inline-flex;
+		flex: 0 0 auto;
+		justify-content: center;
+		align-items: center;
+		padding: 0.8rem 2.4rem;
+		border: 0.3rem solid currentColor;
+		font-size: 1.4rem;
+		font-weight: 700;
+		transition-property: color, background-color, border-color;
+		transition-duration: 0.24s;
+		transition-timing-function: cubic-bezier(0.64, 0, 0.35, 1);
+	}
 
-	 }
-
-	 &:focus {
-
-	 }
-
-
-  @element interior {
-  	min-width: 0;
-	  max-width: 100%;
-	  position: relative;
-	  z-index: 2;
-	  display: inline-flex;
-	  flex: 0 0 auto;
-	  justify-content: center;
-	  align-items: center;
-	  padding: .8rem 2.4rem;
-	  border: .3rem solid currentColor;
-	  font-size: 1.4rem;
-	  font-weight: 700;
-	  transition-property: color,background-color,border-color;
-	  transition-duration: .24s;
-	  transition-timing-function: cubic-bezier(.64,0,.35,1);
-  }
-
-  @element text {
-  	/* background-color: var(--color-blue); */
-  	min-width: 0;
-	  max-width: 100%;
-	  display: block;
-	  flex: 0 1 auto;
-	  transition: transform .24s cubic-bezier(.64,0,.35,1),-webkit-transform .24s cubic-bezier(.64,0,.35,1);
-	  white-space: nowrap;
-  }
+	@element text {
+		/* background-color: var(--color-blue); */
+		min-width: 0;
+		max-width: 100%;
+		display: block;
+		flex: 0 1 auto;
+		transition: transform 0.24s cubic-bezier(0.64, 0, 0.35, 1),
+			-webkit-transform 0.24s cubic-bezier(0.64, 0, 0.35, 1);
+		white-space: nowrap;
+	}
 }
-
 
 /* FOOTER */
 
@@ -727,7 +716,6 @@ input {
 	}
 
 	@element copyright {
-
 	}
 
 	@element github {
@@ -735,13 +723,13 @@ input {
 	}
 }
 
-
 /* HEADER */
 
 @component Header {
 	/* height: 100%;
- */  display: flex;
-  align-items: center;
+ */
+	display: flex;
+	align-items: center;
 
 	@element links {
 		margin: 0;
@@ -757,8 +745,7 @@ input {
 		text-align: center;
 		margin: 0.5rem 0.8rem @600 1rem 2rem;
 
-
-/* 		a {
+		/* 		a {
 			text-decoration: none;
 			color: var(--color-navy);
 			&:hover {
@@ -768,34 +755,32 @@ input {
 	}
 }
 
-		a:not(.Button) {
-		   color: #00336B;
-		   transition: .2s all;
-		   position: relative;
-		   text-decoration: none;
-		   &:before {
-		      content:'';
-		      height: 6px;
-		      width: 100%;
-		      background-color: #7fdaffa6;
-		      position: absolute;
-		      bottom: 4px;
-		      right: 0px;
-		      transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-		      /* mix-blend-mode: multiply; */
-		      mix-blend-mode: overlay;
-		   }
-		   &:hover {
-		      &:before {
-		         content:'';
-		         height: calc(1em + 6px);
-		         width: 100%;
-		         background-color: #7fdaffa6;
-		         position: absolute;
-		         bottom: 0px;
-		         right: 0px;
-		      }
-		   }
+a:not(.Button) {
+	color: #00336b;
+	transition: 0.2s all;
+	position: relative;
+	text-decoration: none;
+	&:before {
+		content: "";
+		height: 6px;
+		width: 100%;
+		background-color: #7fdaffa6;
+		position: absolute;
+		bottom: 4px;
+		right: 0px;
+		transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		/* mix-blend-mode: multiply; */
+		mix-blend-mode: overlay;
+	}
+	&:hover {
+		&:before {
+			content: "";
+			height: calc(1em + 6px);
+			width: 100%;
+			background-color: #7fdaffa6;
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
 		}
-
-
+	}
+}
