@@ -135,14 +135,14 @@ $clip-1-a: polygon(0 0, 44% 100%, 0% 100%);
 $clip-2-b: polygon(80% 0, 100% 40%, 0 84%, 0% 0%);
 $clip-2-a: polygon(100% 100%, 0 100%, 0 75%);
 
-$md: (
+$md-viewport: (
 	min-width: 600px
 );
-$lg: (
+$lg-viewport: (
 	min-width: 770px
 );
-$short: (
-	max-height: 500
+$short-viewport: (
+	max-height: 500px
 );
 
 /* MIXINS */
@@ -264,10 +264,30 @@ input {
  *
  ********************************************
  ********************************************/
+/*  .grid-container {
+   display: grid;
+   grid-template-columns: 40% 1fr;
+   grid-template-rows: 100px auto min-content min-content min-content;
+   grid-template-areas: "HeroHeader HeroHeader" "HeroFlower HeroTitle" "HeroDetails HeroDetails" "HeroBlurb HeroBlurb" "HeroFooter HeroFooter";
+ } */
+
+/*  .HeroHeader { grid-area: HeroHeader; }
+
+ .HeroFlower { grid-area: HeroFlower; }
+
+ .HeroTitle { grid-area: HeroTitle; }
+
+ .HeroDetails { grid-area: HeroDetails; }
+
+ .HeroBlurb { grid-area: HeroBlurb; }
+
+ .HeroFooter { grid-area: HeroFooter; } */
+
 
 @component Hero {
 	@mixin fill-pattern-green-leaf;
-	max-height: 50vh @600 70vh;
+	/* max-height: 50vh @600 70vh; */
+
 	@media (--short-viewport) {
 		min-height: 100vh;
 		max-height: initial;
@@ -276,8 +296,22 @@ input {
 	color: var(--color-navy);
 	line-height: 1;
 	width: 100vw;
-	grid-kiss:
-		"+-------------------------------------------------------------+"
+	display: grid;
+	grid-template-columns: 40% 1fr;
+	grid-template-rows: 100px 1fr min-content min-content min-content;
+	grid-template-areas: "HeroHeader HeroHeader" "HeroFlower HeroTitle" "HeroDetails HeroDetails" "HeroBlurb HeroBlurb" "HeroFooter HeroFooter";
+
+	@media (min-width: 600px) {
+		grid-template-areas: "HeroHeader HeroHeader" "HeroFlower HeroTitle" "HeroFlower HeroDetails" "HeroBlurb HeroBlurb" "HeroFooter HeroFooter";
+	}
+
+	@media (min-width: 770px) {
+		grid-template-areas: "HeroFlower HeroHeader" "HeroFlower HeroTitle" "HeroFlower HeroDetails" "HeroBlurb HeroBlurb" "HeroFooter HeroFooter";
+	}
+
+
+	/* grid-kiss: */
+/* 		"+-------------------------------------------------------------+"
 		"|                                                             |"
 		"|                         .HeroHeader                        |  80px "
 		"|                                                             |"
@@ -297,20 +331,36 @@ input {
 		"|                        .HeroBlurb                           | 1 "
 		"|                                                             |"
 		"+-------------------------------------------------------------+"
-		"+--------------------------100 view---------------------------+"
-		"|                                                           |"
+		"+-------------------------------------------------------------+"
+		"|                                                             |"
 		"|                        .HeroFooter                          | 1 "
 		"|                                                             |"
 		"+-------------------------------------------------------------+"
-		"|               40% view        |          100 free           |";
+		"|               40% view        |          100 free           |"; */
 }
+
+
+
+/********************************************
+ * Hero__header
+ ********************************************/
+
+@component HeroHeader {
+	grid-area: HeroHeader;
+	background: white;
+	margin: 0;
+	z-index: 20;
+	grid-column: 1 / span 2;
+}
+
 
 /********************************************
 	 * Hero__flower
 	 ********************************************/
 
 @component HeroFlower {
-	grid-row: 2 / span 1 !important;
+	grid-area: HeroFlower;
+	/* grid-row: 2 / span 1 !important; */
 	/* height: 100%; */
 	color: black;
 	background-color: white;
@@ -320,8 +370,8 @@ input {
 	width: 100%;
 
 	@media (min-width: 770px) {
-		grid-row: 1 / span 5 !important;
-		padding-top: 80px;
+		/* grid-row: 1 / span 5 !important; */
+		padding-top: 40px;
 	}
 
 	@element Content {
@@ -331,22 +381,14 @@ input {
 	}
 }
 
-/********************************************
- * Hero__header
- ********************************************/
 
-@component HeroHeader {
-	/* height: 100%;*/
-	background: white;
-	margin: 0;
-	z-index: 20;
-}
 
 /********************************************
 	 * Hero__event
 	 ********************************************/
 
 @component HeroTitle {
+	grid-area: HeroTitle;
 	margin: 0;
 	background: white;
 	width: 100%;
@@ -383,6 +425,7 @@ input {
 }
 
 @component HeroDetails {
+	grid-area: HeroDetails;
 	background: white;
 	z-index: 20;
 	width: 100%;
@@ -391,8 +434,8 @@ input {
 	padding-left: 1rem @600 0;
 
 	@media (min-width: 770px) {
-		grid-column: 2 !important;
-		grid-row: 3 !important;
+/* 		grid-column: 2 !important;
+		grid-row: 3 !important; */
 		padding-left: 0;
 	}
 
@@ -418,6 +461,7 @@ input {
 }
 
 @component HeroBlurb {
+	grid-area: HeroBlurb;
 	background: white;
 	text-align: center;
 	z-index: 20;
@@ -431,9 +475,16 @@ input {
  ********************************************/
 
 @component HeroFooter {
+	grid-area: HeroFooter;
 	background: white;
 	text-align: center;
 	padding: calc(1.5rem - 12px) 0 calc(1.5rem + 12px);
+
+	@media (min-width: 770px) {
+		/* grid-column: 1 / span 2 !important; */
+		/* grid-row: 5 !important; */
+		padding-left: 0;
+	}
 }
 
 /* SECTIONS */
@@ -619,6 +670,9 @@ input {
 }
 
 @component SectionHeader {
+	@modifier outline-navy {
+		/* @mixin offset-text var(--color-navy) */
+	}
 }
 
 @component ButtonContainer {
