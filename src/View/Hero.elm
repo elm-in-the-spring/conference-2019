@@ -1,200 +1,115 @@
 module View.Hero exposing (render)
 
 import Dom
-import Html.Attributes exposing (src, alt)
+import Html.Attributes exposing (alt, src)
 import Model exposing (Model)
+import Svg exposing (..)
+import Svg.Attributes exposing (class, clipPathUnits, fill, height, id, points, preserveAspectRatio, transform, viewBox, width, xlinkHref)
 import Update exposing (Msg)
 import View.Button as Button
-import Svg exposing (..)
-import Svg.Attributes exposing (width, height, viewBox, points, id)
 import View.Header as Header
+
 
 render : Model -> Dom.Element Msg
 render model =
     Dom.element "div"
         |> Dom.addClass "Hero"
         |> Dom.appendChildList
-            [ Dom.element "div"
-                |> Dom.addClass "Hero__content"
-                |> Dom.appendChildList
-                    [ flower
-                    , header model
-                    , main_
-                    ]
+            [ hHeader model
+            , hFlower
+            , hTitle
+            , hDetails
+            , hBlurb
+            , hFooter
             ]
-            |> Dom.appendChild clippy
 
 
-
-
-
-flower =
+hHeader model =
     Dom.element "div"
-        |> Dom.addClass "Hero__flower"
+        |> Dom.addClass "HeroHeader"
+        |> Dom.appendChild
+            (Dom.element "h1"
+                |> Dom.appendChild (Header.render model)
+            )
 
-header model =
-    Dom.element "h1"
-        |> Dom.addClass "Hero__header"
-        |> Dom.appendChild (Header.render model)
 
-main_ =
+hFlower =
     Dom.element "div"
-        |> Dom.addClass "Hero__main"
-        |> Dom.appendChildList [mainContent, ctaButton]
+        |> Dom.addClass "HeroFlower"
+        |> Dom.appendChild
+            (Dom.element "div"
+                |> Dom.addClass "HeroFlower__Content eits-flower"
+                |> Dom.appendText "a"
+            )
 
 
-mainContent =
+hTitle =
     let
         elm =
             Dom.element "span"
                 |> Dom.appendText "elm"
-                |> Dom.addClass "Hero__brand--elm"
+                |> Dom.addClass "HeroTitle--elm"
 
         inThe =
             Dom.element "span"
                 |> Dom.appendText "in the"
-                |> Dom.addClass "Hero__brand--in-the"
+                |> Dom.addClass "HeroTitle--in-the"
 
         elmInThe =
             Dom.element "span"
-                |> Dom.appendChildList [elm, inThe]
-                |> Dom.addClass "Hero__brand--elm-in-the"
+                |> Dom.appendChildList [ elm, inThe ]
+                |> Dom.addClass "HeroTitle--elm-in-the"
 
         spring =
             Dom.element "span"
-                |> Dom.addClass "Hero__brand--spring"
+                |> Dom.addClass "HeroTitle--spring"
                 |> Dom.appendText "spring"
-
     in
     Dom.element "h1"
-        |> Dom.addClass "Hero__brand"
-        |> Dom.appendChildList [elmInThe, spring]
-
--- ------------------------------------------------------------ old
+        |> Dom.addClass "HeroTitle"
+        |> Dom.appendChildList [ elmInThe, spring ]
 
 
+hDetails =
+    let
+        date_ =
+            Dom.element "div" |> Dom.appendText "April 26, 2019"
 
+        star =
+            Dom.element "div" |> Dom.appendText "✶"
 
-
-
-
-
-
-
-
-
-
-
-logoImage =
+        location =
+            Dom.element "div" |> Dom.appendText "Chicago"
+    in
     Dom.element "div"
-        |> Dom.addClass "Hero__logo"
-        |> Dom.appendChild
-            (Dom.element "img"
-                |> Dom.addAttributeList
-                    [ src "/images/flower.svg"
-                    , alt "logo flower"
-                    ]
-            )
-
-
-logoText =
-    Dom.element "div"
-        |> Dom.addClass "Hero__logo-text"
-        |> Dom.appendChild
-            (Dom.element "img"
-                |> Dom.addAttributeList
-                    [ src "/images/text.svg"
-                    , alt "Elm in the Spring Conference on April 26, 2019 in Chicago"
-                    ]
-            )
-
-
-textContent =
-    Dom.element "div"
-        |> Dom.addClass "Hero__text"
+        |> Dom.addClass "HeroDetails"
         |> Dom.appendChild
             (Dom.element "div"
-                |> Dom.addClass "u-cursorText"
-                |> Dom.appendText "A day to learn, teach, and share about Elm!"
+                |> Dom.appendChildList [ date_, star, location ]
             )
 
 
-ctaButton =
+hBlurb =
     Dom.element "div"
-        |> Dom.addClass "Hero__attend-cta"
+        |> Dom.addClass "HeroBlurb"
+        |> Dom.appendText "A day to learn, teach, and share about Elm!"
+
+
+hFooter =
+    Dom.element "footer"
+        |> Dom.addClass "HeroFooter"
+        |> Dom.appendChild hfCtaButton
+
+
+
+--*****************************************************************************
+
+
+hfCtaButton =
+    Dom.element "div"
+        |> Dom.addClass "HeroCTA"
         |> Dom.appendChild
             (Dom.element "div"
                 |> Dom.addClass "ButtonContainer ButtonContainer--offset ButtonContainer--centered"
                 |> Dom.appendChild (Button.offset "#details" "Attend")
             )
-
-
-logoAsText =
-    Dom.element "h1"
-        |> Dom.appendText "Elm in the Spring Conference on April 26, 2019 in Chicago"
-        |> Dom.addClass "u-hidden"
-
-
-clippy =
-    let
-        shape =
-            svg
-                [ viewBox "0 0 157 191"
-                --, width "155.6"
-                --, height "191"
-                ]
-                [ defs
-                    []
-                    [clipPath
-                        [ id "clip-logo" ]
-                        [ polygon [ points "20 59 44 83 44 35 20 59" ] []
-                        , polygon [ points "51 34 75 58 75 111 51 87 51 34" ] []
-                        , polygon [ points "79 0 106 26 79 53 52 27 79 0" ] []
-                        , polygon [ points "131 62 82 62 82 111 131 62" ] []
-                        , polygon [ points "75 116 0 116 75 191 75 116" ] []
-                        , polygon [ points "82 191 157 116 82 116 82 191" ] []
-                        , polygon [ points "109 32 85 56 132 56 109 32" ] []
-                        ]
-                    ]
-                ]
-
-    in
-    Dom.element "div"
-        |> Dom.appendNode shape
-        |> Dom.addClass "u-zeroSize"
-        --|> Dom.addClass "u-hidden"
-
-
-
-
-
-                --[ viewBox "0 0 157 191"
-                --, id "clip-logo"
-                --, width "155.6"
-                --, height "191"
-                --]
-
---clipPath =
---    let
---        shape =
---            svg
---                [
---                ]
---                []
---                [ viewBox "0 0 157 191"
---                , id "clip-logo"
---                , width "155.6"
---                , height "191"
---                ]
---                [ polygon [ points "20 59 44 83 44 35 20 59" ] []
---                , polygon [ points "51 34 75 58 75 111 51 87 51 34" ] []
---                , polygon [ points "79 0 106 26 79 53 52 27 79 0" ] []
---                , polygon [ points "131 62 82 62 82 111 131 62" ] []
---                , polygon [ points "75 116 0 116 75 191 75 116" ] []
---                , polygon [ points "82 191 157 116 82 116 82 191" ] []
---                , polygon [ points "109 32 85 56 132 56 109 32" ] []
---                ]
---    in
---    Dom.element "div"
---        |> Dom.appendNode shape
---        |> Dom.addClass "u-hidden"

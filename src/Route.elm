@@ -16,7 +16,7 @@ toString : Route -> String
 toString route =
     case route of
         Home ->
-            "/"
+            "/#clip-logo"
 
         SpeakerModal maybeString ->
             maybeString
@@ -27,7 +27,7 @@ toString route =
             "/sponsorship"
 
         NotFound ->
-            "/"
+            "/#clip-logo"
 
 
 fromUrl : Url -> Route

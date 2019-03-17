@@ -8,13 +8,6 @@ import Update exposing (Msg)
 
 render : Model -> Dom.Element Msg
 render _ =
-    Dom.element "header"
-        |> Dom.addClass "Header u-fontBiko"
-        |> Dom.appendChild links
-
-
-links : Dom.Element Msg
-links =
     let
         link location =
             Dom.element "li"
@@ -33,4 +26,3 @@ links =
             , link "Speakers"
             , link "Sponsors"
             ]
-
