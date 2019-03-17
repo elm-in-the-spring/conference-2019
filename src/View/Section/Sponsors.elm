@@ -18,12 +18,13 @@ render _ =
             ]
 
 
-heading : Dom.Element Msg
 heading =
-    Dom.element "h2"
-        --|> Dom.addClass "section__heading text-style-special-v3 text-center uppercase pt-20"
+    Dom.element "div"
         |> Dom.addClass "Section__heading"
-        |> Dom.appendText "Sponsors"
+        |> Dom.appendChild
+            (Dom.element "h2"
+                |> Dom.appendText "Sponsors"
+            )
 
 
 logos =

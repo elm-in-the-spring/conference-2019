@@ -24,9 +24,12 @@ render model =
 
 
 heading =
-    Dom.element "h2"
+    Dom.element "div"
         |> Dom.addClass "Section__heading"
-        |> Dom.appendText "Details"
+        |> Dom.appendChild
+            (Dom.element "h2"
+                |> Dom.appendText "Details"
+            )
 
 
 content model =

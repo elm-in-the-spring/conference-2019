@@ -23,11 +23,13 @@ render model =
             ]
 
 
-heading : Dom.Element Msg
 heading =
-    Dom.element "h2"
+    Dom.element "div"
         |> Dom.addClass "Section__heading"
-        |> Dom.appendText "Speakers"
+        |> Dom.appendChild
+            (Dom.element "h2"
+                |> Dom.appendText "Speakers"
+            )
 
 
 content : Model -> Dom.Element Msg
@@ -46,6 +48,7 @@ listing speaker =
             , listingText speaker
             ]
 
+
 listingPhoto : Speaker -> Bool -> Dom.Element Msg
 listingPhoto { headshotSrc, name } hasOffset =
     Dom.element "img"
@@ -56,6 +59,7 @@ listingPhoto { headshotSrc, name } hasOffset =
             ]
         |> Dom.addClassConditional "Section__speaker-headshot--shadow" hasOffset
 
+
 listingText : Speaker -> Dom.Element Msg
 listingText speaker =
     Dom.element "div"
@@ -65,6 +69,7 @@ listingText speaker =
             , socialLinks speaker
             , talkTitles speaker
             ]
+
 
 speakerName : Speaker -> Dom.Element Msg
 speakerName speaker =

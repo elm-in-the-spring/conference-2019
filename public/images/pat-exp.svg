@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 119.7 60">
+  <title>pat-exp</title>
+  <g style="isolation: isolate">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layer_1-2" data-name="Layer 1">
+        <g>
+          <rect width="119.7" height="60" fill="#001d3e"/>
+          <g>
+            <polygon points="85.3 5.5 85.3 5.4 85.3 26.5 64.2 5.5 85.3 5.5" fill="#0374da"/>
+            <polygon points="61 54.8 85 32.4 107.4 32.5 85 54.8 61 54.8" fill="#af0097"/>
+            <rect x="89.5" y="5.5" width="24.3" height="22.32" fill="#71de62"/>
+            <polygon points="80.6 29.1 56.9 51.9 57 5.5 80.6 29.1" fill="#2dcb40"/>
+            <polygon points="46.4 54.8 0 54.8 0 8.4 46.4 54.8" fill="#80dbff"/>
+            <polygon points="4.9 5.5 51.2 5.5 51.2 51.9 4.9 5.5" fill="#feb804"/>
+            <g style="mix-blend-mode: difference;isolation: isolate">
+              <polygon points="113.8 33.1 113.8 54.8 92.7 54.8 113.8 33.1" fill="#38cbca"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,7 +1,8 @@
 @import "webcolors/material";
 @import "webcolors/mrmrs";
 @import url("https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,500,600,700");
-@import "normalize.css";
+@import "./../../node_modules/sanitize.css";
+
 :root {
 	--color-fuchsia: #a10062;
 	--color-orange: #feb804;
@@ -143,8 +144,10 @@ $short-viewport: (
 @define-mixin offset-text $outline-color, $shadow-color, $color: transparent,
 	$shadow-width: 7px, $stroke-width: 3px {
 	text-stroke-width: $stroke-width;
+	-webkit-text-stroke-width: $stroke-width;
 	text-stroke-color: $outline-color;
-	text-shadow: $shadow-width $shadow-width $shadow-oclor;
+	-webkit-text-stroke-color: $outline-color;
+	text-shadow: $shadow-width $shadow-width $shadow-color;
 	color: $color;
 }
 
@@ -175,7 +178,7 @@ body > main {
 	padding: 0 30px;
 	margin: 0 -30px;
 	font-family: $font-base;
-	grid-kiss:
+/* 	grid-kiss:
 		"+-----------------------------------+      "
 		"|         → .Section--hero ←        |     "
 		"+-----------------------------------+      "
@@ -193,7 +196,7 @@ body > main {
 		"|              footer               | 100px"
 		"|                 ↑                 |      "
 		"+-----------------------------------+      "
-		"|     100% view      							 |			";
+		"|     100% view      							 |			"; */
 }
 
 :--heading {
@@ -241,6 +244,12 @@ input {
 	&::placeholder {
 		color: pink;
 	}
+}
+
+@component Divider {
+	height: 60px;
+	background: url("/images/pat-exp.svg") repeat-x;
+
 }
 
 /********************************************
@@ -421,16 +430,25 @@ input {
 /* SECTIONS */
 
 @component Section {
+
+		@mixin fill-pattern-green-leaf;
 	> div:first-child {
 		max-width: 100vw;
 	}
 
 	@element heading {
 		text-align: center;
+		color: white;
 		text-transform: uppercase;
 		padding-top: 2rem;
-		font-size: 2.5rem @600 3rem;
 		font-weight: 900;
+		background-color: #5133ea;
+		mix-blend-mode: color-burn;
+		h2 {
+			font-size: 2.5rem @600 6rem;
+			margin: 0;
+			line-height: 1;
+		}
 	}
 
 	@element subheading {
@@ -447,7 +465,7 @@ input {
 		color: var(--color-aqua);
 		background: var(--color-navy);
 		padding: 3rem 2rem 3rem;
-		margin-top: 0.5rem @600 1rem;
+		/* margin-top: 0.5rem @600 1rem; */
 
 		/* TODO: chnage any that are buttons */
 		a {
@@ -554,55 +572,14 @@ input {
 	@element talk-subtitle {
 		@util margin(0 null);
 	}
-
-	/* SPECIFIC SECTIONS */
-
-	@modifier details {
-		/* @mixin fill-pattern-green-leaf; */
-
-		@element heading {
-		}
-
-		> div {
-			&:first-child {
-				/* @mixin absolute-fill-layer -10; */
-
-				&::before {
-					/* @mixin fill-pattern-green-leaf; */
-					/* @mixin absolute-fill-layer -8; */
-					/* content: ''; */
-					/* clip-path: $clip-2-b; */
-				}
-
-				&::after {
-					/* @mixin absolute-fill-layer -10; */
-					/* 	background-color: var(--color-teal);
-					clip-path: $clip-2-a;
-					content: ''; */
-				}
-			}
-
-			&:last-child {
-				/* z-index: 2; */
-			}
-		}
-	}
-
-	@modifier speakers {
-		@element heading {
-		}
-	}
-
-	@modifier sponsors {
-		@element heading {
-		}
-	}
 }
 
-@component SectionHeader {
+@component Section {
+	@element heading {
 	@modifier outline-navy {
-		/* @mixin offset-text var(--color-navy) */
+		@mixin offset-text var(--color-navy), #0032c2;
 	}
+}
 }
 
 @component ButtonContainer {
@@ -627,8 +604,9 @@ input {
 	flex: 0 0 auto;
 	touch-action: manipulation;
 	display: inline-block;
-	color: var(--color-yellow);
-	background-color: var(--color-blue);
+	color: var(--color-navy);
+	background-color: #ce2f90.35;
+	text-decoration: none;
 
 	&::before {
 		transform: translate3d(0.8rem, 0.8rem, 0);
@@ -643,7 +621,7 @@ input {
 		transition-property: opacity, transform, -webkit-transform;
 		transition-duration: 0.24s;
 		transition-timing-function: cubic-bezier(0.64, 0, 0.35, 1);
-		background-color: #0032c2;
+		background-color: #ce2f90;
 	}
 
 	&:hover {
@@ -653,6 +631,7 @@ input {
 	}
 
 	&:active {
+		transform: translateY(2px);
 	}
 
 	&:focus {
@@ -677,7 +656,6 @@ input {
 	}
 
 	@element text {
-		/* background-color: var(--color-blue); */
 		min-width: 0;
 		max-width: 100%;
 		display: block;

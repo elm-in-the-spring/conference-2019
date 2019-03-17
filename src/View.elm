@@ -1,12 +1,14 @@
 module View exposing (view)
 
+--import View.Header as HeaderView
+
 import Browser
 import Dom
 import Model exposing (Model)
 import Route exposing (Route(..))
 import Update exposing (Msg)
+import View.Divider as Divider
 import View.Footer as FooterView
---import View.Header as HeaderView
 import View.Hero as HeroView
 import View.Section.Details as DetailsView
 import View.Section.Speakers as SpeakersView
@@ -34,9 +36,11 @@ view model =
             , body =
                 pageContent
                     [ HeroView.render model
+                    , Divider.render
                     , DetailsView.render model
                     , SpeakersView.render model
                     , SponsorsView.render model
+                    , Divider.render
                     , FooterView.render model
                     ]
             }

@@ -22,6 +22,7 @@ module.exports = {
     require("postcss-mixins"),
     require("postcss-simple-vars"),
     require("postcss-custom-media"),
+    require("postcss-color-alpha"),
     require("postcss-grid-kiss")({
       fallback: false
     }),
