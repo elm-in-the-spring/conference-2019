@@ -21,7 +21,19 @@ render model =
             , hDetails
             , hBlurb
             , hFooter
+            , hLeftBottom
+            , hRight
             ]
+
+
+hLeftBottom =
+    Dom.element "div"
+        |> Dom.addClass "HeroLeftColBottom"
+
+
+hRight =
+    Dom.element "div"
+        |> Dom.addClass "HeroRightCol"
 
 
 hHeader model =
