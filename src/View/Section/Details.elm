@@ -50,7 +50,7 @@ content model =
 
 
 subheading1 =
-    Dom.element "h4"
+    Dom.element "h3"
         |> Dom.addClass "Section__subheading"
         |> Dom.appendText "All Elm, all day!"
 
@@ -102,7 +102,7 @@ p3 =
 
 
 subheading2 =
-    Dom.element "h4"
+    Dom.element "h3"
         |> Dom.addClass "Section__subheading"
         |> Dom.appendText "Stay In Touch"
 

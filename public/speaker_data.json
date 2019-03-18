@@ -122,7 +122,6 @@
   {
     "name": "Katie Hughes",
     "talk_title": "Reacting to Elm",
-    "talk_subtitle": "",
     "talk_abstract": "Having written React for 2 years and done 1.5 side projects using Elm, I have suddenly found myself waist deep in a productionalized Elm code base. Wade through these waters with me as I get used to a big elm app and adapt my functional-enough JavaScript mindset to fully embrace that Functional Programming Lifestyle™.",
     "bio": "Katie recently joined NoRedInk and loves helping teachers while writing Elm. She lives in San Francisco with her cat, Erwin Schrodinger.",
     "headshot": "images/speakers/katie.jpg",
@@ -166,7 +165,6 @@
   {
     "name": "Nikhil Sharma",
     "talk_title": "Exploring Elm's Compiler Error Messages",
-    "talk_subtitle": "",
     "talk_abstract": "Everyone knows that Elm has great error messages, but do you know all of the kinds of error messages you can get?\nIn this talk, we will: 1. Categorize all of Elm’s error messages. 2. Learn how to produce some of the more obscure errors. 3. Learn how to get the most out of your error messages.",
     "bio": "Nikhil is a software engineer with 5 years of experience and a recently-discovered burning passion for statically-typed functional programming! One of Nikhil's favorite hobbies is discussing anime and manga - he's a team member of Meetup.com group AnimeChicago. At AnimeChicago, he has been writing front-end apps in Elm to integrate with the website. Feel free to ask him about any of these projects or if you just want to talk about JoJo’s Bizarre Adventure Part 5.",
     "headshot": "images/speakers/nik.jpg",

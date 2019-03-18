@@ -29,8 +29,7 @@ heading =
 
 logos =
     Dom.element "div"
-        --|> Dom.addClass "flex flex-wrap items-center justify-center pt-10"
-        |> Dom.addClass "Section__logos Section__block"
+        |> Dom.addClass "Section__logos"
         |> Dom.appendChildList
             [ logo "eSpark Learning" "/images/sponsors/espark-logo.svg"
             , logo "Hubtran" "/images/sponsors/hubtran-logo.svg"
@@ -41,7 +40,6 @@ logos =
 
 logo sponsorName imgSrc =
     Dom.element "img"
-        --|> Dom.addClass "px-2 mx-2 object-scale-down h-20"
         |> Dom.addAttributeList
             [ alt ("Sponsor " ++ sponsorName)
             , src imgSrc
@@ -60,8 +58,7 @@ content =
 
 
 subheading =
-    Dom.element "h4"
-        --|> Dom.addClass "mb-5 text-3xl md:text-4xl"
+    Dom.element "h3"
         |> Dom.addClass "Section__subheading"
         |> Dom.appendText "Support the community"
 

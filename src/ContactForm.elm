@@ -43,6 +43,7 @@ update msg model =
 view : Model -> Dom.Element Msg
 view model =
     Dom.element "form"
+        |> Dom.addClass "ContactForm"
         |> Dom.setId "mailing-list"
         |> Dom.addAttributeList
             [ name "mailing-list"
@@ -53,7 +54,7 @@ view model =
             ]
         |> Dom.appendChildList
             [ Dom.element "input"
-                |> Dom.addClass "hidden"
+                |> Dom.addClass "u-hidden"
                 |> Dom.addAttributeList
                     [ type_ "text"
                     , name "name"
@@ -63,6 +64,7 @@ view model =
                     ]
                 |> Dom.addInputHandler (UpdateField Name)
             , Dom.element "input"
+                |> Dom.addClass "ContactForm__input-email"
                 |> Dom.addAttributeList
                     [ type_ "text"
                     , name "EMAIL"
@@ -73,7 +75,7 @@ view model =
                     ]
                 |> Dom.addInputHandler (UpdateField Email)
             , Dom.element "input"
-                |> Dom.addClass "uppercase text-green-light"
+                |> Dom.addClass "ContactForm__input-submit"
                 |> Dom.addAction ( "click", Clear )
                 |> Dom.addAttributeList
                     [ type_ "submit"

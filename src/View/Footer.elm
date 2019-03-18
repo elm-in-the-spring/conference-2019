@@ -18,7 +18,7 @@ content =
         |> Dom.addClass "Footer__content"
         |> Dom.appendChildList
             [ copyright
-            , github
+            , openSourceNote
             ]
 
 
@@ -26,6 +26,27 @@ copyright =
     Dom.element "div"
         |> Dom.addClass "Footer__copyright"
         |> Dom.appendText "© Elm in the Spring 2019"
+
+
+openSourceNote =
+    Dom.element "div"
+        |> Dom.addClass "OpenSourceLink"
+        |> Dom.appendChild
+            (Dom.element "a"
+                |> Dom.addAttributeList
+                    [ href "https://github.com/elm-in-the-spring/conference-2019"
+                    , target "_blank"
+                    ]
+                |> Dom.addClass "OpenSourceLink__link"
+                |> Dom.appendChild
+                    (Dom.element "img"
+                        |> Dom.addClass "OpenSourceLink__image"
+                        |> Dom.addAttributeList
+                            [ src "/images/open-source-note.svg"
+                            , alt "This site is open source and built in Elm! Click to view source."
+                            ]
+                    )
+            )
 
 
 github =
