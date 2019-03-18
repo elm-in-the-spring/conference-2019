@@ -51,7 +51,6 @@ hFlower =
         |> Dom.appendChild
             (Dom.element "div"
                 |> Dom.addClass "HeroFlower__Content eits-flower"
-                |> Dom.appendText "a"
             )
 
 
@@ -123,5 +122,8 @@ hfCtaButton =
         |> Dom.appendChild
             (Dom.element "div"
                 |> Dom.addClass "ButtonContainer ButtonContainer--offset ButtonContainer--centered"
-                |> Dom.appendChild (Button.offset "#details" "Attend")
+                |> Dom.appendChild
+                    (Button.offset "#details" "Attend"
+                        |> Dom.addClass "Button--on-light"
+                    )
             )

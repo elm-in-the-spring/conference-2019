@@ -6,6 +6,7 @@ import Html
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
 import Update exposing (Msg(..))
+import View.Button as Button
 
 
 render : Model -> Dom.Element Msg
@@ -77,12 +78,14 @@ p2 =
 
 ticketsButton =
     Dom.element "div"
-        |> Dom.addClass "Button Button--offset Section__button u-textCenter u-m-2"
+        |> Dom.addClass "TicketsButton"
         |> Dom.appendChild
-            (Dom.element "a"
-                |> Dom.addClass "btn-offset"
-                |> Dom.addAttributeList [ href "https://ti.to/elm-in-the-spring/chicago-2019", target "_blank" ]
-                |> Dom.appendText "Get Your Tickets"
+            (Dom.element "div"
+                |> Dom.addClass "ButtonContainer ButtonContainer--offset ButtonContainer--centered"
+                |> Dom.appendChild
+                    (Button.offset "https://ti.to/elm-in-the-spring/chicago-2019" "Get Your Tickets"
+                        |> Dom.addClass "Button--on-dark"
+                    )
             )
 
 
