@@ -1,12 +1,13 @@
 module Route exposing (Route(..), fromUrl, toString)
 
 import Url exposing (Url)
-import Url.Parser as Parser exposing ((<?>), Parser, s, top)
+import Url.Parser as Parser exposing ((</>), (<?>), Parser, fragment, s, string, top)
 import Url.Parser.Query as Query
 
 
 type Route
-    = Home
+    = Root
+    | Home (Maybe String)
     | SpeakerModal (Maybe String)
     | Sponsorship
     | NotFound
@@ -15,8 +16,13 @@ type Route
 toString : Route -> String
 toString route =
     case route of
-        Home ->
-            "/#clip-logo"
+        Root ->
+            "/"
+
+        Home sectionId ->
+            sectionId
+                |> Maybe.map ((++) "/#")
+                |> Maybe.withDefault ""
 
         SpeakerModal maybeString ->
             maybeString
@@ -27,16 +33,16 @@ toString route =
             "/sponsorship"
 
         NotFound ->
-            "/#clip-logo"
+            "/"
 
 
 fromUrl : Url -> Route
 fromUrl =
     Parser.parse
         (Parser.oneOf
-            [ Parser.map SpeakerModal (top <?> Query.string "speaker")
-            , Parser.map Home top
+            [ Parser.map Home (fragment identity)
+            , Parser.map SpeakerModal (top <?> Query.string "speaker")
             , Parser.map Sponsorship (s "sponsorship")
             ]
         )
-        >> Maybe.withDefault Home
+        >> Maybe.withDefault Root

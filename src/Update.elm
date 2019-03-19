@@ -8,6 +8,7 @@ import Http
 import Model exposing (Model)
 import Route exposing (Route(..))
 import Speaker exposing (Speaker)
+import Task
 import Url
 
 
@@ -17,6 +18,7 @@ type Msg
     | OnUrlRequest Browser.UrlRequest
     | OnUrlChange Url.Url
     | LoadSpeakers (Result Http.Error (List Speaker))
+    | JumpTo Browser.Dom.Viewport
     | SaveViewport Browser.Dom.Viewport
 
 
@@ -40,10 +42,33 @@ update msg model =
             , Cmd.none
             )
 
+        --JumpTo id ->
+        --    jumpToSection id
+        --        |> Tuple.pair model
+        --Browser.Dom.getViewportOf id
+        --    |> Task.andThen (\info -> Browser.Dom.setViewportOf id 0 0)
+        --    |> Task.attempt result
+        --Browser.Dom.getViewportOf id
+        --    |> Task.andThen (\info -> Browser.Dom.setViewportOf id 0 0)
+        --    |> Task.attempt (\_ -> NoOp)
+        --    |> Tuple.pair model
         OnUrlRequest urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
-                    ( model, Nav.pushUrl model.key (Url.toString url) )
+                    let
+                        fragment : String
+                        fragment =
+                            url.fragment
+                                |> Maybe.withDefault ""
+                    in
+                    ( model
+                    , Cmd.batch
+                        [ Nav.pushUrl model.key (Url.toString url)
+                        , jumpToSection fragment
+                        , saveViewport fragment
+                            |> Task.attempt (\_ -> NoOp)
+                        ]
+                    )
 
                 Browser.External href ->
                     ( model, Nav.load href )
@@ -60,3 +85,42 @@ update msg model =
             ( { model | savedViewport = Just viewport }
             , Cmd.none
             )
+
+        JumpTo viewport ->
+            ( { model | savedViewport = Just viewport }
+            , model.savedViewport
+                |> Maybe.map (\vp -> Browser.Dom.setViewport vp.viewport.x vp.viewport.y)
+                |> Maybe.map (Task.perform (\_ -> NoOp))
+                |> Maybe.withDefault Cmd.none
+            )
+
+
+
+--jumpToSection : String -> Cmd Msg
+
+
+jumpToSpot : String -> Cmd Msg
+jumpToSpot _ =
+    Task.perform (\_ -> NoOp) (Browser.Dom.setViewport 0 100)
+
+
+jumpToSection id =
+    Browser.Dom.getViewportOf id
+        |> Task.andThen (\info -> Browser.Dom.setViewport 0 (Debug.log "hello" info.viewport.height))
+        |> Task.attempt (\_ -> NoOp)
+
+
+saveViewport id =
+    Browser.Dom.getViewportOf (Debug.log "id" id)
+        |> Task.andThen (\t -> Task.succeed (SaveViewport (Debug.log "t" t)))
+
+
+
+--|> Task.attempt (\_ -> NoOp) SaveViewport
+--|> Task.attempt (\_ -> NoOp)
+--|> Tuple.pair model
+--jumpToSection : String -> Cmd Msg
+--jumpToSection id =
+--
+--Result Browser.Dom.Error ()
+--|> Task.perform

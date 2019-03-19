@@ -14,7 +14,7 @@ render _ =
                 |> Dom.addClass "Header__link"
                 |> Dom.appendChild
                     (Dom.element "a"
-                        |> Dom.addAttribute (href ("#" ++ String.toLower location))
+                        |> Dom.addAttribute (href ("/#" ++ String.toLower location))
                         |> Dom.appendText location
                     )
     in
