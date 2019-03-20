@@ -1,7 +1,5 @@
 module View exposing (view)
 
---import View.Header as HeaderView
-
 import Browser
 import Dom
 import Model exposing (Model)

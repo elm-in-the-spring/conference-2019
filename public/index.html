@@ -1,24 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <!-- <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"> -->
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>Elm App</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135556379-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-135556379-1');
+  </script>
+
+  <!-- SEO Things -->
+  <title>Elm in the Spring Conference 2019</title>
+  <meta name="description" content="A new one-day, single-track conference for the Elm programming language. Join us for a great day of learning, teaching, and community!">
+
+  <!-- Assets and PWA-->
+  <meta name="theme-color" content="#2ECC40">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- Social Share Tags -->
+  <!-- Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Elm in the Spring 2019">
+  <meta property="og:url" content="https://www.elminthespring.org">
+  <meta property="og:site_name" content="Elm in the Spring 2019">
+  <meta property="og:description" content="A new one-day, single-track Elm conference. Join us for a great day of learning, teaching, and community!">
+  <meta property="og:image" content="https://www.elminthespring.org/images/flower+text-fb.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="elminthespring">
+  <meta name="twitter:creator" content="elminthespring">
+  <meta name="twitter:description" content="A new one-day, single-track Elm conference. Join us for a great day of learning, teaching, and community!">
+  <meta name="twitter:image" content="https://www.elminthespring.org/images/flower-twitter.png">
 </head>
 <body>
-    <noscript>
-        You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://www.elminthespring.org/",
+    "name": "Elm in the Spring",
+    "description": "A new one-day, single-track Elm conference. Join us for a great day of learning, teaching, and community!",
+    "logo": "https://www.elminthespring.org/images/flower+text-fb.png",
+    "sameAs": "https://twitter.com/elminthespring",
+    "email": "hello@elminthespring.org"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Event",
+    "name": "Elm in the Spring",
+    "startDate": "2019-04-26",
+    "location": {
+      "@type": "Place",
+      "name": "The Newberry: Chicago's Independent Research Library",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "60 W Walton St",
+        "addressLocality": "Chicago",
+        "postalCode": "60610",
+        "addressRegion": "IL",
+        "addressCountry": "US"
+      }
+    },
+    "image": "https://www.elminthespring.org/images/flower+text-fb.png",
+    "description": "A new one-day, single-track Elm conference. Join us for a great day of learning, teaching, and community!",
+    "endDate": "2019-04-26",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://ti.to/elm-in-the-spring/chicago-2019",
+      "price": "95",
+      "priceCurrency": "USD",
+      "availability": "http://schema.org/InStock",
+      "validFrom": "2018-12-13",
+      "validThrough": "2019-04-26"
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Richard Feldman",
+      "sameAs": "https://twitter.com/rtfeldman"
+    }
+  }
+  </script>
 </body>
 </html>

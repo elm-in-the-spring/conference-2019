@@ -8,7 +8,6 @@ module.exports = {
       stage: 0
     }),
     require("postcss-bem-fix")({
-      // style: "bem", // suit or bem, suit by default,
       separators: {
         modifier: "--",
         descendent: "__" // overwrite any default separator for chosen style
@@ -22,10 +21,6 @@ module.exports = {
     require("postcss-mixins"),
     require("postcss-simple-vars"),
     require("postcss-custom-media"),
-    require("postcss-color-alpha"),
-    require("postcss-grid-kiss")({
-      fallback: false
-    }),
     require("postcss-flexbugs-fixes"),
     require("postcss-import"),
     require("postcss-light-text"),
@@ -34,14 +29,6 @@ module.exports = {
     require("postcss-custom-selectors"),
     require("postcss-momentum-scrolling"),
     require("postcss-responsive-type"),
-    require("postcss-color-function"),
-    // require("postcss-encode-background-svgs"),
-    // require('postcss-magic-animations'),
     require("postcss-utilities")
   ]
 };
-
-// separators: {
-//   element: '__',
-//   descendent: '__' // overwrite any default separator for chosen style
-// }

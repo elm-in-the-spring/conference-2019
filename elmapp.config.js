@@ -1,4 +1,3 @@
-// const tailwindcss = require("tailwindcss");
 const path = require("path");
 const merge = require ('webpack-merge');
 const PurgecssPlugin = require("purgecss-webpack-plugin");

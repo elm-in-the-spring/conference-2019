@@ -12,7 +12,7 @@ render : Model -> Dom.Element Msg
 render model =
     Dom.element "section"
         |> Dom.setId "speakers"
-        |> Dom.addClass "Section Section--speakers u-fontBiko"
+        |> Dom.addClass "Section Section--speakers"
         |> Dom.appendChildList
             [ Dom.element "div"
             , Dom.element "div"

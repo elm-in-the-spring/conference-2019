@@ -1,118 +1,6 @@
-# Elm App
+# Elm in the Spring 2019 Website Reboot
 
-This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).
-
-Below you will find some information on how to perform basic tasks.
-You can find the most recent version of this guide [here](https://github.com/halfzebra/create-elm-app/blob/master/template/README.md).
-
-## Table of Contents
-
-* [Sending feedback](#sending-feedback)
-* [Folder structure](#folder-structure)
-* [Installing Elm packages](#installing-elm-packages)
-* [Installing JavaScript packages](#installing-javascript-packages)
-* [Available scripts](#available-scripts)
-  * [elm-app build](#elm-app-build)
-  * [elm-app start](#elm-app-start)
-  * [elm-app install](#elm-app-install)
-  * [elm-app test](#elm-app-test)
-  * [elm-app eject](#elm-app-eject)
-  * [elm-app \<elm-platform-command\>](#elm-app-elm-platform-command)
-    * [package](#package)
-    * [repl](#repl)
-    * [make](#make)
-    * [reactor](#reactor)
-* [Turning on/off Elm Debugger](#turning-onoff-elm-debugger)
-* [Dead code elimination](#dead-code-elimination)
-* [Changing the Page `<title>`](#changing-the-page-title)
-* [JavaScript Interop](#javascript-interop)
-* [Adding a Stylesheet](#adding-a-stylesheet)
-* [Post-Processing CSS](#post-processing-css)
-* [Using elm-css](#using-elm-css)
-* [Adding a CSS Preprocessor (Sass, Less etc.)](#adding-a-css-preprocessor-sass-less-etc)
-* [Adding Images and Fonts](#adding-images-and-fonts)
-* [Using the `public` Folder](#using-the-public-folder)
-  * [Changing the HTML](#changing-the-html)
-  * [Adding Assets Outside of the Module System](#adding-assets-outside-of-the-module-system)
-  * [When to Use the `public` Folder](#when-to-use-the-public-folder)
-* [Using custom environment variables](#using-custom-environment-variables)
-* [Setting up API Proxy](#setting-up-api-proxy)
-* [Using HTTPS in Development](#using-https-in-development)
-* [Running tests](#running-tests)
-  * [Continuous Integration](#continuous-integration)
-* [Making a Progressive Web App](#making-a-progressive-web-app)
-  * [Opting Out of Caching](#opting-out-of-caching)
-  * [Offline-First Considerations](#offline-first-considerations)
-  * [Progressive Web App Metadata](#progressive-web-app-metadata)
-* [Overriding Webpack Config](#overriding-webpack-config)
-* [Configuring the Proxy Manually](#configuring-the-proxy-manually)
-* [Deployment](#deployment)
-  * [Building for Relative Paths](#building-for-relative-paths)
-  * [Static Server](#static-server)
-  * [Netlify](#netlify)
-  * [GitHub Pages](#github-pages)
-* [IDE setup for Hot Module Replacement](#ide-setup-for-hot-module-replacement)
-
-## Sending feedback
-
-You are very welcome with any [feedback](https://github.com/halfzebra/create-elm-app/issues)
-
-Feel free to join [@create-elm-app](https://elmlang.slack.com/messages/CBBET0YMR/) channel at Slack.
-
-## Installing Elm packages
-
-```sh
-elm-app install <package-name>
-```
-
-Other `elm-package` commands are also [available].(#package)
-
-## Installing JavaScript packages
-
-To use JavaScript packages from npm, you'll need to add a `package.json`, install the dependencies, and you're ready to go.
-
-```sh
-npm init -y # Add package.json
-npm install --save-dev pouchdb-browser # Install library from npm
-```
-
-```js
-// Use in your JS code
-import PouchDB from 'pouchdb-browser';
-const db = new PouchDB('mydb');
-```
-
-## Folder structure
-
-```sh
-my-app/
-├── .gitignore
-├── README.md
-├── elm.json
-├── elm-stuff
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo.svg
-│   └── manifest.json
-├── src
-│   ├── Main.elm
-│   ├── index.js
-│   ├── main.css
-│   └── registerServiceWorker.js
-└── tests
-    └── Tests.elm
-```
-
-For the project to build, these files must exist with exact filenames:
-
-* `public/index.html` is the page template;
-* `public/favicon.ico` is the icon you see in the browser tab;
-* `src/index.js` is the JavaScript entry point.
-
-You can delete or rename the other files.
-
-You may create subdirectories inside src.
+This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app). See [here](https://github.com/halfzebra/create-elm-app/blob/master/template/README.md) for additional instruction on available development features.
 
 ## Available scripts
 
@@ -122,8 +10,7 @@ In the project directory you can run:
 
 Builds the app for production to the `build` folder.
 
-The build is minified, and the filenames include the hashes.
-Your app is ready to be deployed!
+The build is minified, and the filenames include the hashes.Your app is ready to be deployed!
 
 ### `elm-app start`
 
@@ -779,7 +666,7 @@ Mutate the configuration directly or use [webpack-merge](https://www.npmjs.com/p
 `env` variable will help you distinguish `"development"` from `"production"` for environment-specific overrides.
 
 ## Configuring the Proxy Manually
- 
+
 If the `proxy` option is not flexible enough for you, you can get direct access to the Express app instance and hook up your own proxy middleware.
 
 You can use this feature in conjunction with the `proxy` property in `elmapp.config.js`, but it is recommended you consolidate all of your logic into `setupProxy` property`.

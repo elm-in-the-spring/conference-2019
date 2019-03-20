@@ -1,7 +1,13 @@
+@charset "UTF-8";
+
+/* TODO: Finish cleanup and move stuff to config */
+
+/* TODO: get rid of dependency on material  colors*/
 @import "webcolors/material";
 @import "webcolors/mrmrs";
-@import url("https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,500,600,700");
 @import "./../../node_modules/sanitize.css";
+@import "./config.css";
+
 
 :root {
 	--color-fuchsia: #a10062;
@@ -47,7 +53,6 @@ img {
 	src: url(/fonts/Biko_Black.otf);
 }
 
-@charset "UTF-8";
 
 @font-face {
 	font-family: "elm-in-the-spring";
@@ -92,30 +97,6 @@ img {
 
 /* CLASS UTILS */
 
-@utility textCenter {
-	text-align: center;
-}
-
-@utility fontBiko {
-	font-family: Biko, Hind Madurai, system-ui;
-}
-
-@utility fontBold {
-	font-weight: bold;
-}
-
-@utility upcase {
-	text-transform: uppercase;
-}
-
-@utility m-1 {
-	margin: 1rem;
-}
-
-@utility m-2 {
-	margin: 2rem;
-}
-
 @utility hidden {
 	display: none;
 }
@@ -139,15 +120,6 @@ img {
 	font-weight: normal;
 }
 
-@utility cursorText {
-	cursor: url(/images/cursor-text.png), text;
-}
-
-@utility zeroSize {
-	height: 0;
-	width: 0;
-}
-
 /* CONFIG */
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -156,24 +128,8 @@ img {
 
 @custom-media --short-viewport (max-height: 500px);
 
-$font-base: Biko, Hind Madurai, system-ui;
-$font-custom: Biko, Hind Madurai, system-ui;
-
-$clip-1-b: polygon(100% 68%, 100% 100%, 0% 100%);
-$clip-1-a: polygon(0 0, 44% 100%, 0% 100%);
-
-$clip-2-b: polygon(80% 0, 100% 40%, 0 84%, 0% 0%);
-$clip-2-a: polygon(100% 100%, 0 100%, 0 75%);
-
-$md-viewport: (
-	min-width: 600px
-);
-$lg-viewport: (
-	min-width: 770px
-);
-$short-viewport: (
-	max-height: 500px
-);
+$font-base: Biko, system-ui;
+$font-custom: Biko, system-ui;
 
 /* MIXINS */
 
@@ -184,15 +140,32 @@ $short-viewport: (
 	background-color: var(--color-green);
 }
 
-@define-mixin offset-text $outline-color, $shadow-color, $color: transparent,
-	$shadow-width: 7px, $stroke-width: 3px {
-	text-stroke-width: $stroke-width;
-	-webkit-text-stroke-width: $stroke-width;
-	text-stroke-color: $outline-color;
-	-webkit-text-stroke-color: $outline-color;
-	text-shadow: $shadow-width $shadow-width $shadow-color;
-	color: $color;
+@define-mixin create-button $modifier, $color, $fill-color, $offset-color {
+	@component Button {
+		@modifier $(modifier) {
+			color: $color !important;
+
+			&::before {
+				background-color: $fill-color;
+			}
+
+			@component Button {
+				@element interior {
+					border: 4px solid $offset-color;
+				}
+				@element text {
+					color: $color;
+					background-color: $fill-color;
+				}
+			}
+		}
+	}
 }
+
+/* TODO: gather colors to vars */
+@mixin create-button on-light, var(--color-navy), #ce2f90, var(--color-navy);
+@mixin create-button on-dark, var(--color-navy), var(--color-aqua), var(--color-blue);
+
 
 /* BASE */
 
@@ -206,22 +179,17 @@ $short-viewport: (
 
 body {
 	overflow-x: hidden;
-	@mixin fill-pattern-green-leaf;
 	cursor: url(/images/cursor-auto.png), auto;
 	margin: 0;
 	font-size: responsive 17px 22px; /* min-size, max-size */
 	font-range: 600px 1280px; /* viewport widths between which font-size is fluid */
 	line-height: responsive 1.7rem 2.1rem;
 	line-height-range: 600px 1280px;
+	font-family: $font-base;
+
+	@mixin fill-pattern-green-leaf;
 }
 
-body > main {
-	/* height: 100vh; */
-	/* overflow: scroll; */
-	padding: 0 30px;
-	margin: 0 -30px;
-	font-family: $font-base;
-}
 
 :--heading {
 	margin-bottom: 0.7em;
@@ -240,19 +208,6 @@ body > main {
 	}
 }
 
-.preload-cursors {
-	clip: rect(0 0 0 0);
-	position: absolute;
-	overflow: hidden;
-	margin: -0.1rem;
-	padding: 0;
-	width: 0.1rem;
-	height: 0.1rem;
-	border: 0;
-	u {
-		cursor: url(/images/cursor-pointer-clicked.png), pointer;
-	}
-}
 
 ::selection {
 	background-color: var(--color-navy);
@@ -329,7 +284,6 @@ input {
 		&:hover {
 			&::before {
 				color: #a10062;
-				background-color: rgba(35, 40, 106, 0.82);
 			}
 		}
 	}
@@ -603,14 +557,6 @@ input {
 	}
 }
 
-@component Section {
-	@element heading {
-		@modifier outline-navy {
-			@mixin offset-text var(--color-navy), #0032c2;
-		}
-	}
-}
-
 @component ButtonContainer {
 	display: flex;
 	flex-wrap: wrap;
@@ -687,31 +633,6 @@ input {
 	}
 }
 
-@define-mixin create-button $modifier, $color, $fill-color, $offset-color {
-	@component Button {
-		@modifier $(modifier) {
-			color: $color !important;
-
-			&::before {
-				background-color: $fill-color;
-			}
-
-			@component Button {
-				@element interior {
-					border: 4px solid $offset-color;
-				}
-				@element text {
-					color: $color;
-					background-color: var(--color-aqua);
-				}
-			}
-		}
-	}
-}
-
-@mixin create-button on-light, var(--color-navy), #ce2f90, var(--color-navy);
-@mixin create-button on-dark, var(--color-navy), var(--color-aqua),
-	var(--color-blue);
 
 /* FOOTER */
 
@@ -762,9 +683,6 @@ input {
 	}
 }
 
-
-
-
 /* Links */
 
 a:not(.Button) {
@@ -807,7 +725,7 @@ a:not(.Button) {
 		color: var(--color-navy);
 		font-weight: 700;
 
-		&:hover  {
+		&:hover {
 			background-color: #e68c00;
 		}
 		&:active {
@@ -836,5 +754,21 @@ a:not(.Button) {
 				filter: none;
 			}
 		}
+	}
+}
+
+
+/* TODO: Add me */
+.preload-cursors {
+	clip: rect(0 0 0 0);
+	position: absolute;
+	overflow: hidden;
+	margin: -0.1rem;
+	padding: 0;
+	width: 0.1rem;
+	height: 0.1rem;
+	border: 0;
+	u {
+		cursor: url(/images/cursor-pointer-clicked.png), pointer;
 	}
 }
