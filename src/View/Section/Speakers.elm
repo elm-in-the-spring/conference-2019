@@ -99,7 +99,7 @@ socialLink social =
         |> Dom.addClass "m-2"
         |> Dom.appendChild
             (Dom.element "a"
-                |> Dom.addClass "Section__social-link"
+                |> Dom.addClass "Section__social-link u-noUnderline"
                 |> Dom.addAttributeList
                     [ title linkTitle
                     , attribute "aria-label" linkTitle
@@ -115,13 +115,13 @@ getIconAndTitle : Speaker.Social -> ( String, String )
 getIconAndTitle social =
     case social.network of
         Speaker.Website ->
-            ( social.src, "fas fa-globe" )
+            ( social.src, "eits-web" )
 
         Speaker.Twitter ->
-            ( "twitter", "fab fa-twitter" )
+            ( "twitter", "eits-social-twitter" )
 
         Speaker.Github ->
-            ( "github", "fab fa-github" )
+            ( "github", "eits-social-github" )
 
 
 talkTitles : Speaker -> Dom.Element Msg

@@ -50,7 +50,7 @@ hFlower =
         |> Dom.addClass "HeroFlower"
         |> Dom.appendChild
             (Dom.element "div"
-                |> Dom.addClass "HeroFlower__Content eits-flower"
+                |> Dom.addClass "HeroFlower__Content eits-logo-flower--outline"
             )
 
 
@@ -109,14 +109,10 @@ hBlurb =
 hFooter =
     Dom.element "footer"
         |> Dom.addClass "HeroFooter"
-        |> Dom.appendChild hfCtaButton
+        |> Dom.appendChild attendButton
 
 
-
---*****************************************************************************
-
-
-hfCtaButton =
+attendButton =
     Dom.element "div"
         |> Dom.addClass "HeroCTA"
         |> Dom.appendChild

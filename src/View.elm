@@ -11,14 +11,15 @@ import View.Hero as HeroView
 import View.Section.Details as DetailsView
 import View.Section.Speakers as SpeakersView
 import View.Section.Sponsors as SponsorsView
-import View.Sponsorship as Sponsorship
+import View.Sponsorship as SponsorshipPage
 
 
 view : Model -> Browser.Document Msg
 view model =
     let
-        pageContent content =
+        pageContent mainClass content =
             Dom.element "main"
+                |> Dom.addClass mainClass
                 |> Dom.appendChildList content
                 |> Dom.render
                 |> List.singleton
@@ -26,13 +27,14 @@ view model =
     case model.route of
         Sponsorship ->
             { title = "Elm in the Spring 2019 - Become a Sponsor"
-            , body = pageContent [ Sponsorship.view model, FooterView.render model ]
+            , body = pageContent "Sponsorship" [ SponsorshipPage.view model, FooterView.render model ]
             }
 
         _ ->
             { title = "Elm in the Spring 2019 - Conference"
             , body =
                 pageContent
+                    "Home"
                     [ HeroView.render model
                     , Divider.render
                     , DetailsView.render model
