@@ -4,6 +4,7 @@ import Dom
 import Html
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
+import Route
 import Speaker exposing (Speaker)
 import Update exposing (Msg(..))
 import View.Speaker as SpeakerView
@@ -15,10 +16,8 @@ render model =
         addContent =
             case model.speakerModal of
                 Nothing ->
-                    Dom.appendChild <|
-                        (Dom.element "div"
-                            |> Dom.appendText "hello"
-                        )
+                    Dom.appendNode
+                        (Html.text "")
 
                 Just speaker ->
                     Dom.appendChildList
@@ -33,6 +32,7 @@ render model =
     in
     Dom.element "section"
         |> Dom.addClass "SpeakerOverlay popup"
+        |> Dom.addClassConditional "u-hidden" (not <| Model.isModalOpen <| model)
         --|> Dom.setId "speaker-details"
         |> Dom.setId "popup-article"
         |> Dom.appendChild
@@ -42,10 +42,11 @@ render model =
             )
 
 
-close : Dom.Element msg
+close : Dom.Element Msg
 close =
     Dom.element "a"
-        |> Dom.addAttributeList [ href "#" ]
+        |> Dom.addAttributeList [ href "/" ]
+        |> Dom.addAction ( "click", CloseSpeakerOverlay )
         |> Dom.addClass "popup__close"
         |> Dom.appendText "close"
 

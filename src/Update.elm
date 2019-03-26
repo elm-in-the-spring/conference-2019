@@ -19,6 +19,7 @@ type Msg
     | OnUrlChange Url.Url
     | LoadSpeakers (Result Http.Error (List Speaker))
     | JumpTo (Result Browser.Dom.Error Browser.Dom.Element)
+    | CloseSpeakerOverlay
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -37,27 +38,20 @@ update msg model =
             )
 
         OnUrlChange url ->
-            let
-                fragment : String
-                fragment =
-                    Maybe.withDefault "" url.fragment
-            in
-            ( { model | speakerModal = Speaker.findByNameQuery model.speakers fragment, route = Route.fromUrl url }
+            ( { model
+                | speakerModal = Speaker.findByNameQuery model.speakers (Maybe.withDefault "" url.fragment)
+                , route = Route.fromUrl url
+              }
             , Cmd.none
             )
 
         OnUrlRequest urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
-                    let
-                        fragment : String
-                        fragment =
-                            Maybe.withDefault "" url.fragment
-                    in
                     ( model
                     , Cmd.batch
                         [ Nav.pushUrl model.key (Url.toString url)
-                        , Browser.Dom.getElement fragment
+                        , Browser.Dom.getElement (Maybe.withDefault "" url.fragment)
                             |> Task.attempt JumpTo
                         ]
                     )
@@ -66,7 +60,10 @@ update msg model =
                     ( model, Nav.load href )
 
         LoadSpeakers (Ok speakers) ->
-            ( { model | speakers = speakers }
+            ( { model
+                | speakers = speakers
+                , speakerModal = Route.matchSpeaker model.route speakers
+              }
             , Cmd.none
             )
 
@@ -81,3 +78,6 @@ update msg model =
 
         JumpTo (Err error) ->
             ( model, Cmd.none )
+
+        CloseSpeakerOverlay ->
+            ( { model | speakerModal = Nothing }, Cmd.none )

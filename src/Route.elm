@@ -1,7 +1,8 @@
-module Route exposing (Route(..), fromUrl, toString)
+module Route exposing (Route(..), fromUrl, matchSpeaker, toString)
 
 import Html exposing (Attribute)
 import Html.Attributes as Attr
+import Speaker exposing (Speaker)
 import Url exposing (Url)
 import Url.Builder exposing (Root(..))
 import Url.Parser as Parser exposing ((</>), (<?>), Parser, fragment, s, top)
@@ -41,8 +42,8 @@ toString route =
 parser : Parser (Route -> a) a
 parser =
     Parser.oneOf
-        [ Parser.map SpeakerModal (fragment identity <?> Query.string "speaker")
-        , Parser.map Home (fragment identity)
+        [ Parser.map SpeakerModal (top </> fragment identity <?> Query.string "speaker")
+        , Parser.map Home (top </> fragment identity)
         , Parser.map Sponsorship (s "sponsorship")
         ]
 
@@ -53,11 +54,16 @@ fromUrl url =
         |> Maybe.withDefault Root
 
 
-
---toUrl : Route -> Url
---toUrl
-
-
 href : Route -> Attribute msg
 href targetRoute =
     Attr.href (toString targetRoute)
+
+
+matchSpeaker : Route -> List Speaker -> Maybe Speaker
+matchSpeaker route speakers =
+    case route of
+        SpeakerModal nameFragment _ ->
+            Speaker.findByNameQuery speakers (Maybe.withDefault "" nameFragment)
+
+        _ ->
+            Nothing
