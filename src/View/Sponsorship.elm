@@ -41,10 +41,23 @@ view _ =
             [ header, tiers ]
 
 
+backNav =
+    Dom.element "a"
+        |> Dom.appendChild
+            (Dom.element "img"
+                |> Dom.addAttributeList
+                    [ src "/images/flower.svg"
+                    , alt "Go Home"
+                    ]
+            )
+        |> Dom.addClass "Sponsorship__back-navigation"
+        |> Dom.addAttributeList [ href "/" ]
+
+
 header =
     Dom.element "header"
         |> Dom.addClass "Section Sponsorship__header"
-        |> Dom.appendChildList [ heading, blurb ]
+        |> Dom.appendChildList [ backNav, heading, blurb ]
 
 
 heading =

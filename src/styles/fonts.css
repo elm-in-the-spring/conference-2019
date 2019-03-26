@@ -40,16 +40,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.eits-logo-flower-outline:before {
+.eits-logo-flower--outline:before {
   content: "\61";
 }
-.eits-social-github-outline:before {
+.eits-social-github--outline:before {
   content: "\69";
 }
-.eits-social-twitter-outline:before {
+.eits-social-twitter--outline:before {
   content: "\6a";
 }
-.eits-web-outline:before {
+.eits-web--outline:before {
   content: "\6b";
 }
 .eits-social-octocat:before {
