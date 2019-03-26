@@ -75,8 +75,8 @@ decoder =
         |> optional "social" (Decode.list socialDecoder) []
 
 
-findByNameQuery : String -> List Speaker -> Maybe Speaker
-findByNameQuery nameQuery speakers =
+findByNameQuery : List Speaker -> String -> Maybe Speaker
+findByNameQuery speakers nameQuery =
     speakers
         |> List.filter (\speaker -> String.replace " " "" speaker.name == nameQuery)
         |> List.head

@@ -3,6 +3,7 @@ module View.Section.Speakers exposing (render)
 import Dom
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
+import Route
 import Speaker exposing (Speaker)
 import Update exposing (Msg)
 import View.Speaker as SpeakerView
@@ -55,6 +56,18 @@ listingPhoto speaker =
         |> Dom.addClass "Speaker__headshot--shadow"
 
 
+titleLink : Speaker -> Dom.Element Msg
+titleLink speaker =
+    let
+        nameString =
+            String.replace " " "" speaker.name
+    in
+    Dom.element "a"
+        |> Dom.addAttributeList [ href <| "?speaker=" ++ nameString ++ "/#" ++ nameString ]
+        |> Dom.appendChild (SpeakerView.talkTitles speaker)
+        |> Dom.addClass "Speaker__talk-titles open-popup"
+
+
 listingText : Speaker -> Dom.Element Msg
 listingText speaker =
     Dom.element "div"
@@ -62,5 +75,5 @@ listingText speaker =
         |> Dom.appendChildList
             [ SpeakerView.name speaker
             , SpeakerView.socialLinks speaker
-            , SpeakerView.talkTitles speaker
+            , titleLink speaker
             ]

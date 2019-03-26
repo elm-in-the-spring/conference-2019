@@ -11,6 +11,7 @@ import View.Hero as HeroView
 import View.Section.Details as DetailsView
 import View.Section.Speakers as SpeakersView
 import View.Section.Sponsors as SponsorsView
+import View.SpeakerOverlay as SpeakerOverlay
 import View.Sponsorship as SponsorshipPage
 
 
@@ -42,5 +43,6 @@ view model =
                     , SponsorsView.render model
                     , Divider.render
                     , FooterView.render model
+                    , SpeakerOverlay.render model
                     ]
             }

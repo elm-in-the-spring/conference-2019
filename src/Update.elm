@@ -37,7 +37,12 @@ update msg model =
             )
 
         OnUrlChange url ->
-            ( { model | route = Route.fromUrl url }
+            let
+                fragment : String
+                fragment =
+                    Maybe.withDefault "" url.fragment
+            in
+            ( { model | speakerModal = Speaker.findByNameQuery model.speakers fragment, route = Route.fromUrl url }
             , Cmd.none
             )
 

@@ -1,14 +1,17 @@
 module Route exposing (Route(..), fromUrl, toString)
 
+import Html exposing (Attribute)
+import Html.Attributes as Attr
 import Url exposing (Url)
-import Url.Parser as Parser exposing ((</>), (<?>), Parser, fragment, s, string, top)
+import Url.Builder exposing (Root(..))
+import Url.Parser as Parser exposing ((</>), (<?>), Parser, fragment, s, top)
 import Url.Parser.Query as Query
 
 
 type Route
     = Root
     | Home (Maybe String)
-    | SpeakerModal (Maybe String)
+    | SpeakerModal (Maybe String) (Maybe String)
     | Sponsorship
     | NotFound
 
@@ -20,14 +23,13 @@ toString route =
             "/"
 
         Home sectionId ->
-            sectionId
-                |> Maybe.map ((++) "/#")
-                |> Maybe.withDefault ""
+            Url.Builder.custom Relative [] [] sectionId
 
-        SpeakerModal maybeString ->
-            maybeString
-                |> Maybe.map (\s -> "?speaker=" ++ s)
-                |> Maybe.withDefault "/"
+        SpeakerModal speakerNameFragment speakerNameQuery ->
+            Url.Builder.custom Relative
+                []
+                [ Url.Builder.string "speaker" (Maybe.withDefault "" speakerNameQuery) ]
+                speakerNameFragment
 
         Sponsorship ->
             "/sponsorship"
@@ -36,13 +38,26 @@ toString route =
             "/"
 
 
+parser : Parser (Route -> a) a
+parser =
+    Parser.oneOf
+        [ Parser.map SpeakerModal (fragment identity <?> Query.string "speaker")
+        , Parser.map Home (fragment identity)
+        , Parser.map Sponsorship (s "sponsorship")
+        ]
+
+
 fromUrl : Url -> Route
-fromUrl =
-    Parser.parse
-        (Parser.oneOf
-            [ Parser.map Home (fragment identity)
-            , Parser.map SpeakerModal (top <?> Query.string "speaker")
-            , Parser.map Sponsorship (s "sponsorship")
-            ]
-        )
-        >> Maybe.withDefault Root
+fromUrl url =
+    Parser.parse parser url
+        |> Maybe.withDefault Root
+
+
+
+--toUrl : Route -> Url
+--toUrl
+
+
+href : Route -> Attribute msg
+href targetRoute =
+    Attr.href (toString targetRoute)

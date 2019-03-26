@@ -54,7 +54,6 @@ talkTitles { talkTitle, talkSubtitle } =
                 |> Dom.appendText talkTitle
     in
     Dom.element "div"
-        |> Dom.addClass "Speaker__talk-titles"
         |> Dom.appendChild titleEl
         |> Dom.appendNode subtitleNode
 
