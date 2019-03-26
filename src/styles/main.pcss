@@ -111,6 +111,14 @@ $font-custom: Biko, system-ui;
 	}
 }
 
+@define-mixin clickable {
+	cursor: url(/images/cursor-pointer.png), pointer !important;
+
+	&:active {
+		cursor: url(/images/cursor-pointer-clicked.png), pointer !important;
+	}
+}
+
 /* TODO: gather colors to vars */
 @mixin create-button on-light, var(--color-navy), #ce2f90, var(--color-navy);
 @mixin create-button on-dark, var(--color-navy), var(--color-aqua), var(--color-blue);
@@ -443,6 +451,12 @@ input {
 			border-top: none;
 		}
 	}
+/*
+	@modifier speakers {
+		a :--heading {
+
+		}
+	} */
 }
 
 @component Speaker {
@@ -497,6 +511,13 @@ input {
 		margin-top: 1rem;
 		font-weight: normal;
 		flex-basis: 100%;
+		color: var(--color-aqua) !important;
+		&:hover {
+			color: var(--color-blue) !important;
+		}
+		h2, h3 {
+			@mixin clickable;
+		}
 	}
 
 	@element talk-title {
