@@ -64,6 +64,10 @@ img {
 	font-weight: normal;
 }
 
+@utility fontMono {
+	font-family: "Courier New", Courier, monospace;
+}
+
 /* CONFIG */
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -636,6 +640,7 @@ input {
 
 @component Sponsorship {
 	line-height: 1;
+
 	@element header {
 		display: flex;
 		flex-wrap: wrap;
@@ -675,25 +680,69 @@ input {
 		padding-top: 3rem @770 7rem;
 		background: var(--color-navy);
 		color: var(--color-aqua);
+		padding-left: calc(2rem + 12px);
 	}
 
 	@element tier {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+	  grid-template-columns: min-content auto;
+	  grid-template-rows: auto auto;
+	  grid-template-areas: "SponsorshipTier-Graphic SponsorshipTier-Title" "SponsorshipTier-Perks SponsorshipTier-Perks";
+
+	  @media (min-width: 720px) {
+	  	grid-template-areas: "SponsorshipTier-Graphic SponsorshipTier-Title" "SponsorshipTier-Graphic SponsorshipTier-Perks";
+	  }
+
+	  margin-bottom: 4rem;
+    grid-auto-columns: minmax(100px, auto);
+
+	  &:first-of-type {
+	  	margin-top: 3rem;
+	  }
+	  &:last-of-type {
+	  	margin-bottom: 0 @720 3rem;
+	  }
+	}
+
+	@element tier-title {
+		grid-area: SponsorshipTier-Title;
+		margin-bottom: 0;
+		align-self: center @720 initial;
+		margin-top: 0 @720 0.5rem;
+		margin-left: 2rem;
 	}
 
 	@element tier-name  {
-		flex-basis: 100%;
+		font-weight: normal;
+	  display: inline-block;
+	  padding-bottom: 0.5rem;
+		color: var(--color-orange);
 	}
 
-	@element graphic-container {
+	@element tier-graphic-container {
 		background-color: var(--color-blue);
-		max-height: 250px;
-		max-width: 250px;
+		width: 50% @720 250px;
+		min-width: 150px @720 250px;
 		height: 100%;
-		width: 100%;
 		box-shadow: -12px 12px var(--color-orange);
+		grid-area: SponsorshipTier-Graphic;
+	}
 
+	@element tier-perks {
+		grid-area: SponsorshipTier-Perks;
+		margin-left: 1.6rem @720 4.6rem;
+		margin-top: 3rem @720 1.5rem;
+	}
+
+	@element perk {
+		margin-bottom: 0.5rem;
+		line-height: 1.8rem;
+		&::before {
+			font-size: 0.9rem;
+		  color: var(--color-green);
+		  margin-left: -1.3rem;
+		  margin-right: 0.5rem;
+		}
 	}
 }
 

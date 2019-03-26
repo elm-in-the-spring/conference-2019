@@ -19,17 +19,17 @@ levelData =
     [ { title = "Old Grove"
       , cost = "$2,500"
       , perks = [ "20% discount on ticket purchases", "On-stage banner and speaker introduction opportunity. Limited space, first come first served!", "Logo included in videos and displayed on presentation screen between talks" ]
-      , imageAssetSrc = "/images/sponsorship/new/old-grove-2.svg"
+      , imageAssetSrc = "/images/sponsorship/old-grove.svg"
       }
     , { title = "Shade Tree"
       , cost = "$1,000"
       , perks = [ "15% discount on ticket purchases", "Special thank-you from the organizers during announcements", "Logo displayed on presentation screen between talks" ]
-      , imageAssetSrc = "/images/sponsorship/new/shade-tree-2.svg"
+      , imageAssetSrc = "/images/sponsorship/shade-tree.svg"
       }
     , { title = "Spring Sapling"
       , cost = "$500"
       , perks = [ "10% discount on ticket purchases" ]
-      , imageAssetSrc = "/images/sponsorship/new/spring-sapling-2.svg"
+      , imageAssetSrc = "/images/sponsorship/spring-sapling.svg"
       }
     ]
 
@@ -72,47 +72,53 @@ tierSection tierData =
     Dom.element "section"
         |> Dom.addClass "Sponsorship__tier"
         |> Dom.appendChildList
-            [ name tierData
+            [ title tierData
             , graphic tierData
-            , cost tierData
             , perks tierData
             ]
 
 
-cost tier =
+graphic tierData =
     Dom.element "div"
-        |> Dom.addClass "Sponsorship__cost"
-        |> Dom.appendText tier.cost
-
-
-graphic { title, imageAssetSrc } =
-    Dom.element "div"
-        |> Dom.addClass "Sponsorship__graphic-container"
+        |> Dom.addClass "Sponsorship__tier-graphic-container"
         |> Dom.appendChild
             (Dom.element "img"
                 |> Dom.addClass "Sponsorship__tier-graphic"
                 |> Dom.addAttributeList
-                    [ src imageAssetSrc
-                    , alt (title ++ " sponsorship tier")
+                    [ src tierData.imageAssetSrc
+                    , alt (tierData.title ++ " sponsorship tier")
                     ]
             )
 
 
 name tier =
-    Dom.element "h1"
+    Dom.element "span"
         |> Dom.addClass "Sponsorship__tier-name"
         |> Dom.appendText tier.title
 
 
+cost tier =
+    Dom.element "span"
+        |> Dom.addClass "Sponsorship__tier-cost"
+        |> Dom.appendText (" " ++ tier.cost)
+        |> Dom.addClass "u-fontMono"
+
+
+title tier =
+    Dom.element "h1"
+        |> Dom.addClass "Sponsorship__tier-title"
+        |> Dom.appendChildList [ name tier, cost tier ]
+
+
 perks tier =
     Dom.element "ul"
-        |> Dom.addClass "Sponsorship__perks"
+        |> Dom.addClass "Sponsorship__tier-perks"
         |> Dom.appendChildList
             (tier.perks
                 |> List.map
                     (\perk ->
                         Dom.element "li"
-                            |> Dom.addClass "Sponsorship__perk"
+                            |> Dom.addClass "Sponsorship__perk eits-leaf"
                             |> Dom.appendText perk
                     )
             )
