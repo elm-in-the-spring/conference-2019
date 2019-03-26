@@ -442,8 +442,10 @@ input {
 			border-top: none;
 		}
 	}
+}
 
-	@element speaker-headshot {
+@component Speaker {
+	@element headshot {
 		border: 10px solid var(--color-teal);
 		border-width: 8px @600 10px;
 		height: 8rem @600 12rem;
@@ -456,7 +458,7 @@ input {
 		margin-left: 12px @600 0;
 	}
 
-	@element speaker-text {
+	@element listing-text {
 		margin-top: 1.5rem @600 0;
 		margin-left: 0 @600 2rem;
 		display: block @600 flex;
@@ -464,7 +466,7 @@ input {
 		align-content: center;
 	}
 
-	@element speaker-name {
+	@element name {
 		font-size: 1.875rem @600 2.3rem;
 		font-weight: bold;
 		color: var(--color-orange);

@@ -1,11 +1,11 @@
 module View.Section.Speakers exposing (render)
 
 import Dom
-import Html
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
 import Speaker exposing (Speaker)
 import Update exposing (Msg)
+import View.Speaker as SpeakerView
 
 
 render : Model -> Dom.Element Msg
@@ -44,106 +44,23 @@ listing speaker =
     Dom.element "div"
         |> Dom.addClass "Section__speaker-listing"
         |> Dom.appendChildList
-            [ listingPhoto speaker True
+            [ listingPhoto speaker
             , listingText speaker
             ]
 
 
-listingPhoto : Speaker -> Bool -> Dom.Element Msg
-listingPhoto { headshotSrc, name } hasOffset =
-    Dom.element "img"
-        |> Dom.addClass "Section__speaker-headshot"
-        |> Dom.addAttributeList
-            [ src headshotSrc
-            , alt name
-            ]
-        |> Dom.addClassConditional "Section__speaker-headshot--shadow" hasOffset
+listingPhoto : Speaker -> Dom.Element Msg
+listingPhoto speaker =
+    SpeakerView.headshot speaker
+        |> Dom.addClass "Speaker__headshot--shadow"
 
 
 listingText : Speaker -> Dom.Element Msg
 listingText speaker =
     Dom.element "div"
-        |> Dom.addClass "Section__speaker-text"
+        |> Dom.addClass "Speaker__listing-text"
         |> Dom.appendChildList
-            [ speakerName speaker
-            , socialLinks speaker
-            , talkTitles speaker
+            [ SpeakerView.name speaker
+            , SpeakerView.socialLinks speaker
+            , SpeakerView.talkTitles speaker
             ]
-
-
-speakerName : Speaker -> Dom.Element Msg
-speakerName speaker =
-    Dom.element "h3"
-        |> Dom.addClass "Section__speaker-name"
-        |> Dom.appendText speaker.name
-
-
-socialLinks : Speaker -> Dom.Element Msg
-socialLinks { social } =
-    Dom.element "div"
-        |> Dom.addClass "Section__social-links"
-        |> Dom.appendChildList
-            (social
-                |> List.sortBy (\s -> Speaker.socialNetworkToString s.network)
-                |> List.map socialLink
-            )
-
-
-socialLink : Speaker.Social -> Dom.Element Msg
-socialLink social =
-    let
-        ( linkTitle, iconClass ) =
-            getIconAndTitle social
-    in
-    Dom.element "div"
-        |> Dom.addClass "m-2"
-        |> Dom.appendChild
-            (Dom.element "a"
-                |> Dom.addClass "Section__social-link u-noUnderline"
-                |> Dom.addAttributeList
-                    [ title linkTitle
-                    , attribute "aria-label" linkTitle
-                    , href social.src
-                    , target "_blank"
-                    ]
-                |> Dom.appendChild
-                    (Dom.element "i" |> Dom.addClass iconClass)
-            )
-
-
-getIconAndTitle : Speaker.Social -> ( String, String )
-getIconAndTitle social =
-    case social.network of
-        Speaker.Website ->
-            ( social.src, "eits-web" )
-
-        Speaker.Twitter ->
-            ( "twitter", "eits-social-twitter" )
-
-        Speaker.Github ->
-            ( "github", "eits-social-github" )
-
-
-talkTitles : Speaker -> Dom.Element Msg
-talkTitles { talkTitle, talkSubtitle } =
-    let
-        subtitleNode =
-            case talkSubtitle of
-                Nothing ->
-                    Html.text ""
-
-                Just string ->
-                    Dom.element "h4"
-                        |> Dom.addClass "Section__talk-subtitle u-fontNormal"
-                        |> Dom.appendText string
-                        |> Dom.render
-
-        titleEl =
-            Dom.element "h3"
-                |> Dom.addClass "Section__talk-title u-fontNormal"
-                |> Dom.appendText talkTitle
-    in
-    Dom.element "div"
-        |> Dom.addClass "Section__talk-titles"
-        |> Dom.appendChild titleEl
-        |> Dom.appendNode subtitleNode
