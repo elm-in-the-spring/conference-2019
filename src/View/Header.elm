@@ -8,16 +8,6 @@ import Update exposing (Msg)
 
 render : Model -> Dom.Element Msg
 render _ =
-    let
-        link location =
-            Dom.element "li"
-                |> Dom.addClass "Header__link"
-                |> Dom.appendChild
-                    (Dom.element "a"
-                        |> Dom.addAttribute (href ("/#" ++ String.toLower location))
-                        |> Dom.appendText location
-                    )
-    in
     Dom.element "ul"
         |> Dom.addClass "Header__links"
         |> Dom.appendChildList
@@ -25,3 +15,13 @@ render _ =
             , link "Speakers"
             , link "Sponsors"
             ]
+
+
+link location =
+    Dom.element "li"
+        |> Dom.addClass "Header__link"
+        |> Dom.appendChild
+            (Dom.element "a"
+                |> Dom.addAttribute (href ("/#" ++ String.toLower location))
+                |> Dom.appendText location
+            )

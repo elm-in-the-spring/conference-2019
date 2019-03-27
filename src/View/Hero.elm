@@ -13,40 +13,40 @@ import View.Header as Header
 
 render : Model -> Dom.Element Msg
 render model =
-    Dom.element "div"
+    Dom.element "section"
         |> Dom.addClass "Hero"
         |> Dom.appendChildList
-            [ hHeader model
-            , hFlower
-            , hTitle
-            , hDetails
-            , hBlurb
-            , hFooter
-            , hLeftBottom
-            , hRight
+            [ header model
+            , flower
+            , title
+            , details
+            , blurb
+            , footer
+            , leftBottom
+            , rightSide
             ]
 
 
-hLeftBottom =
+leftBottom =
     Dom.element "div"
         |> Dom.addClass "HeroLeftColBottom"
 
 
-hRight =
+rightSide =
     Dom.element "div"
         |> Dom.addClass "HeroRightCol"
 
 
-hHeader model =
+header model =
     Dom.element "div"
         |> Dom.addClass "HeroHeader"
         |> Dom.appendChild
-            (Dom.element "h1"
+            (Dom.element "nav"
                 |> Dom.appendChild (Header.render model)
             )
 
 
-hFlower =
+flower =
     Dom.element "div"
         |> Dom.addClass "HeroFlower"
         |> Dom.appendChild
@@ -55,7 +55,7 @@ hFlower =
             )
 
 
-hTitle =
+title =
     let
         elm =
             Dom.element "span"
@@ -82,7 +82,7 @@ hTitle =
         |> Dom.appendChildList [ elmInThe, spring ]
 
 
-hDetails =
+details =
     let
         date_ =
             Dom.element "div" |> Dom.appendText "April 26, 2019"
@@ -101,13 +101,13 @@ hDetails =
             )
 
 
-hBlurb =
+blurb =
     Dom.element "div"
         |> Dom.addClass "HeroBlurb"
         |> Dom.appendText "A day to learn, teach, and share about Elm!"
 
 
-hFooter =
+footer =
     Dom.element "footer"
         |> Dom.addClass "HeroFooter"
         |> Dom.appendChild attendButton

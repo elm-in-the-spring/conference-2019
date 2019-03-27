@@ -62,6 +62,7 @@ update msg model =
               }
             , Cmd.none
             )
+                |> setOverflowForModalState
 
         LoadSpeakers (Err httpError) ->
             ( model, Cmd.none )

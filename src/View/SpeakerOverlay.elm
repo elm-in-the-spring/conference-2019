@@ -12,34 +12,36 @@ import View.Speaker as SpeakerView
 
 render : Model -> Dom.Element Msg
 render model =
-    let
-        addContent =
-            case model.speakerModal of
-                Nothing ->
-                    Dom.appendNode
-                        (Html.text "")
-
-                Just speaker ->
-                    Dom.appendChildList
-                        [ SpeakerView.headshot speaker
-                        , SpeakerView.name speaker
-                        , SpeakerView.socialLinks speaker
-                        , SpeakerView.talkTitles speaker
-                        , bio speaker
-                        , abstract speaker
-                        , close
-                        ]
-    in
     Dom.element "section"
         |> Dom.addClass "SpeakerOverlay popup"
-        |> Dom.addClassConditional "u-hidden" (not <| Model.modalIsOpen <| model)
-        --|> Dom.setId "speaker-details"
-        |> Dom.setId "popup-article"
+        |> Dom.addAttributeList
+            [ Attr.attribute "role" "dialog"
+            ]
+        |> Dom.addClassConditional "u-hidden" (not <| Model.modalIsOpen model)
+        |> Dom.setId "speaker-details"
         |> Dom.appendChild
             (Dom.element "div"
                 |> Dom.addClass "popup__block"
-                |> addContent
+                |> addContent model.speakerModal
             )
+
+
+addContent speakerModal =
+    case speakerModal of
+        Nothing ->
+            Dom.appendNode
+                (Html.text "")
+
+        Just speaker ->
+            Dom.appendChildList
+                [ close
+                , SpeakerView.headshot speaker
+                , SpeakerView.name speaker
+                , SpeakerView.socialLinks speaker
+                , bio speaker
+                , SpeakerView.talkTitles speaker
+                , abstract speaker
+                ]
 
 
 close : Dom.Element Msg
