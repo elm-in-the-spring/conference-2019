@@ -69,10 +69,6 @@ img {
 	font-family: "Courier New", Courier, monospace;
 }
 
-@utility hideOverflow {
-	overflow: hidden;
-}
-
 /* CONFIG */
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -139,7 +135,6 @@ $font-custom: Biko, system-ui;
 }
 
 body {
-	overflow: hidden;
 	cursor: url(/images/cursor-auto.png), auto;
 	margin: 0;
 	font-size: responsive 17px 22px; /* min-size, max-size */
@@ -149,11 +144,6 @@ body {
 	font-family: $font-base;
 
 	@mixin fill-pattern-green-leaf;
-}
-
-main {
-	height: 100vh;
-	overflow-y: scroll;
 }
 
 

@@ -21,7 +21,6 @@ view model =
         pageContent mainClass content =
             Dom.element "main"
                 |> Dom.addClass mainClass
-                |> Dom.addClassConditional "u-hideOverflow" (Model.modalIsOpen model)
                 |> Dom.appendChildList content
                 |> Dom.render
                 |> List.singleton

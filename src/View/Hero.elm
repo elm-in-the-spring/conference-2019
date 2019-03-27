@@ -3,6 +3,7 @@ module View.Hero exposing (render)
 import Dom
 import Html.Attributes exposing (alt, src)
 import Model exposing (Model)
+import Route
 import Svg exposing (..)
 import Svg.Attributes exposing (class, clipPathUnits, fill, height, id, points, preserveAspectRatio, transform, viewBox, width, xlinkHref)
 import Update exposing (Msg)
@@ -119,7 +120,7 @@ attendButton =
             (Dom.element "div"
                 |> Dom.addClass "ButtonContainer ButtonContainer--offset ButtonContainer--centered"
                 |> Dom.appendChild
-                    (Button.offset "#details" "Attend"
+                    (Button.offset (Route.href (Route.Home (Just "details") Nothing)) "Attend"
                         |> Dom.addClass "Button--on-light"
                     )
             )

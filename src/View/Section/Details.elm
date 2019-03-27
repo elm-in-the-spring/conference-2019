@@ -83,7 +83,7 @@ ticketsButton =
             (Dom.element "div"
                 |> Dom.addClass "ButtonContainer ButtonContainer--offset ButtonContainer--centered"
                 |> Dom.appendChild
-                    (Button.offset "https://ti.to/elm-in-the-spring/chicago-2019" "Get Your Tickets"
+                    (Button.offset (Attr.href "https://ti.to/elm-in-the-spring/chicago-2019") "Get Your Tickets"
                         |> Dom.addClass "Button--on-dark"
                     )
             )

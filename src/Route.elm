@@ -1,4 +1,4 @@
-module Route exposing (Route(..), fromUrl, matchSpeaker, toString)
+module Route exposing (Route(..), fromUrl, href, matchSpeaker, toString)
 
 import Html exposing (Attribute)
 import Html.Attributes as Attr
@@ -11,8 +11,7 @@ import Url.Parser.Query as Query
 
 type Route
     = Root
-    | Home (Maybe String)
-    | SpeakerModal (Maybe String) (Maybe String)
+    | Home (Maybe String) (Maybe String)
     | Sponsorship
     | NotFound
 
@@ -23,14 +22,16 @@ toString route =
         Root ->
             "/"
 
-        Home sectionId ->
-            Url.Builder.custom Relative [] [] sectionId
+        Home sectionId speakerNameQuery ->
+            case ( speakerNameQuery, sectionId ) of
+                ( Just query, _ ) ->
+                    Url.Builder.relative [] [ Url.Builder.string "speaker" (Debug.log "QUERY" query) ]
 
-        SpeakerModal speakerNameFragment speakerNameQuery ->
-            Url.Builder.custom Relative
-                []
-                [ Url.Builder.string "speaker" (Maybe.withDefault "" speakerNameQuery) ]
-                speakerNameFragment
+                ( Nothing, Just section ) ->
+                    Url.Builder.custom Relative [] [] sectionId
+
+                ( Nothing, Nothing ) ->
+                    toString Root
 
         Sponsorship ->
             "/sponsorship"
@@ -42,8 +43,7 @@ toString route =
 parser : Parser (Route -> a) a
 parser =
     Parser.oneOf
-        [ Parser.map SpeakerModal (top </> fragment identity <?> Query.string "speaker")
-        , Parser.map Home (top </> fragment identity)
+        [ Parser.map Home (top </> fragment identity <?> Query.string "speaker")
         , Parser.map Sponsorship (s "sponsorship")
         ]
 
@@ -62,8 +62,8 @@ href targetRoute =
 matchSpeaker : Route -> List Speaker -> Maybe Speaker
 matchSpeaker route speakers =
     case route of
-        SpeakerModal nameFragment _ ->
-            Speaker.findByNameQuery speakers (Maybe.withDefault "" nameFragment)
+        Home _ speakerNameQuery ->
+            Speaker.findByNameQuery speakers (Maybe.withDefault "" speakerNameQuery)
 
         _ ->
             Nothing

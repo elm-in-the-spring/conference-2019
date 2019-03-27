@@ -21,7 +21,7 @@ render model =
 
                 Just speaker ->
                     Dom.appendChildList
-                        [ SpeakerView.headshot (Debug.log "SPEAKER" speaker)
+                        [ SpeakerView.headshot speaker
                         , SpeakerView.name speaker
                         , SpeakerView.socialLinks speaker
                         , SpeakerView.talkTitles speaker

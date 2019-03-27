@@ -1,10 +1,11 @@
 module View.Button exposing (offset)
 
 import Dom
-import Html.Attributes exposing (href)
+import Html exposing (Attribute)
 
 
-offset target textContent =
+offset : Attribute msg -> String -> Dom.Element msg
+offset href textContent =
     let
         addInterior =
             Dom.appendChild
@@ -21,6 +22,6 @@ offset target textContent =
                 )
     in
     Dom.element "a"
-        |> Dom.addAttribute (href target)
+        |> Dom.addAttribute href
         |> Dom.addClass "Button Button--offset"
         |> addInterior

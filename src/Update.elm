@@ -1,4 +1,4 @@
-module Update exposing (Msg(..), update)
+port module Update exposing (Msg(..), update)
 
 import Browser
 import Browser.Dom
@@ -38,23 +38,19 @@ update msg model =
             )
 
         OnUrlChange url ->
-            ( { model
-                | speakerModal = Speaker.findByNameQuery model.speakers (Maybe.withDefault "" url.fragment)
-                , route = Route.fromUrl url
-              }
-            , Cmd.none
+            ( { model | route = Route.fromUrl url }
+            , Browser.Dom.getElement (Maybe.withDefault "" url.fragment)
+                |> Task.attempt JumpTo
             )
+                |> setOverflowForModalState
 
         OnUrlRequest urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
-                    ( model
-                    , Cmd.batch
-                        [ Nav.pushUrl model.key (Url.toString url)
-                        , Browser.Dom.getElement (Maybe.withDefault "" url.fragment)
-                            |> Task.attempt JumpTo
-                        ]
+                    ( { model | speakerModal = Route.matchSpeaker (Route.fromUrl url) model.speakers }
+                    , Nav.pushUrl model.key (Url.toString url)
                     )
+                        |> setOverflowForModalState
 
                 Browser.External href ->
                     ( model, Nav.load href )
@@ -81,3 +77,22 @@ update msg model =
 
         CloseSpeakerOverlay ->
             ( { model | speakerModal = Nothing }, Cmd.none )
+
+
+{-| Can't figure out how to access the body element from within elm and need to set overflow for the modal to
+work properly and not scroll the underlying content
+-}
+setOverflowForModalState : ( Model, Cmd Msg ) -> ( Model, Cmd Msg )
+setOverflowForModalState ( model, commands ) =
+    case model.speakerModal of
+        Nothing ->
+            ( model, Cmd.batch [ commands, showOverflow () ] )
+
+        Just _ ->
+            ( model, Cmd.batch [ commands, hideOverflow () ] )
+
+
+port hideOverflow : () -> Cmd msg
+
+
+port showOverflow : () -> Cmd msg

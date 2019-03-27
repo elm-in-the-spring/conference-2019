@@ -63,7 +63,7 @@ titleLink speaker =
             String.replace " " "" speaker.name
     in
     Dom.element "a"
-        |> Dom.addAttributeList [ href <| "?speaker=" ++ nameString ++ "/#" ++ nameString ]
+        |> Dom.addAttributeList [ href <| "?speaker=" ++ nameString ]
         |> Dom.appendChild (SpeakerView.talkTitles speaker)
         |> Dom.addClass "Speaker__talk-titles open-popup"
 
