@@ -44,36 +44,43 @@ listing : Speaker -> Dom.Element Msg
 listing speaker =
     Dom.element "div"
         |> Dom.addClass "Section__speaker-listing"
-        |> Dom.appendChildList
-            [ listingPhoto speaker
-            , listingText speaker
-            ]
-
-
-listingPhoto : Speaker -> Dom.Element Msg
-listingPhoto speaker =
-    SpeakerView.headshot speaker
-        |> Dom.addClass "Speaker__headshot--shadow"
+        |> Dom.appendChild (speakerInfo speaker)
 
 
 titleLink : Speaker -> Dom.Element Msg
 titleLink speaker =
-    let
-        nameString =
-            String.replace " " "" speaker.name
-    in
-    Dom.element "a"
-        |> Dom.addAttributeList [ href <| "?speaker=" ++ nameString ]
+    linkToModal speaker
         |> Dom.appendChild (SpeakerView.talkTitles speaker)
         |> Dom.addClass "Speaker__talk-titles open-popup"
 
 
-listingText : Speaker -> Dom.Element Msg
-listingText speaker =
+linkToModal speaker =
+    Dom.element "a"
+        |> Dom.addAttribute (href <| "?speaker=" ++ String.replace " " "" speaker.name)
+
+
+headshot speaker =
+    linkToModal speaker
+        |> Dom.appendChild
+            (SpeakerView.headshot speaker
+                |> Dom.addClass "Speaker__headshot--shadow"
+            )
+
+
+speakerInfo speaker =
+    Dom.element "section"
+        |> Dom.addClass "Speaker__listing-info"
+        |> Dom.appendChildList
+            [ headshot speaker
+            , listingName speaker
+            , titleLink speaker
+            ]
+
+
+listingName speaker =
     Dom.element "div"
-        |> Dom.addClass "Speaker__listing-text"
+        |> Dom.addClass "Speaker__listing-name"
         |> Dom.appendChildList
             [ SpeakerView.name speaker
             , SpeakerView.socialLinks speaker
-            , titleLink speaker
             ]

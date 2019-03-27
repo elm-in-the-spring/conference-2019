@@ -71,3 +71,8 @@
 .eits-leaf:before {
   content: "\66";
 }
+
+/*FIXME*/
+.eits-close:before {
+  content: "\67" !important;
+}

@@ -13,7 +13,7 @@ import View.Speaker as SpeakerView
 render : Model -> Dom.Element Msg
 render model =
     Dom.element "section"
-        |> Dom.addClass "SpeakerOverlay popup"
+        |> Dom.addClass "SpeakerOverlay"
         |> Dom.addAttributeList
             [ Attr.attribute "role" "dialog"
             ]
@@ -21,7 +21,7 @@ render model =
         |> Dom.setId "speaker-details"
         |> Dom.appendChild
             (Dom.element "div"
-                |> Dom.addClass "popup__block"
+                |> Dom.addClass "SpeakerOverlay__content"
                 |> addContent model.speakerModal
             )
 
@@ -35,33 +35,64 @@ addContent speakerModal =
         Just speaker ->
             Dom.appendChildList
                 [ close
-                , SpeakerView.headshot speaker
-                , SpeakerView.name speaker
-                , SpeakerView.socialLinks speaker
-                , bio speaker
-                , SpeakerView.talkTitles speaker
-                , abstract speaker
+                , speaekerInfo speaker
+                , divider
+                , talkInfo speaker
                 ]
 
 
-close : Dom.Element Msg
+speaekerInfo speaker =
+    Dom.element "section"
+        |> Dom.addClass "SpeakerOverlay__speaker-info"
+        |> Dom.appendChildList
+            [ SpeakerView.headshot speaker
+            , name speaker
+            , bio speaker
+            ]
+
+
+talkInfo speaker =
+    Dom.element "section"
+        |> Dom.addClass "SpeakerOverlay__talk-info"
+        |> Dom.appendChildList
+            [ SpeakerView.talkTitles speaker
+            , abstract speaker
+            ]
+
+
+name speaker =
+    Dom.element "div"
+        |> Dom.addClass "SpeakerOverlay__speaker-name"
+        |> Dom.appendChildList
+            [ SpeakerView.name speaker
+            , SpeakerView.socialLinks speaker
+            ]
+
+
 close =
     Dom.element "a"
-        |> Dom.addAttributeList [ href "/" ]
+        |> Dom.addAttributeList
+            [ href "/"
+            , Attr.attribute "aria-label" "close"
+            ]
         |> Dom.addAction ( "click", CloseSpeakerOverlay )
-        |> Dom.addClass "popup__close"
-        |> Dom.appendText "close"
+        |> Dom.addClassList [ "Button", "SpeakerOverlay__close", "eits-close" ]
 
 
-bio : Speaker -> Dom.Element msg
 bio speaker =
-    Dom.element "div"
+    Dom.element "p"
         |> Dom.addClass "SpeakerOverlay__bio"
         |> Dom.appendText speaker.bio
 
 
-abstract : Speaker -> Dom.Element msg
 abstract speaker =
-    Dom.element "div"
+    Dom.element "p"
         |> Dom.addClass "SpeakerOverlay__abstract"
         |> Dom.appendText speaker.talkAbstract
+
+
+divider =
+    Dom.element "div"
+        |> Dom.addClass "SpeakerOverlay__divider"
+        |> Dom.appendChildList
+            (List.repeat 3 (Dom.element "i" |> Dom.addClass "eits-leaf"))

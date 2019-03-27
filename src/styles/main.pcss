@@ -6,7 +6,6 @@
 @import "webcolors/material";
 @import "webcolors/mrmrs";
 @import "./../../node_modules/sanitize.css";
-@import "./popup.css";
 @import "./fonts.css";
 @import "./config.css";
 
@@ -36,6 +35,34 @@ ul {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+/* Links */
+
+a:not(.Button) {
+	color: #ff2a9d;
+	transition: 0.2s all;
+	position: relative;
+	&:before {
+		content: "";
+		height: 6px;
+		width: 100%;
+		position: absolute;
+		bottom: 4px;
+		right: 0px;
+		transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+	&:hover {
+		color: var(--color-fuchsia);
+		&:before {
+			content: "";
+			height: calc(1em + 6px);
+			width: 100%;
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+	}
 }
 
 
@@ -68,6 +95,7 @@ img {
 @utility fontMono {
 	font-family: "Courier New", Courier, monospace;
 }
+
 
 /* CONFIG */
 
@@ -405,12 +433,6 @@ input {
 		color: var(--color-aqua);
 		background: var(--color-navy);
 		padding: 3rem 2rem 3rem;
-		a {
-			color: white;
-			&:hover {
-				color: var(--color-blue);
-			}
-		}
 	}
 
 	@element paragraph {
@@ -466,14 +488,14 @@ input {
 		margin-left: 12px @600 0;
 	}
 
-	@element listing-text {
+/* 	@element listing-text {
 		margin-top: 1.5rem @600 0;
 		margin-left: 0 @600 2rem;
 		display: block @600 flex;
 		flex-wrap: wrap;
 		align-content: center;
 	}
-
+ */
 	@element name {
 		font-size: 1.875rem @600 2.3rem;
 		font-weight: bold;
@@ -505,11 +527,15 @@ input {
 		font-weight: normal;
 		flex-basis: 100%;
 		color: var(--color-aqua) !important;
+
 		&:hover {
 			color: var(--color-blue) !important;
 		}
 		h2, h3 {
 			@mixin clickable;
+		}
+		> div {
+			margin-top: 1rem;
 		}
 	}
 
@@ -520,6 +546,28 @@ input {
 
 	@element talk-subtitle {
 		@util margin(0 null);
+	}
+
+	@element listing-info {
+		display: flex;
+		flex-wrap: wrap;
+
+		h3 {
+			margin-bottom: 0.5rem;
+		}
+		img {
+			margin-left: 0;
+		}
+	}
+
+	@element listing-name {
+		align-self: center;
+		margin-left: 1rem;
+		flex-basis: 50%;
+	}
+
+	@element bio {
+		flex-basis: 100%;
 	}
 }
 
@@ -781,33 +829,6 @@ input {
 }
 
 
-/* Links */
-
-a:not(.Button) {
-	color: #ff2a9d;
-	transition: 0.2s all;
-	position: relative;
-	&:before {
-		content: "";
-		height: 6px;
-		width: 100%;
-		position: absolute;
-		bottom: 4px;
-		right: 0px;
-		transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-	}
-	&:hover {
-		color: var(--color-fuchsia);
-		&:before {
-			content: "";
-			height: calc(1em + 6px);
-			width: 100%;
-			position: absolute;
-			bottom: 0px;
-			right: 0px;
-		}
-	}
-}
 
 @component ContactForm {
 	display: flex;
@@ -856,6 +877,104 @@ a:not(.Button) {
 }
 
 
+@component SpeakerOverlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  color: var(--color-navy);
+
+  &::before {
+  	content: "";
+  	width: 100%;
+  	background-color: #fff;
+  	position: fixed;
+  	left: 0;
+  	top: 50%;
+  	will-change: height, top;
+  	animation: open-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) 0.65s both;
+  }
+
+  &::after {
+  	content: "";
+	  width: 0;
+	  height: 2px;
+	  background-color: #f0f0f0;
+
+	  will-change: width, opacity;
+	  animation: line-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+
+	  position: absolute;
+	  top: 50%;
+	  left: 0;
+	  margin-top: -1px;
+  }
+
+  @element content {
+  	height: calc(100vh - 40px);
+  	padding: 3rem;
+  	position: relative;
+  	margin: auto;
+  	overflow: auto;
+  	animation: fade 0.5s ease-out 1.3s both;
+  }
+
+  @element close {
+  	width: 3.2rem;
+  	height: 3.2rem;
+  	text-indent: -9999px;
+
+  	position: fixed;
+  	top: 20px;
+  	right: 20px;
+
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	background-size: contain;
+  	background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+  }
+
+  @element speaker-info {
+  	display: flex;
+  	flex-wrap: wrap;
+
+  	h3 {
+  		margin-bottom: 1rem;
+  	}
+  	img {
+  		margin-left: 0;
+  	}
+  }
+
+  @element speaker-name {
+  	align-self: center;
+  	margin-left: 1rem;
+  	flex-basis: 50%;
+  }
+
+  @element bio {
+  	flex-basis: 100%;
+  }
+
+  @element talk-info {
+  	:--heading {
+  		font-weight: bold;
+  	}
+  }
+
+  @element divider {
+  	text-align: center;
+  	margin: 1rem;
+  	color: var(--color-blue);
+  	> i {
+  		padding: 0.5rem;
+  	}
+  }
+}
+
+
 /* TODO: Add me */
 .preload-cursors {
 	clip: rect(0 0 0 0);
@@ -869,4 +988,48 @@ a:not(.Button) {
 	u {
 		cursor: url(/images/cursor-pointer-clicked.png), pointer;
 	}
+}
+
+
+#speaker-details:target {
+  display: flex;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes line-animation {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+
+  99% {
+    width: 100%;
+    opacity: 1;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes open-animation {
+  0% {
+    height: 0;
+    top: 50%;
+  }
+
+  100% {
+    height: 100vh;
+    top: 0;
+  }
 }
