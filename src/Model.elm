@@ -1,4 +1,4 @@
-module Model exposing (Model, isModalOpen)
+module Model exposing (Model, modalIsOpen)
 
 import Browser.Dom
 import Browser.Navigation as Nav
@@ -17,8 +17,8 @@ type alias Model =
     }
 
 
-isModalOpen : Model -> Bool
-isModalOpen model =
+modalIsOpen : Model -> Bool
+modalIsOpen model =
     case model.speakerModal of
         Just _ ->
             True

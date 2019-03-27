@@ -32,7 +32,7 @@ render model =
     in
     Dom.element "section"
         |> Dom.addClass "SpeakerOverlay popup"
-        |> Dom.addClassConditional "u-hidden" (not <| Model.isModalOpen <| model)
+        |> Dom.addClassConditional "u-hidden" (not <| Model.modalIsOpen <| model)
         --|> Dom.setId "speaker-details"
         |> Dom.setId "popup-article"
         |> Dom.appendChild
