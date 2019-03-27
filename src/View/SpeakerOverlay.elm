@@ -35,13 +35,13 @@ addContent speakerModal =
         Just speaker ->
             Dom.appendChildList
                 [ close
-                , speaekerInfo speaker
+                , speakerInfo speaker
                 , divider
                 , talkInfo speaker
                 ]
 
 
-speaekerInfo speaker =
+speakerInfo speaker =
     Dom.element "section"
         |> Dom.addClass "SpeakerOverlay__speaker-info"
         |> Dom.appendChildList
