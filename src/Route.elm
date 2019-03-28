@@ -25,7 +25,7 @@ toString route =
         Home sectionId speakerNameQuery ->
             case ( speakerNameQuery, sectionId ) of
                 ( Just query, _ ) ->
-                    Url.Builder.relative [] [ Url.Builder.string "speaker" (Debug.log "QUERY" query) ]
+                    Url.Builder.relative [] [ Url.Builder.string "speaker" query ]
 
                 ( Nothing, Just section ) ->
                     Url.Builder.custom Relative [] [] sectionId
