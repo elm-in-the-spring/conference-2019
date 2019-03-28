@@ -30,6 +30,8 @@ heading =
         |> Dom.appendChild
             (Dom.element "h2"
                 |> Dom.appendText "Details"
+                |> Dom.setId "details-heading"
+                |> Dom.addAttribute (Attr.tabindex -1)
             )
 
 

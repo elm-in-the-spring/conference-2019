@@ -37,35 +37,6 @@ img {
 	height: auto;
 }
 
-/* Links */
-
-a:not(.Button) {
-	color: #ff2a9d;
-	transition: 0.2s all;
-	position: relative;
-	&:before {
-		content: "";
-		height: 6px;
-		width: 100%;
-		position: absolute;
-		bottom: 4px;
-		right: 0px;
-		transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-	}
-	&:hover {
-		color: var(--color-fuchsia);
-		&:before {
-			content: "";
-			height: calc(1em + 6px);
-			width: 100%;
-			position: absolute;
-			bottom: 0px;
-			right: 0px;
-		}
-	}
-}
-
-
 
 /* CLASS UTILS */
 
@@ -144,6 +115,32 @@ $font-custom: Biko, system-ui;
 
 	&:active {
 		cursor: url(/images/cursor-pointer-clicked.png), pointer !important;
+	}
+}
+
+@define-mixin pink-link {
+	color: #ff2a9d;
+	transition: 0.2s all;
+	position: relative;
+	&:before {
+		content: "";
+		height: 6px;
+		width: 100%;
+		position: absolute;
+		bottom: 4px;
+		right: 0px;
+		transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	}
+	&:hover, &:focus {
+		color: var(--color-fuchsia);
+		&:before {
+			content: "";
+			height: calc(1em + 6px);
+			width: 100%;
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
 	}
 }
 
@@ -472,6 +469,18 @@ input {
 			border-top: none;
 		}
 	}
+
+	@modifier details {
+		a:not(.Button) {
+			@mixin pink-link;
+		}
+	}
+
+	@modifier sponsors {
+		a {
+			@mixin pink-link;
+		}
+	}
 }
 
 @component Speaker {
@@ -488,14 +497,6 @@ input {
 		margin-left: 12px @600 0;
 	}
 
-/* 	@element listing-text {
-		margin-top: 1.5rem @600 0;
-		margin-left: 0 @600 2rem;
-		display: block @600 flex;
-		flex-wrap: wrap;
-		align-content: center;
-	}
- */
 	@element name {
 		font-size: 1.875rem @600 2.3rem;
 		font-weight: bold;
@@ -516,6 +517,7 @@ input {
 
 	@element social-link {
 		margin: 0.5rem;
+		@mixin pink-link;
 
 		&:first-child {
 			margin-left: 0;
@@ -528,7 +530,7 @@ input {
 		flex-basis: 100%;
 		color: var(--color-aqua) !important;
 
-		&:hover {
+		&:hover, &:focus {
 			color: var(--color-blue) !important;
 		}
 		h2, h3 {
@@ -611,7 +613,7 @@ input {
 		transition-timing-function: cubic-bezier(0.64, 0, 0.35, 1);
 	}
 
-	&:hover {
+	&:hover, &:focus {
 		&::before {
 			transform: translateZ(0);
 		}
@@ -654,6 +656,7 @@ input {
 @component Footer {
 	padding: 2rem;
 	background: white;
+
 
 	@element content {
 		display: flex;
@@ -841,7 +844,7 @@ input {
 		color: var(--color-navy);
 		font-weight: 700;
 
-		&:hover {
+		&:hover, &:focus {
 			background-color: #e68c00;
 		}
 		&:active {
@@ -861,7 +864,7 @@ input {
 			filter: saturate(1) brightness(137%);
 		}
 
-		&:hover {
+		&:hover, &:focus {
 			&:before {
 				background-color: initial;
 			}

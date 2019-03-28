@@ -22,6 +22,6 @@ link location =
         |> Dom.addClass "Header__link"
         |> Dom.appendChild
             (Dom.element "a"
-                |> Dom.addAttribute (href ("/#" ++ String.toLower location))
+                |> Dom.addAttribute (href ("/#" ++ String.toLower location ++ "-heading"))
                 |> Dom.appendText location
             )

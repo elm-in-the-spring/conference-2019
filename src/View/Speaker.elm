@@ -67,7 +67,7 @@ socialLink social =
     Dom.element "div"
         |> Dom.appendChild
             (Dom.element "a"
-                |> Dom.addClass "Speaker__social-link u-noUnderline"
+                |> Dom.addClass "Button Speaker__social-link u-noUnderline"
                 |> Dom.addAttributeList
                     [ title linkTitle
                     , attribute "aria-label" linkTitle

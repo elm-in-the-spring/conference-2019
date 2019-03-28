@@ -5,6 +5,7 @@ import Browser.Dom
 import Browser.Navigation as Nav
 import ContactForm
 import Http
+import Maybe.Extra as Maybe
 import Model exposing (Model)
 import Route exposing (Route(..))
 import Speaker exposing (Speaker)
@@ -39,8 +40,11 @@ update msg model =
 
         OnUrlChange url ->
             ( { model | route = Route.fromUrl url }
-            , Browser.Dom.getElement (Maybe.withDefault "" url.fragment)
-                |> Task.attempt JumpTo
+            , [ Browser.Dom.getElement >> Task.attempt JumpTo
+              , Browser.Dom.focus >> Task.attempt (\_ -> NoOp)
+              ]
+                |> List.map (ifFragment url.fragment)
+                |> Cmd.batch
             )
                 |> setOverflowForModalState
 
@@ -78,6 +82,10 @@ update msg model =
 
         CloseSpeakerOverlay ->
             ( { model | speakerModal = Nothing }, Cmd.none )
+
+
+ifFragment maybeFragment applyFunction =
+    Maybe.unwrap Cmd.none applyFunction maybeFragment
 
 
 {-| Can't figure out how to access the body element from within elm and need to set overflow for the modal to

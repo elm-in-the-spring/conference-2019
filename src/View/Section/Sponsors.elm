@@ -24,6 +24,8 @@ heading =
         |> Dom.appendChild
             (Dom.element "h2"
                 |> Dom.appendText "Sponsors"
+                |> Dom.setId "sponsors-heading"
+                |> Dom.addAttribute (Attr.tabindex -1)
             )
 
 
