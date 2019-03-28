@@ -411,7 +411,8 @@ input {
 		mix-blend-mode: color-burn;
 		.android & {
 			mix-blend-mode: normal;
-			background-color:var(--color-green);
+			background-color: #BE418D;
+			color: var(--color-navy);
 		}
 		h2 {
 			font-size: 3.5rem @600 6rem;
@@ -738,6 +739,9 @@ input {
 		h1  {
 			margin: 0;
 			color: #00d0d3;
+			.android & {
+				color: var(--color-navy);
+			}
 			font-size: responsive 3.3rem 7rem;
 			padding: 4rem 0;
 		}
@@ -749,10 +753,11 @@ input {
 		width: 100%;
 		background-color: white;
 	  top: -9vh @770 -5vh;
-	  line-height: 5rem @770 6rem;
+	  line-height: 2.5rem @770 3rem;
 	  position: relative;
 	  color: var(--color-navy);
 	  font-size: responsive 1.5rem 2rem;
+	  padding: 2rem 1rem;
 	}
 
 	@element tiers {
