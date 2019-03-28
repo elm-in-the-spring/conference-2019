@@ -78,7 +78,7 @@ tiers =
 blurb =
     Dom.element "p"
         |> Dom.addClass "Sponsorship__blurb"
-        |> Dom.appendText "Help us do this!"
+        |> Dom.appendText "Interested in supporting the community? Sponsor Elm in the Spring!"
 
 
 tierSection tierData =
