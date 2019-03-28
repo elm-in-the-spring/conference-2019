@@ -17,7 +17,7 @@ import View exposing (view)
 ---- PROGRAM ----
 
 
-main : Program () Model Msg
+main : Program { platform : String } Model Msg
 main =
     Browser.application
         { init = init
@@ -29,7 +29,7 @@ main =
         }
 
 
-init : a -> Url -> Nav.Key -> ( Model, Cmd Msg )
+init : { platform : String } -> Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
     ( { contactForm = ContactForm.init
       , key = key
@@ -37,6 +37,7 @@ init flags url key =
       , speakers = []
       , speakerModal = Nothing
       , savedViewport = Nothing
+      , platform = flags.platform
       }
     , loadSpeakers
     )

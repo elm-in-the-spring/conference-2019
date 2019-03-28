@@ -46,7 +46,6 @@ update msg model =
                 |> List.map (ifFragment url.fragment)
                 |> Cmd.batch
             )
-                |> setOverflowForModalState
 
         OnUrlRequest urlRequest ->
             case urlRequest of

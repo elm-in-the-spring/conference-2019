@@ -409,8 +409,12 @@ input {
 		font-weight: 900;
 		background-color: #5133ea;
 		mix-blend-mode: color-burn;
+		.android & {
+			mix-blend-mode: normal;
+			background-color:var(--color-green);
+		}
 		h2 {
-			font-size: 2.5rem @600 6rem;
+			font-size: 3.5rem @600 6rem;
 			margin: 0;
 			line-height: 1;
 		}
@@ -429,6 +433,9 @@ input {
 		font-weight: 300;
 		color: var(--color-aqua);
 		background: var(--color-navy);
+		.ios & {
+			background: #000423;
+		}
 		padding: 3rem 2rem 3rem;
 	}
 
@@ -499,6 +506,9 @@ input {
 
 	@element name {
 		font-size: 1.875rem @600 2.3rem;
+		.ios & {
+			font-size: 1.5rem @600 2.3rem;
+		}
 		font-weight: bold;
 		color: var(--color-orange);
 		@util margin(0 null);
@@ -925,7 +935,11 @@ input {
   	opacity: 0;
   	will-change: opacity;
   	overflow: auto;
-  	animation: fade 0.5s ease-out 1.3s both;
+		animation: fade 0.5s ease-out 1.3s both;
+
+  	.ios & {
+  		animation: fade-ios 2.0s ease-out 3.3s both;
+  	}
   }
 
   @element close {
@@ -1002,6 +1016,20 @@ input {
   display: flex;
 }
 
+@keyframes fade-ios {
+  0% {
+    opacity: 0;
+  }
+
+  80% {
+  	opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -1011,6 +1039,7 @@ input {
     opacity: 1;
   }
 }
+
 
 @keyframes line-animation {
   0% {
@@ -1039,4 +1068,9 @@ input {
     height: 100vh;
     top: 0;
   }
+}
+
+.no-scroll {
+   position: fixed;
+   width: 100%;
 }

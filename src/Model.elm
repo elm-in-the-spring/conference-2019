@@ -14,6 +14,7 @@ type alias Model =
     , speakers : List Speaker
     , speakerModal : Maybe Speaker
     , savedViewport : Maybe Browser.Dom.Viewport
+    , platform : String
     }
 
 

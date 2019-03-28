@@ -20,7 +20,7 @@ view model =
     let
         pageContent mainClass content =
             Dom.element "main"
-                |> Dom.addClass mainClass
+                |> Dom.addClassList [ model.platform, mainClass ]
                 |> Dom.appendChildList content
                 |> Dom.render
                 |> List.singleton
