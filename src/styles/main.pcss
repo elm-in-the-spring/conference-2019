@@ -169,6 +169,8 @@ body {
 	font-family: $font-base;
 
 	@mixin fill-pattern-green-leaf;
+	background-color: #9f2893;
+	transition: background-color 0.9s ease;
 }
 
 
@@ -191,9 +193,19 @@ body {
 
 
 ::selection {
-	background-color: var(--color-navy);
+	background-color: #e2319d !important;
+	color: white;
 	.Section__content & {
-		background-color: var(--color-teal);
+		background-color: #ff2a9d !important;
+	}
+	color: white;
+}
+
+::-webkit-selection {
+	background-color: #e2319d !important;
+	color: white;
+	.Section__content & {
+		background-color: #ff2a9d !important;
 	}
 	color: white;
 }
@@ -283,9 +295,6 @@ input {
 	background: white;
 	width: 100%;
 
-	@media (min-width: 770px) {
-		padding-top: 40px;
-	}
 
 	@element Content {
 		font-size: responsive 150px 450px @(max-height: 500px) responsive 100px 300px;
@@ -360,6 +369,14 @@ input {
 			&:first-child {
 				padding-left: 0;
 			}
+
+			&:nth-child(2) {
+				color: #fd2768;
+				font-size: responsive 3.2rem 5.2rem;
+				position: relative;
+				bottom: 0.8rem;
+			}
+
 			&:last-child {
 				padding-right: 0;
 				font-weight: 900;
@@ -407,7 +424,7 @@ input {
 		text-transform: uppercase;
 		padding: 1.2rem 0 1rem @600 2rem;
 		font-weight: 900;
-		background-color: #5133ea;
+		background-color: #682dd6;
 		mix-blend-mode: color-burn;
 		.android & {
 			mix-blend-mode: normal;
@@ -433,7 +450,7 @@ input {
 	@element content {
 		font-weight: 300;
 		color: var(--color-aqua);
-		background: var(--color-navy);
+		background: #000D2D;
 		.ios & {
 			background: #000423;
 		}
@@ -726,6 +743,7 @@ input {
 		display: flex;
 		flex-wrap: wrap;
 		min-height: 45vh;
+		background-color: #1fd461;
 
 	}
 
@@ -795,6 +813,9 @@ input {
 		align-self: center @720 initial;
 		margin-top: 0 @720 0.5rem;
 		margin-left: 2rem;
+		.ios & {
+			margin-left: 1rem;
+		}
 	}
 
 	@element tier-name  {

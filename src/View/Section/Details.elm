@@ -116,14 +116,12 @@ p4 =
 
 
 contactForm contactFormModel =
-    let
-        formHtmlNode =
-            ContactForm.view contactFormModel
+    Dom.element "div"
+        |> Dom.appendNode
+            (ContactForm.view contactFormModel
                 |> Dom.render
                 |> Html.map ContactFormMsg
-    in
-    Dom.element "div"
-        |> Dom.appendNode formHtmlNode
+            )
 
 
 p5 =

@@ -1,0 +1,16 @@
+<svg viewBox="0 0 658 658" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-1626.000000, -69.000000)">
+            <g id="Group-4" transform="translate(1626.000000, 69.000000)">
+                <rect id="Rectangle" fill="none" stroke="none" x="0" y="0" width="658" height="658"></rect>
+                <polygon id="small-triangle-middle" stroke="#9F2893" stroke-width="7" fill="#9F2893" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" transform="translate(178.612903, 205.953465) rotate(90.000000) translate(-178.612903, -205.953465) " points="178.61347 245.638949 257.862706 166.267981 99.3631004 166.267981"></polygon>
+                <polygon id="parallelogram" stroke="#051C3B" stroke-width="7" fill="#051C3B" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" points="241 124.821767 320 205.042881 320 379.419558 241 299.197304"></polygon>
+                <polygon id="square" stroke="#9F2893" stroke-width="7" fill="#9F2893" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" points="333.699045 12 421 99.1632563 333.300955 186.723975 246 99.5607184"></polygon>
+                <polygon id="medium-triangle-top-right" stroke="#051C3B" stroke-width="7" fill="#051C3B" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" transform="translate(422.500000, 298.048107) rotate(-90.000000) translate(-422.500000, -298.048107) " points="503.871451 379.548107 503.871451 216.548107 341.128549 216.548107"></polygon>
+                <polygon id="large-triangle-left" stroke="#051C3B" stroke-width="7" fill="#051C3B" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" transform="translate(257.889176, 458.301522) rotate(-45.000000) translate(-257.889176, -458.301522) " points="345.614982 458.434293 170.16337 282.983828 170.431208 633.619215"></polygon>
+                <polygon id="small-triangle-right" stroke="#9F2893" stroke-width="7" fill="#9F2893" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" transform="translate(431.346774, 155.900958) rotate(90.000000) translate(-431.346774, -155.900958) " points="391.721873 155.900388 470.971676 233.183216 470.971676 78.6186997"></polygon>
+                <polygon id="large-triangle-bottom" stroke="#051C3B" stroke-width="7" fill="#051C3B" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round" transform="translate(402.198970, 458.300957) rotate(-45.000000) translate(-402.198970, -458.300957) " points="402.064484 370.575948 228.968392 545.761317 575.429548 546.025967"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

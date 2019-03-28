@@ -1,5 +1,5 @@
 <svg viewBox="0 0 124 152" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g stroke="none" stroke-width="1" fill="#001E3F" fill-rule="evenodd">
+    <g stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
         <polygon transform="translate(26.000000, 46.500000) rotate(-270.000000) translate(-26.000000, -46.500000) " points="26.000136 56 45 37 7 37"></polygon>
         <polygon points="41 27 60 46.2204651 60 88 41 68.7792618"></polygon>
         <polygon points="63.0477708 0 84 20.9522292 62.9522292 42 42 21.0477708"></polygon>

@@ -11,6 +11,8 @@ const PLATFORMS = {
 	MOBILE: /Mobile/
 }
 
+const COLORS = ["#051c3b","#0038bb","#2a74d3", "#66c8c9","#f5b941","#9f2893"];
+
 const parseUserAgent = (userAgent) => {
 	if (PLATFORMS.FIREFOX.test(userAgent)) {
 		return "firefox";
@@ -31,6 +33,8 @@ const app = Elm.Main.init({
   	platform: parseUserAgent(window.navigator.userAgent)
   }
 });
+
+bgColorCycle(COLORS);
 
 app.ports.hideOverflow.subscribe(() => {
 	lockBodyScroll(true);
@@ -57,6 +61,15 @@ function lockBodyScroll(lock) {
     tag.style.top = '0px';
     elem.scrollTop = - top;
   }
+}
+
+
+function bgColorCycle(colors) {
+	setInterval(() => {
+		const index = Math.floor(Math.random() * Math.floor(colors.length));
+		document.body.style.backgroundColor = colors[index];
+	}, 10000)
+
 }
 
 registerServiceWorker();
