@@ -454,7 +454,7 @@ input {
 		.ios & {
 			background: #000423;
 		}
-		padding: 3rem 2rem 3rem;
+		padding: 3rem 2rem @900 3rem 8rem;
 	}
 
 	@element paragraph {
@@ -484,7 +484,7 @@ input {
 	}
 
 	@element speaker-listing {
-		display: block @600 flex;
+		/* display: block @600 flex; */
 		margin-bottom: 1rem @600 calc(2rem + 12px);
 		padding-top: calc(1rem + 12px) @600 2rem;
 		padding-left: 0 @600 12px;
@@ -509,23 +509,44 @@ input {
 }
 
 @component Speaker {
+	@element listing-info {
+		@media (min-width: 600px) {
+		display: grid;
+		grid-template-areas: "SL-Headshot SL-Info" "SL-Headshot SL-Titles" "SL-Headshot .";
+		grid-template-columns: max-content auto;
+		column-gap: 2rem;
+		grid-template-rows: auto auto auto;
+		}
+		@media (min-width: 720px) {
+		}
+	}
+
+	@element headshot-container {
+		grid-area: SL-Headshot;
+		text-align: center @600 initial;
+		border: 3px dotted var(--color-blue) @600 initial;
+		padding: 100px 15px 80px 40px @600 initial;
+	}
+
 	@element headshot {
 		border: 10px solid var(--color-teal);
 		border-width: 8px @600 10px;
-		height: 8rem @600 12rem;
-		width: 8rem @600 12rem;
+		height: 12rem @600 12rem @770 16rem;
+		width: 12rem @600 12rem @770 16rem;
 
 		@modifier shadow {
-			box-shadow: -12px 12px var(--color-orange);
+			box-shadow: -22px 22px var(--color-orange) @600 -12px 12px var(--color-orange);
 		}
 
 		margin-left: 12px @600 0;
 	}
 
 	@element name {
-		font-size: 1.875rem @600 2.3rem;
+		font-size: responsive 1.875rem 3.0rem;
+		/* font-size: 1.875rem @600 3.0rem; */
 		.ios & {
-			font-size: 1.5rem @600 2.3rem;
+			/* font-size: 1.5rem @600 2.5rem @800 3.0rem; */
+			font-size: responsive 1.5rem 3.0rem;
 		}
 		font-weight: bold;
 		color: var(--color-orange);
@@ -536,7 +557,7 @@ input {
 		font-size: 1.3rem @600 1.5rem;
 		line-height: 1 @600 1.5;
 		margin-left: 0 @600 0.5rem;
-		margin-top: 0.7rem @600 0;
+		/* margin-top: 0.7rem @600 0; */
 		text-decoration: none;
 		display: flex;
 		justify-content: flex-start;
@@ -553,10 +574,13 @@ input {
 	}
 
 	@element talk-titles {
-		margin-top: 1rem;
+		text-decoration: none;
 		font-weight: normal;
-		flex-basis: 100%;
+		margin-left: 2rem @600 initial;
+		margin-bottom: 2rem @600 initial;
+		display: block;
 		color: var(--color-aqua) !important;
+		grid-area: SL-Titles;
 
 		&:hover, &:focus {
 			color: var(--color-blue) !important;
@@ -578,22 +602,11 @@ input {
 		@util margin(0 null);
 	}
 
-	@element listing-info {
-		display: flex;
-		flex-wrap: wrap;
-
-		h3 {
-			margin-bottom: 0.5rem;
-		}
-		img {
-			margin-left: 0;
-		}
-	}
 
 	@element listing-name {
-		align-self: center;
-		margin-left: 1rem;
-		flex-basis: 50%;
+		margin-top: 2.5rem;
+		margin-left: 2rem @600 initial;
+		grid-area: SL-Info;
 	}
 
 	@element bio {
@@ -997,8 +1010,8 @@ input {
 
   @element speaker-name {
   	align-self: center;
+  	margin-top: 2rem;
   	margin-left: 1rem;
-  	flex-basis: 50%;
   }
 
   @element bio {

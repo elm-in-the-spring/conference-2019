@@ -63,6 +63,7 @@ linkToModal speaker =
 
 headshot speaker =
     linkToModal speaker
+        |> Dom.addClass "Speaker__headshot-container"
         |> Dom.appendChild
             (SpeakerView.headshot speaker
                 |> Dom.addClass "Speaker__headshot--shadow"
