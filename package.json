@@ -22,7 +22,6 @@
     "build": "elm-app build"
   },
   "devDependencies": {
-    "add": "^2.0.6",
     "autoprefixer": "^9.4.9",
     "create-elm-app": "^3.0.6",
     "css-loader": "^2.1.0",
