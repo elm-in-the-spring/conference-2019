@@ -35,12 +35,7 @@ module.exports = {
 							: "static/css/[name].[contenthash:8].chunk.css"
 					}),
 				new PurgecssPlugin({
-					paths: glob.sync(`${__dirname}/src/**/*`, { nodir: true }),
-					extractors: [
-						{
-							extensions: ["html", "js", "elm"]
-						}
-					]
+					paths: glob.sync(`${__dirname}/src/**/*`, { nodir: true })
 				})
 			].filter(Boolean)
 		};
