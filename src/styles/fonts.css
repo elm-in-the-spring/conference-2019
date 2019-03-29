@@ -17,15 +17,14 @@
 
 @font-face {
   font-family: "elm-in-the-spring";
-  src:url("/fonts/elm-in-the-spring.eot");
-  src:url("/fonts/elm-in-the-spring.eot?#iefix") format("embedded-opentype"),
+  src: url("/fonts/elm-in-the-spring.eot");
+  src: url("/fonts/elm-in-the-spring.eot?#iefix") format("embedded-opentype"),
     url("/fonts/elm-in-the-spring.woff") format("woff"),
     url("/fonts/elm-in-the-spring.ttf") format("truetype"),
     url("/fonts/elm-in-the-spring.svg#elm-in-the-spring") format("svg");
   font-weight: normal;
   font-style: normal;
 }
-
 
 [class^="eits-"]:before,
 [class*=" eits-"]:before {

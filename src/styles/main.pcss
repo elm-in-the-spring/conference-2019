@@ -7,8 +7,6 @@
 @import "webcolors/mrmrs";
 @import "./../../node_modules/sanitize.css";
 @import "./fonts.css";
-@import "./config.css";
-
 
 :root {
 	--color-fuchsia: #a10062;
@@ -36,7 +34,6 @@ img {
 	max-width: 100%;
 	height: auto;
 }
-
 
 /* CLASS UTILS */
 
@@ -66,7 +63,6 @@ img {
 @utility fontMono {
 	font-family: "Courier New", Courier, monospace;
 }
-
 
 /* CONFIG */
 
@@ -131,7 +127,8 @@ $font-custom: Biko, system-ui;
 		right: 0px;
 		transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	}
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		color: var(--color-fuchsia);
 		&:before {
 			content: "";
@@ -147,7 +144,6 @@ $font-custom: Biko, system-ui;
 /* TODO: gather colors to vars */
 @mixin create-button on-light, var(--color-navy), #ce2f90, var(--color-navy);
 @mixin create-button on-dark, var(--color-navy), var(--color-aqua), var(--color-blue);
-
 
 /* BASE */
 
@@ -173,7 +169,6 @@ body {
 	transition: background-color 0.9s ease;
 }
 
-
 :--heading {
 	margin-bottom: 0.7em;
 	margin-top: 0.5em;
@@ -190,7 +185,6 @@ body {
 		cursor: url(/images/cursor-pointer-clicked.png), pointer;
 	}
 }
-
 
 ::selection {
 	background-color: #e2319d !important;
@@ -294,7 +288,6 @@ input {
 	font-family: elm-in-the-spring;
 	background: white;
 	width: 100%;
-
 
 	@element Content {
 		font-size: responsive 150px 450px @(max-height: 500px) responsive 100px 300px;
@@ -428,7 +421,7 @@ input {
 		mix-blend-mode: color-burn;
 		.android & {
 			mix-blend-mode: normal;
-			background-color: #BE418D;
+			background-color: #be418d;
 			color: var(--color-navy);
 		}
 		h2 {
@@ -450,7 +443,7 @@ input {
 	@element content {
 		font-weight: 300;
 		color: var(--color-aqua);
-		background: #000D2D;
+		background: #000d2d;
 		.ios & {
 			background: #000423;
 		}
@@ -511,11 +504,11 @@ input {
 @component Speaker {
 	@element listing-info {
 		@media (min-width: 600px) {
-		display: grid;
-		grid-template-areas: "SL-Headshot SL-Info" "SL-Headshot SL-Titles" "SL-Headshot .";
-		grid-template-columns: max-content auto;
-		column-gap: 2rem;
-		grid-template-rows: auto auto auto;
+			display: grid;
+			grid-template-areas: "SL-Headshot SL-Info" "SL-Headshot SL-Titles" "SL-Headshot .";
+			grid-template-columns: max-content auto;
+			column-gap: 2rem;
+			grid-template-rows: auto auto auto;
 		}
 		@media (min-width: 720px) {
 		}
@@ -542,11 +535,11 @@ input {
 	}
 
 	@element name {
-		font-size: responsive 1.875rem 3.0rem;
+		font-size: responsive 1.875rem 3rem;
 		/* font-size: 1.875rem @600 3.0rem; */
 		.ios & {
 			/* font-size: 1.5rem @600 2.5rem @800 3.0rem; */
-			font-size: responsive 1.5rem 3.0rem;
+			font-size: responsive 1.5rem 3rem;
 		}
 		font-weight: bold;
 		color: var(--color-orange);
@@ -582,10 +575,12 @@ input {
 		color: var(--color-aqua) !important;
 		grid-area: SL-Titles;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			color: var(--color-blue) !important;
 		}
-		h2, h3 {
+		h2,
+		h3 {
 			@mixin clickable;
 		}
 		> div {
@@ -602,7 +597,6 @@ input {
 		@util margin(0 null);
 	}
 
-
 	@element listing-name {
 		margin-top: 2.5rem;
 		margin-left: 2rem @600 initial;
@@ -613,7 +607,6 @@ input {
 		flex-basis: 100%;
 	}
 }
-
 
 @component ButtonContainer {
 	display: flex;
@@ -654,7 +647,8 @@ input {
 		transition-timing-function: cubic-bezier(0.64, 0, 0.35, 1);
 	}
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		&::before {
 			transform: translateZ(0);
 		}
@@ -691,13 +685,11 @@ input {
 	}
 }
 
-
 /* FOOTER */
 
 @component Footer {
 	padding: 2rem;
 	background: white;
-
 
 	@element content {
 		display: flex;
@@ -742,12 +734,9 @@ input {
 	}
 }
 
-
 /*****************************************************
  * Sponsorship Page
  ****************************************************/
-
-
 
 @component Sponsorship {
 	line-height: 1;
@@ -757,7 +746,6 @@ input {
 		flex-wrap: wrap;
 		min-height: 45vh;
 		background-color: #1fd461;
-
 	}
 
 	@element heading {
@@ -767,7 +755,7 @@ input {
 		flex-basis: 100%;
 		background-color: white;
 		mix-blend-mode: difference;
-		h1  {
+		h1 {
 			margin: 0;
 			color: #00d0d3;
 			.android & {
@@ -783,12 +771,12 @@ input {
 		text-align: center;
 		width: 100%;
 		background-color: white;
-	  top: -9vh @770 -5vh;
-	  line-height: 2.5rem @770 3rem;
-	  position: relative;
-	  color: var(--color-navy);
-	  font-size: responsive 1.5rem 2rem;
-	  padding: 2rem 1rem;
+		top: -9vh @770 -5vh;
+		line-height: 2.5rem @770 3rem;
+		position: relative;
+		color: var(--color-navy);
+		font-size: responsive 1.5rem 2rem;
+		padding: 2rem 1rem;
 	}
 
 	@element tiers {
@@ -801,23 +789,23 @@ input {
 
 	@element tier {
 		display: grid;
-	  grid-template-columns: min-content auto;
-	  grid-template-rows: auto auto;
-	  grid-template-areas: "SponsorshipTier-Graphic SponsorshipTier-Title" "SponsorshipTier-Perks SponsorshipTier-Perks";
+		grid-template-columns: min-content auto;
+		grid-template-rows: auto auto;
+		grid-template-areas: "SponsorshipTier-Graphic SponsorshipTier-Title" "SponsorshipTier-Perks SponsorshipTier-Perks";
 
-	  @media (min-width: 720px) {
-	  	grid-template-areas: "SponsorshipTier-Graphic SponsorshipTier-Title" "SponsorshipTier-Graphic SponsorshipTier-Perks";
-	  }
+		@media (min-width: 720px) {
+			grid-template-areas: "SponsorshipTier-Graphic SponsorshipTier-Title" "SponsorshipTier-Graphic SponsorshipTier-Perks";
+		}
 
-	  margin-bottom: 4rem;
-    grid-auto-columns: minmax(100px, auto);
+		margin-bottom: 4rem;
+		grid-auto-columns: minmax(100px, auto);
 
-	  &:first-of-type {
-	  	margin-top: 3rem;
-	  }
-	  &:last-of-type {
-	  	margin-bottom: 0 @720 3rem;
-	  }
+		&:first-of-type {
+			margin-top: 3rem;
+		}
+		&:last-of-type {
+			margin-bottom: 0 @720 3rem;
+		}
 	}
 
 	@element tier-title {
@@ -831,10 +819,10 @@ input {
 		}
 	}
 
-	@element tier-name  {
+	@element tier-name {
 		font-weight: normal;
-	  display: inline-block;
-	  padding-bottom: 0.5rem;
+		display: inline-block;
+		padding-bottom: 0.5rem;
 		color: var(--color-orange);
 	}
 
@@ -860,9 +848,9 @@ input {
 		line-height: 1.8rem;
 		&::before {
 			font-size: 0.9rem;
-		  color: var(--color-green);
-		  margin-left: -1.3rem;
-		  margin-right: 0.5rem;
+			color: var(--color-green);
+			margin-left: -1.3rem;
+			margin-right: 0.5rem;
 		}
 	}
 
@@ -870,14 +858,12 @@ input {
 		position: absolute !important;
 		display: block;
 		height: 30px @600 50px;
-		width:  30px @600 50px;
+		width: 30px @600 50px;
 		margin-top: 0.8rem;
 		margin-left: 0.8rem;
 		z-index: 10;
 	}
 }
-
-
 
 @component ContactForm {
 	display: flex;
@@ -898,7 +884,8 @@ input {
 		color: var(--color-navy);
 		font-weight: 700;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			background-color: #e68c00;
 		}
 		&:active {
@@ -918,7 +905,8 @@ input {
 			filter: saturate(1) brightness(137%);
 		}
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			&:before {
 				background-color: initial;
 			}
@@ -930,110 +918,108 @@ input {
 	}
 }
 
-
 @component SpeakerOverlay {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 100;
-  color: var(--color-navy);
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	color: var(--color-navy);
 
-  &::before {
-  	content: "";
-  	width: 100%;
-  	background-color: #fff;
-  	position: fixed;
-  	left: 0;
-  	top: 50%;
-  	will-change: height, top;
-  	animation: open-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) 0.65s both;
-  }
+	&::before {
+		content: "";
+		width: 100%;
+		background-color: #fff;
+		position: fixed;
+		left: 0;
+		top: 50%;
+		will-change: height, top;
+		animation: open-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) 0.65s both;
+	}
 
-  &::after {
-  	content: "";
-	  width: 0;
-	  height: 2px;
-	  background-color: #f0f0f0;
+	&::after {
+		content: "";
+		width: 0;
+		height: 2px;
+		background-color: #f0f0f0;
 
-	  will-change: width, opacity;
-	  animation: line-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+		will-change: width, opacity;
+		animation: line-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
 
-	  position: absolute;
-	  top: 50%;
-	  left: 0;
-	  margin-top: -1px;
-  }
+		position: absolute;
+		top: 50%;
+		left: 0;
+		margin-top: -1px;
+	}
 
-  @element content {
-  	height: calc(100vh - 40px);
-  	padding: 2rem @600 3rem;
-  	position: relative;
-  	margin: auto;
-  	opacity: 0;
-  	will-change: opacity;
-  	overflow: auto;
+	@element content {
+		height: calc(100vh - 40px);
+		padding: 2rem @600 3rem;
+		position: relative;
+		margin: auto;
+		opacity: 0;
+		will-change: opacity;
+		overflow: auto;
 		animation: fade 0.5s ease-out 1.3s both;
 
-  	.ios & {
-  		animation: fade-ios 2.0s ease-out 3.3s both;
-  	}
-  }
+		.ios & {
+			animation: fade-ios 2s ease-out 3.3s both;
+		}
+	}
 
-  @element close {
-  	width: 3.2rem;
-  	height: 3.2rem;
-  	text-indent: -9999px;
+	@element close {
+		width: 3.2rem;
+		height: 3.2rem;
+		text-indent: -9999px;
 
-  	position: fixed;
-  	top: 20px;
-  	right: 20px;
+		position: fixed;
+		top: 20px;
+		right: 20px;
 
-  	background-repeat: no-repeat;
-  	background-position: center center;
-  	background-size: contain;
-  	background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
-  }
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: contain;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+	}
 
-  @element speaker-info {
-  	display: flex;
-  	flex-wrap: wrap;
+	@element speaker-info {
+		display: flex;
+		flex-wrap: wrap;
 
-  	h3 {
-  		margin-bottom: 1rem;
-  	}
-  	img {
-  		margin-left: 0;
-  	}
-  }
+		h3 {
+			margin-bottom: 1rem;
+		}
+		img {
+			margin-left: 0;
+		}
+	}
 
-  @element speaker-name {
-  	align-self: center;
-  	margin-top: 2rem;
-  	margin-left: 1rem;
-  }
+	@element speaker-name {
+		align-self: center;
+		margin-top: 2rem;
+		margin-left: 1rem;
+	}
 
-  @element bio {
-  	flex-basis: 100%;
-  }
+	@element bio {
+		flex-basis: 100%;
+	}
 
-  @element talk-info {
-  	:--heading {
-  		font-weight: bold;
-  	}
-  }
+	@element talk-info {
+		:--heading {
+			font-weight: bold;
+		}
+	}
 
-  @element divider {
-  	text-align: center;
-  	margin: 1rem;
-  	color: var(--color-blue);
-  	> i {
-  		padding: 0.5rem;
-  	}
-  }
+	@element divider {
+		text-align: center;
+		margin: 1rem;
+		color: var(--color-blue);
+		> i {
+			padding: 0.5rem;
+		}
+	}
 }
-
 
 /* TODO: Add me */
 .preload-cursors {
@@ -1050,66 +1036,64 @@ input {
 	}
 }
 
-
 #speaker-details:target {
-  display: flex;
+	display: flex;
 }
 
 @keyframes fade-ios {
-  0% {
-    opacity: 0;
-  }
+	0% {
+		opacity: 0;
+	}
 
-  80% {
-  	opacity: 0;
-  }
+	80% {
+		opacity: 0;
+	}
 
-  100% {
-    opacity: 1;
-  }
+	100% {
+		opacity: 1;
+	}
 }
 
 @keyframes fade {
-  0% {
-    opacity: 0;
-  }
+	0% {
+		opacity: 0;
+	}
 
-  100% {
-    opacity: 1;
-  }
+	100% {
+		opacity: 1;
+	}
 }
 
-
 @keyframes line-animation {
-  0% {
-    width: 0;
-    opacity: 1;
-  }
+	0% {
+		width: 0;
+		opacity: 1;
+	}
 
-  99% {
-    width: 100%;
-    opacity: 1;
-  }
+	99% {
+		width: 100%;
+		opacity: 1;
+	}
 
-  100% {
-    width: 100%;
-    opacity: 0;
-  }
+	100% {
+		width: 100%;
+		opacity: 0;
+	}
 }
 
 @keyframes open-animation {
-  0% {
-    height: 0;
-    top: 50%;
-  }
+	0% {
+		height: 0;
+		top: 50%;
+	}
 
-  100% {
-    height: 100vh;
-    top: 0;
-  }
+	100% {
+		height: 100vh;
+		top: 0;
+	}
 }
 
 .no-scroll {
-   position: fixed;
-   width: 100%;
+	position: fixed;
+	width: 100%;
 }
