@@ -9,9 +9,17 @@ import Url.Parser as Parser exposing ((</>), (<?>), Parser, fragment, s, top)
 import Url.Parser.Query as Query
 
 
+type alias SectionId =
+    String
+
+
+type alias SpeakerName =
+    String
+
+
 type Route
     = Root
-    | Home (Maybe String) (Maybe String)
+    | Home SectionId SpeakerName
     | Sponsorship
     | NotFound
 
