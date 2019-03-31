@@ -10,24 +10,30 @@ import Url.Parser.Query as Query
 
 
 type alias SectionId =
-    String
+    Maybe String
 
 
 type alias SpeakerName =
-    String
+    Maybe String
 
 
 type Route
     = Root
-    | Home SectionId SpeakerName
-    | Sponsorship
     | NotFound
+    | Home SectionId SpeakerName
+    | Speakers
+    | Schedule
+    | Location
+    | Sponsorship
 
 
 toString : Route -> String
 toString route =
     case route of
         Root ->
+            "/"
+
+        NotFound ->
             "/"
 
         Home sectionId speakerNameQuery ->
@@ -41,17 +47,26 @@ toString route =
                 ( Nothing, Nothing ) ->
                     toString Root
 
+        Speakers ->
+            "/speakers"
+
+        Schedule ->
+            "/schedule"
+
+        Location ->
+            "/location"
+
         Sponsorship ->
             "/sponsorship"
-
-        NotFound ->
-            "/"
 
 
 parser : Parser (Route -> a) a
 parser =
     Parser.oneOf
         [ Parser.map Home (top </> fragment identity <?> Query.string "speaker")
+        , Parser.map Speakers (s "speakers")
+        , Parser.map Schedule (s "schedule")
+        , Parser.map Location (s "location")
         , Parser.map Sponsorship (s "sponsorship")
         ]
 

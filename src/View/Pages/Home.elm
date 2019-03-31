@@ -5,7 +5,6 @@ import Dom
 import Model exposing (Model)
 import Update exposing (Msg)
 import View.Divider as Divider
-import View.Footer as Footer
 import View.Page as Page
 import View.Pages.Home.Details as Details
 import View.Pages.Home.Hero as Hero
@@ -26,7 +25,6 @@ view model =
             , Speakers.render model
             , Sponsors.render model
             , Divider.render
-            , Footer.render model
             , SpeakerOverlay.render model
             ]
     }

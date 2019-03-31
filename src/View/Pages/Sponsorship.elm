@@ -5,7 +5,6 @@ import Dom
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
 import Update exposing (Msg)
-import View.Footer as Footer
 import View.Page as Page
 
 
@@ -25,7 +24,6 @@ view model =
             [ "Sponsorship", model.platform ]
             [ header
             , tiers
-            , Footer.render model
             ]
     }
 
