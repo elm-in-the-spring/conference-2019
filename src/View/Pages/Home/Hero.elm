@@ -1,4 +1,4 @@
-module View.Hero exposing (render)
+module View.Pages.Home.Hero exposing (render)
 
 import Dom
 import Html.Attributes exposing (alt, src)

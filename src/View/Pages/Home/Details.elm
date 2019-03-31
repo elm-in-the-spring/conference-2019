@@ -1,4 +1,4 @@
-module View.Section.Details exposing (render)
+module View.Pages.Home.Details exposing (render)
 
 import ContactForm
 import Dom

@@ -1,9 +1,12 @@
-module View.Sponsorship exposing (view)
+module View.Pages.Sponsorship exposing (view)
 
+import Browser
 import Dom
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
 import Update exposing (Msg)
+import View.Footer as Footer
+import View.Page as Page
 
 
 type alias Tier =
@@ -11,6 +14,19 @@ type alias Tier =
     , cost : String
     , perks : List String
     , imageAssetSrc : String
+    }
+
+
+view : Model -> Browser.Document Msg
+view model =
+    { title = "Elm in the Spring 2019 - Become a Sponsor"
+    , body =
+        Page.view
+            [ "Sponsorship", model.platform ]
+            [ header
+            , tiers
+            , Footer.render model
+            ]
     }
 
 
@@ -32,13 +48,6 @@ levelData =
       , imageAssetSrc = "/images/sponsorship/spring-sapling.svg"
       }
     ]
-
-
-view : Model -> Dom.Element Msg
-view _ =
-    Dom.element "div"
-        |> Dom.appendChildList
-            [ header, tiers ]
 
 
 backNav =

@@ -1,4 +1,4 @@
-module View.Section.Heading exposing (render)
+module View.Pages.Home.Heading exposing (render)
 
 import Dom
 
