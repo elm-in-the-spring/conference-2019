@@ -121,8 +121,8 @@
   },
   {
     "name": "Katie Hughes",
-    "talk_title": "Reacting to Elm",
-    "talk_abstract": "Having written React for 2 years and done 1.5 side projects using Elm, I have suddenly found myself waist deep in a productionalized Elm code base. Wade through these waters with me as I get used to a big elm app and adapt my functional-enough JavaScript mindset to fully embrace that Functional Programming Lifestyle™.",
+    "talk_title": "Where the Elm am I?",
+    "talk_abstract": "Having written React for 2 years and done 1.5 side projects using Elm, I have suddenly found myself waist deep in productionalized Elm. Wade through these waters with me as I learn to build my sense of direction in an unfamiliar project, not to mention one of the biggest Elm code bases.",
     "bio": "Katie recently joined NoRedInk and loves helping teachers while writing Elm. She lives in San Francisco with her cat, Erwin Schrodinger.",
     "headshot": "images/speakers/katie.jpg",
     "social": [
