@@ -24,7 +24,6 @@ view model =
             , Details.render model
             , Speakers.render model
             , Sponsors.render model
-            , Divider.render
             , SpeakerOverlay.render model
             ]
     }
