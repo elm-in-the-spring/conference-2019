@@ -16,6 +16,8 @@
 html {
 	box-sizing: border-box;
 	font-size: 16px;
+	/* TODO: add this so rems mean something */
+	/* font-size: responsive 17px 22px; /* min-size, max-size */
 }
 
 *,
@@ -33,6 +35,10 @@ ul {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+main {
+	min-height: calc(100vh - 60px - 122px - 50px);
 }
 
 /* CLASS UTILS */
@@ -62,6 +68,14 @@ img {
 
 @utility fontMono {
 	font-family: "Courier New", Courier, monospace;
+}
+
+@utility textSmaller {
+	font-size: smaller;
+}
+
+@utility block {
+	display: block;
 }
 
 /* CONFIG */
@@ -158,13 +172,14 @@ $font-custom: Biko, system-ui;
 body {
 	cursor: url(/images/cursor-auto.png), auto;
 	margin: 0;
-	font-size: responsive 17px 22px; /* min-size, max-size */
+	font-size: responsive 18px 22px; /* min-size, max-size */
 	font-range: 600px 1280px; /* viewport widths between which font-size is fluid */
 	line-height: responsive 1.7rem 2.1rem;
 	line-height-range: 600px 1280px;
 	font-family: $font-base;
 
 	@mixin fill-pattern-green-leaf;
+	background-blend-mode: overlay;
 	background-color: #9f2893;
 	transition: background-color 0.9s ease;
 }
@@ -734,18 +749,27 @@ input {
 	}
 }
 
-/*****************************************************
- * Sponsorship Page
- ****************************************************/
+@component Page {
+	a:not(.Button) {
+		color: #ce2f90;
 
-@component Sponsorship {
-	line-height: 1;
+		&:hover {
+			color: #a10062;
+		}
+	}
 
 	@element header {
 		display: flex;
 		flex-wrap: wrap;
-		min-height: 45vh;
-		background-color: #1fd461;
+		color: var(--color-navy);
+
+		nav {
+			width: 100%;
+			a {
+				color: var(--color-navy) !important;
+				font-size: responsive 1.6rem 2rem;
+			}
+		}
 	}
 
 	@element heading {
@@ -753,34 +777,62 @@ input {
 		justify-content: center;
 		height: 100%;
 		flex-basis: 100%;
-		background-color: white;
-		mix-blend-mode: difference;
+		background-color: transparent;
+
 		h1 {
 			margin: 0;
-			color: #00d0d3;
-			.android & {
-				color: var(--color-navy);
-			}
 			font-size: responsive 3.3rem 7rem;
 			padding: 4rem 0;
+			color: var(--color-navy);
 		}
 	}
+
+
 
 	@element blurb {
 		align-self: center;
 		text-align: center;
 		width: 100%;
 		background-color: white;
-		top: -9vh @770 -5vh;
 		line-height: 2.5rem @770 3rem;
 		position: relative;
 		color: var(--color-navy);
 		font-size: responsive 1.5rem 2rem;
 		padding: 2rem 1rem;
+		margin-bottom: 0;
+
+	}
+
+	@element back-navigation {
+		position: absolute !important;
+		display: block;
+		height: 30px @600 50px;
+		width: 30px @600 50px;
+		margin-top: 0.8rem;
+		margin-left: 0.8rem;
+		z-index: 10;
+	}
+}
+
+/*****************************************************
+ * Sponsorship Page
+ ****************************************************/
+
+@component Sponsorship {
+	@element header {
+		background-color: #1fd461;
+	}
+
+	@element heading {
+		h1 {
+			color: #00d0d3;
+			.android & {
+				color: var(--color-navy);
+			}
+		}
 	}
 
 	@element tiers {
-		margin-top: -9rem;
 		padding-top: 3rem @770 7rem;
 		background: var(--color-navy);
 		color: var(--color-aqua);
@@ -852,16 +904,6 @@ input {
 			margin-left: -1.3rem;
 			margin-right: 0.5rem;
 		}
-	}
-
-	@element back-navigation {
-		position: absolute !important;
-		display: block;
-		height: 30px @600 50px;
-		width: 30px @600 50px;
-		margin-top: 0.8rem;
-		margin-left: 0.8rem;
-		z-index: 10;
 	}
 }
 
@@ -1021,6 +1063,46 @@ input {
 	}
 }
 
+@component Schedule {
+	@element container {
+		padding: 3rem 2rem @900 3rem 8rem;
+		background: var(--color-navy);
+	}
+}
+
+/* Very much regret using the BEM postcss helper, want to convert things back into normal nesting */
+.ScheduleSlot {
+  display: block @460 grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1.875rem;
+  margin-bottom: 2rem;
+  color: var(--color-aqua);
+
+  h2 {
+  	margin: 0;
+  	font-size: 1.75rem;
+  }
+
+  &__time {
+	  font-size: 1.2rem;
+	  text-align: right;
+	  white-space: nowrap;
+
+	  .ScheduleSlot--highlight & {
+	  	color: var(--color-orange);
+	  }
+  }
+
+  &__title {
+  	line-height: 1.3em;
+  }
+
+  &__content {
+	  .ScheduleSlot--highlight & {
+	  	color: var(--color-orange);
+	  }
+  }
+}
 /* TODO: Add me */
 .preload-cursors {
 	clip: rect(0 0 0 0);
@@ -1096,4 +1178,8 @@ input {
 .no-scroll {
 	position: fixed;
 	width: 100%;
+	/* Not that great */
+	+ .Divider + .Footer {
+		display: none;
+	}
 }

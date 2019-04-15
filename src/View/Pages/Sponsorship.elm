@@ -1,9 +1,13 @@
-module View.Sponsorship exposing (view)
+module View.Pages.Sponsorship exposing (view)
 
+import Browser
 import Dom
 import Html.Attributes as Attr exposing (..)
 import Model exposing (Model)
 import Update exposing (Msg)
+import View.Nav as Nav
+import View.Page as Page
+import View.PageHeader as PageHeader
 
 
 type alias Tier =
@@ -11,6 +15,21 @@ type alias Tier =
     , cost : String
     , perks : List String
     , imageAssetSrc : String
+    }
+
+
+view : Model -> Browser.Document Msg
+view model =
+    { title = "Elm in the Spring 2019 - Become a Sponsor"
+    , body =
+        Page.view
+            [ "Sponsorship", model.platform ]
+            -- TODO: add a real navigation so we can fit more than 2 links on mobile
+            --[ PageHeader.render "Sponsorship" [ Nav.linkTo "schedule" ]
+            [ PageHeader.render "Sponsorship" []
+            , PageHeader.blurb (Dom.element "span" |> Dom.appendText "Interested in supporting the community? Sponsor Elm in the Spring!")
+            , tiers
+            ]
     }
 
 
@@ -32,41 +51,6 @@ levelData =
       , imageAssetSrc = "/images/sponsorship/spring-sapling.svg"
       }
     ]
-
-
-view : Model -> Dom.Element Msg
-view _ =
-    Dom.element "div"
-        |> Dom.appendChildList
-            [ header, tiers ]
-
-
-backNav =
-    Dom.element "a"
-        |> Dom.appendChild
-            (Dom.element "img"
-                |> Dom.addAttributeList
-                    [ src "/images/flower.svg"
-                    , alt "Go Home"
-                    ]
-            )
-        |> Dom.addClass "Sponsorship__back-navigation"
-        |> Dom.addAttributeList [ href "/" ]
-
-
-header =
-    Dom.element "header"
-        |> Dom.addClass "Section Sponsorship__header"
-        |> Dom.appendChildList [ backNav, heading, blurb ]
-
-
-heading =
-    Dom.element "div"
-        |> Dom.addClass "Section__heading Sponsorship__heading"
-        |> Dom.appendChild
-            (Dom.element "h1"
-                |> Dom.appendText "Sponsorship"
-            )
 
 
 tiers =

@@ -1,4 +1,4 @@
-module View.Section.Sponsors exposing (render)
+module View.Pages.Home.Sponsors exposing (render)
 
 import Dom
 import Html.Attributes as Attr exposing (..)

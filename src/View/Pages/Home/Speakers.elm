@@ -1,4 +1,4 @@
-module View.Section.Speakers exposing (render)
+module View.Pages.Home.Speakers exposing (render)
 
 import Dom
 import Html.Attributes as Attr exposing (..)

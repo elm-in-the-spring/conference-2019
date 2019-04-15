@@ -2,12 +2,10 @@ module View.Footer exposing (render)
 
 import Dom
 import Html.Attributes as Attr exposing (..)
-import Model exposing (Model)
-import Update exposing (Msg)
 
 
-render : Model -> Dom.Element Msg
-render _ =
+render : Dom.Element msg
+render =
     Dom.element "footer"
         |> Dom.addClass "Footer"
         |> Dom.appendChild content

@@ -19,7 +19,8 @@
     "url": "https://github.com/elm-in-the-spring/conference-2019/issues"
   },
   "scripts": {
-    "build": "elm-app build"
+    "build": "elm-app build",
+    "dev": "elm-app start"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.9",

@@ -11,7 +11,8 @@ const PLATFORMS = {
 	MOBILE: /Mobile/
 };
 
-const COLORS = ["#051c3b", "#0038bb", "#2a74d3", "#66c8c9", "#f5b941", "#9f2893"];
+const SOLID_COLORS = [ "#2a74d3", "#66c8c9", "#f5b941", "#9f2893"];
+const CYCLE_COLORS = ["#051c3b", "#0038bb",...SOLID_COLORS];
 
 const parseUserAgent = userAgent => {
 	if (PLATFORMS.FIREFOX.test(userAgent)) {
@@ -34,7 +35,22 @@ const app = Elm.Main.init({
 	}
 });
 
-bgColorCycle(COLORS);
+let intervalId;
+
+
+app.ports.cycleBg.subscribe(() => {
+	clearInterval(intervalId);
+
+	intervalId = setInterval(() => {
+		setRandomBg(CYCLE_COLORS)
+	}, 10000);
+});
+
+app.ports.solidBg.subscribe(() => {
+	clearInterval(intervalId);
+
+	setRandomBg(SOLID_COLORS)
+})
 
 app.ports.hideOverflow.subscribe(() => {
 	lockBodyScroll(true);
@@ -43,6 +59,7 @@ app.ports.hideOverflow.subscribe(() => {
 app.ports.showOverflow.subscribe(() => {
 	lockBodyScroll(false);
 });
+
 
 function lockBodyScroll(lock) {
 	const tag = document.querySelector("main"); // the child element of body that contains the long content
@@ -62,11 +79,9 @@ function lockBodyScroll(lock) {
 	}
 }
 
-function bgColorCycle(colors) {
-	setInterval(() => {
-		const index = Math.floor(Math.random() * Math.floor(colors.length));
-		document.body.style.backgroundColor = colors[index];
-	}, 10000);
+function setRandomBg(colors) {
+	const index = Math.floor(Math.random() * Math.floor(colors.length));
+	document.body.style.backgroundColor = colors[index];
 }
 
 registerServiceWorker();

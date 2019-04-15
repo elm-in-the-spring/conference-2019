@@ -1,4 +1,4 @@
-module View.SpeakerOverlay exposing (render)
+module View.Pages.Home.SpeakerOverlay exposing (render)
 
 import Dom
 import Html
