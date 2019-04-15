@@ -35,6 +35,10 @@ img {
 	height: auto;
 }
 
+main {
+	min-height: calc(100vh - 60px - 122px - 50px);
+}
+
 /* CLASS UTILS */
 
 @utility hidden {
@@ -1021,6 +1025,12 @@ input {
 	}
 }
 
+@component ScheduleSlot {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1.875rem;
+}
+
 /* TODO: Add me */
 .preload-cursors {
 	clip: rect(0 0 0 0);
@@ -1096,4 +1106,8 @@ input {
 .no-scroll {
 	position: fixed;
 	width: 100%;
+	/* Not that great */
+	+ .Divider + .Footer {
+		display: none;
+	}
 }

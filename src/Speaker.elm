@@ -1,8 +1,8 @@
-module Speaker exposing (Social, SocialNetwork(..), Speaker, decoder, findByNameQuery, socialNetworkToString)
+module Speaker exposing (Social, SocialNetwork(..), Speaker, talkFullTitle, decoder, findByNameQuery, socialNetworkToString)
 
-import Json.Decode as Decode exposing (Decoder, int, string)
-import Json.Decode.Pipeline exposing (custom, optional, required)
-
+import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Pipeline exposing (optional, required)
+import Schedule
 
 type alias Speaker =
     { name : String
@@ -12,6 +12,7 @@ type alias Speaker =
     , talkAbstract : String
     , bio : String
     , social : List Social
+    , slot : Schedule.Slot
     }
 
 
@@ -73,6 +74,7 @@ decoder =
         |> required "talk_abstract" Decode.string
         |> required "bio" Decode.string
         |> optional "social" (Decode.list socialDecoder) []
+        |> required "slot" Schedule.decoder
 
 
 findByNameQuery : List Speaker -> String -> Maybe Speaker
@@ -80,3 +82,12 @@ findByNameQuery speakers nameQuery =
     speakers
         |> List.filter (\speaker -> String.replace " " "" speaker.name == nameQuery)
         |> List.head
+
+
+talkFullTitle : Speaker -> String
+talkFullTitle {talkTitle, talkSubtitle} =
+    case talkSubtitle of
+        Nothing ->
+            talkTitle
+        Just subtitle ->
+            talkTitle ++ ": " ++ subtitle
