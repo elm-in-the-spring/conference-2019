@@ -1,4 +1,4 @@
-port module Update exposing (Msg(..), update)
+port module Update exposing (Msg(..), setBg, update)
 
 import Browser
 import Browser.Dom
@@ -10,7 +10,7 @@ import Model exposing (Model)
 import Route exposing (Route(..))
 import Speaker exposing (Speaker)
 import Task
-import Url
+import Url exposing (Url)
 
 
 type Msg
@@ -44,6 +44,7 @@ update msg model =
               , Browser.Dom.focus >> Task.attempt (\_ -> NoOp)
               ]
                 |> List.map (ifFragment url.fragment)
+                |> List.append [ setBg url ]
                 |> Cmd.batch
             )
 
@@ -100,7 +101,23 @@ setOverflowForModalState ( model, commands ) =
             ( model, Cmd.batch [ commands, hideOverflow () ] )
 
 
+setBg : Url -> Cmd Msg
+setBg url =
+    case Debug.log "URL PATH" url.path of
+        "/" ->
+            cycleBg ()
+
+        _ ->
+            solidBg ()
+
+
 port hideOverflow : () -> Cmd msg
 
 
 port showOverflow : () -> Cmd msg
+
+
+port cycleBg : () -> Cmd msg
+
+
+port solidBg : () -> Cmd msg

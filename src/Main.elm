@@ -8,7 +8,7 @@ import Json.Decode as Decode
 import Model exposing (Model)
 import Route
 import Speaker exposing (Speaker)
-import Update exposing (Msg(..), update)
+import Update exposing (Msg(..), setBg, update)
 import Url exposing (Url)
 import View exposing (view)
 
@@ -39,7 +39,7 @@ init flags url key =
       , savedViewport = Nothing
       , platform = flags.platform
       }
-    , loadSpeakers
+    , Cmd.batch [ loadSpeakers, setBg url ]
     )
 
 

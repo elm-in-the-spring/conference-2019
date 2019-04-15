@@ -1,5 +1,7 @@
 module View.Pages.Home.Hero exposing (render)
 
+--import View.Header as Header
+
 import Dom
 import Html.Attributes exposing (alt, src)
 import Model exposing (Model)
@@ -8,7 +10,7 @@ import Svg exposing (..)
 import Svg.Attributes exposing (class, clipPathUnits, fill, height, id, points, preserveAspectRatio, transform, viewBox, width, xlinkHref)
 import Update exposing (Msg)
 import View.Button as Button
-import View.Header as Header
+import View.Nav as Nav
 
 
 render : Model -> Dom.Element Msg
@@ -42,7 +44,7 @@ header model =
         |> Dom.addClass "HeroHeader"
         |> Dom.appendChild
             (Dom.element "nav"
-                |> Dom.appendChild (Header.render model)
+                |> Dom.appendChild (Nav.links [ Nav.linkTo "schedule" ])
             )
 
 
