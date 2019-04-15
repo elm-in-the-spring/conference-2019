@@ -118,10 +118,10 @@ blurbContent =
     Dom.element "section"
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText "Events will take place on ")
         |> Dom.appendChild (Dom.element "span" |> Dom.addClass "font-bold" |> Dom.appendText "Friday, April 26th")
-        |> Dom.appendChild (Dom.element "span" |> Dom.appendText " at Chicago's ")
+        |> Dom.appendChild (Dom.element "span" |> Dom.appendText " at ")
         |> Dom.appendChild
             (Dom.element "a"
                 |> Dom.addAttributeList [ href "https://maps.google.com/?q=Newberry+Library+Chicago", target "_blank" ]
                 |> Dom.appendText "Newberry Library"
             )
-        |> Dom.appendChild (Dom.element "span" |> Dom.appendText " unless noted otherwise.")
+        |> Dom.appendChild (Dom.element "span" |> Dom.appendText " in Chicago unless noted otherwise.")
