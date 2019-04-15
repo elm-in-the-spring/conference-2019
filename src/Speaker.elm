@@ -1,8 +1,9 @@
-module Speaker exposing (Social, SocialNetwork(..), Speaker, talkFullTitle, decoder, findByNameQuery, socialNetworkToString)
+module Speaker exposing (Social, SocialNetwork(..), Speaker, decoder, findByNameQuery, socialNetworkToString, talkFullTitle)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline exposing (optional, required)
 import Schedule
+
 
 type alias Speaker =
     { name : String
@@ -85,9 +86,10 @@ findByNameQuery speakers nameQuery =
 
 
 talkFullTitle : Speaker -> String
-talkFullTitle {talkTitle, talkSubtitle} =
+talkFullTitle { talkTitle, talkSubtitle } =
     case talkSubtitle of
         Nothing ->
             talkTitle
+
         Just subtitle ->
             talkTitle ++ ": " ++ subtitle

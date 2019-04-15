@@ -103,7 +103,7 @@ setOverflowForModalState ( model, commands ) =
 
 setBg : Url -> Cmd Msg
 setBg url =
-    case Debug.log "URL PATH" url.path of
+    case url.path of
         "/" ->
             cycleBg ()
 
