@@ -27,12 +27,11 @@ nonSpeakerBlocks =
     , { title = "Welcome", info = Nothing, slot = { number = 1, start = "9:30 AM", end = "9:45 AM" } }
     , { title = "Morning Break", info = Nothing, slot = { number = 4, start = "10:45 AM", end = "11:00 AM" } }
     , { title = "Lunch", info = Nothing, slot = { number = 7, start = "12:00 PM", end = "1:30 PM" } }
-    , { title = "Afternoon Break 1", info = Nothing, slot = { number = 10, start = "2:30 PM", end = "2:45 PM" } }
-    , { title = "Afternoon Break 2", info = Nothing, slot = { number = 13, start = "3:45 PM", end = "4:00 PM" } }
-    , { title = "Wrap-Up", info = Nothing, slot = { number = 16, start = "5:00 PM", end = "5:15 PM" } }
+    , { title = "Afternoon Break 1", info = Nothing, slot = { number = 10, start = "2:30 PM", end = "2:40 PM" } }
+    , { title = "Afternoon Break 2", info = Nothing, slot = { number = 13, start = "3:40 PM", end = "3:50 PM" } }
     , { title = "Party @ Rock Bottom Brewery"
       , info = Just partyInfo
-      , slot = { number = 17, start = "7:00 PM", end = "9:00 PM" }
+      , slot = { number = 16, start = "7:00 PM", end = "9:00 PM" }
       }
     ]
 

@@ -35,12 +35,12 @@
     "headshot": "images/speakers/andrew.jpg",
     "social": [
       {
-        "network":"twitter",
-        "src":"https://twitter.com/a_macmurray"
+        "network": "twitter",
+        "src": "https://twitter.com/a_macmurray"
       },
       {
         "network": "github",
-        "src":"https://github.com/andrewMacmurray"
+        "src": "https://github.com/andrewMacmurray"
       }
     ]
   },
@@ -52,8 +52,8 @@
     "headshot": "images/speakers/brian.jpg",
     "slot": {
       "number": 14,
-      "start_time": "4:30 PM",
-      "end_time": "5:00 PM"
+      "start_time": "4:20 PM",
+      "end_time": "4:50 PM"
     },
     "social": [
       {
@@ -65,7 +65,7 @@
         "src": "https://twitter.com/brianhicks"
       },
       {
-        "network":"github",
+        "network": "github",
         "src": "https://github.com/BrianHicks"
       }
     ]
@@ -92,8 +92,8 @@
         "src": "https://github.com/danabrams"
       },
       {
-        "network":"website",
-        "src":"http://thedanabrams.com/"
+        "network": "website",
+        "src": "http://thedanabrams.com/"
       }
     ]
   },
@@ -104,9 +104,9 @@
     "bio": "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and query optimization. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. When they’re not cranking out code, Emma practices sleight-of-hand magic and ferments all kinds of things in their hometown of Los Angeles.",
     "headshot": "images/speakers/emma.jpg",
     "slot": {
-      "number":12,
-      "start_time": "3:15 PM",
-      "end_time": "3:45 PM"
+      "number": 12,
+      "start_time": "3:10 PM",
+      "end_time": "3:40 PM"
     },
     "social": [
       {
@@ -114,12 +114,12 @@
         "src": "https://twitter.com/emmatcu"
       },
       {
-        "network":"website",
-        "src":"http://emmacunningham.github.io/"
+        "network": "website",
+        "src": "http://emmacunningham.github.io/"
       },
       {
-        "network":"github",
-        "src":"https://github.com/emmacunningham"
+        "network": "github",
+        "src": "https://github.com/emmacunningham"
       }
     ]
   },
@@ -131,8 +131,8 @@
     "headshot": "images/speakers/joel.jpg",
     "slot": {
       "number": 11,
-      "start_time": "2:45 PM",
-      "end_time": "3:15 PM"
+      "start_time": "2:40 PM",
+      "end_time": "3:10 PM"
     },
     "social": [
       {
@@ -145,7 +145,7 @@
       },
       {
         "network": "github",
-        "src":"https://github.com/JoelQ"
+        "src": "https://github.com/JoelQ"
       }
     ]
   },
@@ -162,15 +162,15 @@
     },
     "social": [
       {
-        "network":"twitter",
-        "src":"https://twitter.com/glitteringkatie"
+        "network": "twitter",
+        "src": "https://twitter.com/glitteringkatie"
       },
       {
         "network": "website",
-        "src":"http://glitteringkatie.com/"
+        "src": "http://glitteringkatie.com/"
       },
       {
-        "network":"github",
+        "network": "github",
         "src": "https://github.com/glitteringkatie"
       }
     ]
@@ -184,8 +184,8 @@
     "headshot": "images/speakers/kofi.jpg",
     "slot": {
       "number": 13,
-      "start_time": "4:00 PM",
-      "end_time": "4:30 PM"
+      "start_time": "3:50 PM",
+      "end_time": "4:20 PM"
     },
     "social": [
       {
@@ -197,8 +197,8 @@
         "src": "https://twitter.com/hkgumbs"
       },
       {
-        "network":"github",
-        "src":"https://github.com/hkgumbs"
+        "network": "github",
+        "src": "https://github.com/hkgumbs"
       }
     ]
   },
@@ -215,7 +215,7 @@
     },
     "social": [
       {
-        "network":"github",
+        "network": "github",
         "src": "https://github.com/sharma7n"
       }
     ]
@@ -234,15 +234,15 @@
     "social": [
       {
         "network": "website",
-        "src":"http://noahzgordon.com/"
+        "src": "http://noahzgordon.com/"
       },
       {
-        "network":"github",
-        "src":"https://github.com/noahzgordon"
+        "network": "github",
+        "src": "https://github.com/noahzgordon"
       },
       {
-        "network":"twitter",
-        "src":"https://twitter.com/noahzgordon"
+        "network": "twitter",
+        "src": "https://twitter.com/noahzgordon"
       }
     ]
   }
