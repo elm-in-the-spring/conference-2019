@@ -113,7 +113,7 @@ blocks speakers =
             )
 
 
-blurbContent =
+blurbConeent =
     Dom.element "section"
         |> Dom.appendChild (Dom.element "span" |> Dom.appendText "Events will take place on ")
         |> Dom.appendChild (Dom.element "span" |> Dom.addClass "font-bold" |> Dom.appendText "Friday, April 26th")
