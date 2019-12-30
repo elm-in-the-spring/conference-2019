@@ -27,6 +27,13 @@ links additionalLinks =
         |> Dom.appendChildList
             ([ linkWrapper |> Dom.appendChild (link "Details")
              , linkWrapper |> Dom.appendChild (link "Speakers")
+             , linkWrapper
+                |> Dom.appendChild
+                    (Dom.element "a"
+                        |> Dom.addAttribute (href "https://www.youtube.com/elminthespring")
+                        |> Dom.addAttribute (target "_blank")
+                        |> Dom.appendText "Videos"
+                    )
              ]
                 ++ additionalLinks
             )
