@@ -54,7 +54,7 @@
     "webcolors": "^1.2.2",
     "webpack": "^4.29.6",
     "webpack-merge": "^4.2.1",
-    "yarn": "^1.13.0"
+    "yarn": "^1.22.0"
   },
   "browserslist": [
     ">0.2%",
